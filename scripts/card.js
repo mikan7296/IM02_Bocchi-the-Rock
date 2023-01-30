@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    for (var i=0;i<20;i++) {
+    for (var i=0;i<50;i++) {
 
         let card = 
             `<div id="card_${i}" class="container px-2 h-fit">

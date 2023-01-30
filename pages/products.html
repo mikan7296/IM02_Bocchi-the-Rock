@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="h-screen bg-blue-200 w-full flex flex-col font-[Abel]">         
+<body class="h-screen bg-blue-200 w-full flex flex-col font-[Abel] overflow-hidden">         
 
 	<nav class="bg-white mx-auto py-3 w-full">
 		<div class="flex flex-wrap items-center justify-between mx-auto container">
@@ -68,7 +68,7 @@
 	
 	
 
-	<section id="body" class="flex h-full container self-center gap-6">
+	<section id="body" class="flex h-full self-center gap-6">
 		<div id="filter-section" class="hidden basis-48 md:block bg-pink-50 text-center">
 
 			<div id="category-dropdown" class="font-bold text-2xl mt-8 flex justify-center">
@@ -84,11 +84,11 @@
 				<label for="vehicle1"> I have a bike</label><br>
 			</div>
 		</div>
-		<div class="flex flex-col">
+		<div class="h-full">
 			<div class="flex justify-center">
-				<input type="search" id="search" class="w-full mt-4 p-4 rounded-full text-center" placeholder = "Search your favourite items!">
+				<input type="search" id="search" class="mb-8 w-full mt-4 p-4 rounded-full text-center" placeholder = "Search your favourite items!">
 			</div>
-			<div id="card-container" class="flex-1 md:h-full grid grid-cols-2 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3">
+			<div id="card-container" class="overflow-y-scroll flex-1 h-full grid grid-cols-2 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden [-ms-overflow-style]:hidden [scrollbar-width:none]">
 
 				<!-- <div id="card" class="container px-2 h-fit">
 					<div class="m-2 mt-8 p-2 h-72 bg-orange-300 rounded-lg shadow-xl">
