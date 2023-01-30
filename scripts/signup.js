@@ -11,14 +11,18 @@ $(document).ready(function () {
    
     $("#submitbtn").click(function (e) {
         e.preventDefault();
+        $("#submitbtn").attr("disabled", true);
         const name = $("#name-input").val();
         const password = $("#pw-input").val();
-
+        setTimeout(function(){
+            $("#submitbtn").attr("disabled", false);
+        },1000)
+        console.log("pressed")
         if (validateInputs(name,password)) {
             if (matchUsername(name)) {
                 addUserData(name,password)
                 login(name)
-            }
+            } 
         }
     });
 
@@ -40,9 +44,12 @@ function validateInputs(name,password) {
     }
     else if (checkWhiteSpace(name)) {
         $("#name-error").toggleClass("invisible")
+        $("#name-input").toggleClass("border-red-700","border-gray-400")
+
     }
     else if (checkWhiteSpace(password)) {
         $("#pw-error").toggleClass("invisible")
+        $("#pw-input").toggleClass("border-red-700","border-gray-400")
     }
     else {
         console.log("Attempting to upload")
@@ -54,11 +61,10 @@ const checkWhiteSpace = (string) => string.indexOf(' ') >= 0;
 
 function matchUsername(name) {
     if (duplicateNames.includes(name.toUpperCase())) {
-        console.log("Name is taken")
+        popup("Error!",`The username ${name} is taken!`)
         return false
     } 
     else {
-        console.log("Name is available")
         return true
     }
 }
