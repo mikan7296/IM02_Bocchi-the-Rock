@@ -14,7 +14,6 @@ $(document).ready(function () {
             </div>`
 
 
-        console.log(`${i}`)
         container = $("#card-container")
         container.append(card)
     }
