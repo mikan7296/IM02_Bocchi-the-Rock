@@ -9,8 +9,13 @@ $(document).ready(function () {
     
     $("#submitbtn").click(function (e) {
         e.preventDefault();
+        $("#submitbtn").attr("disabled", true);
         const name = $("#name-input").val();
         const password = $("#pw-input").val();
+        setTimeout(function(){
+            $("#submitbtn").attr("disabled", false);
+        },1000)
+        
         if (matchPassword(name,password) == false) {
             setTimeout(function(){
                 popup("Login Failed","Incorrect Credentials")

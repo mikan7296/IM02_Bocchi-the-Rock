@@ -17,7 +17,6 @@ $(document).ready(function () {
         setTimeout(function(){
             $("#submitbtn").attr("disabled", false);
         },1000)
-        console.log("pressed")
         if (validateInputs(name,password)) {
             if (matchUsername(name)) {
                 addUserData(name,password)
