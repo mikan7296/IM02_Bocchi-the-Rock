@@ -8,6 +8,7 @@ $(document).ready(function() {
         let string = $("#search").val()
         getCards(string)
     })
+
 });
 
 function getCards (string) {
@@ -23,6 +24,6 @@ function getCards (string) {
             $(`#card_${i}`).css("order",1)
         }
     }
-    
+    container.animate({scrollTop:0},300)
    
 }
