@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Bocchi the Rock!</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="h-screen bg-no-repeat bg-cover overflow-hidden bg-center" style="font-family: Abel; background-image: url('/media/b.png');">                                                                                  
+	<nav class="bg-white mx-auto py-3 w-full">
+		<div class="flex flex-wrap items-center justify-between mx-auto container">
+			<a href="#" class="flex items-center">
+				<img src="/media/face.jpg" class="mr-5">
+				<span class="self-center font-bold text-4xl whitespace-nowrap">Logo</span>
+			</a>
+
+
+			<div class="hidden md:block">
+				<button id="dropdownButton" type="button" class="bg-green-50 w-28">Profile</button>
+				<div id="dropdownMenu" class="hidden z-999 absolute bg-green-50 w-28 p-2">
+					<ul>
+						<li><a href="signup.html">To signup</a></li>
+						<li><a href="index.html">To index</a></li>
+						<li><a href="login.html">To login</a></li>
+						<li><a href="#" id="logout">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div id="mobile-hamburger-dropdown" class="block md:hidden">
+				<svg class="mr-2" viewBox="0 0 100 80" width="40" height="40">
+					<rect y="6" width="100" height="15"></rect>
+					<rect y="36" width="100" height="15"></rect>
+					<rect y="66" width="100" height="15"></rect>
+				</svg>
+			</div>
+
+		</div>
+
+		<div id="sidebar" class="fixed h-full w-0 z-50 top-0 right-0 overflow-x-hidden transition-all duration-500 bg-pink-400 text-center">
+			
+			<div class="absolute -top-4 right-0 text-6xl font-semibold" id="sidebar-close-button">
+				&times;
+			</div>
+			<div>Item 1</div>
+			<div>Item 1</div>
+			<div>Item 1</div>
+		</div>
+
+	</nav>
+	
+
+	<div class="flex items-center justify-center h-full text-2xl md:text-4xl">
+		<form class="bg-white p-6 rounded-xl shadow-xl">
+			<h3 class="text-center pb-12 font-bold">Login Form</h3>
+			<div id="name-input-container" class="mb-2">
+				<label class="block" for="name-input">Name: </label>
+				<input class="border border-gray-400 rounded-lg shadow-md" id="name-input" type="text" name="Name" placeholder="" required>
+				<p id="name-error" class="invisible pt-1 text-xs italic text-center text-red-700">Please do not leave spaces in your name</p>
+			</div>
+
+			<div id="pw-input-container" class="mb-2">
+				<label class="block" for="pw-input">Password: </label>
+				<input class="border border-gray-400 rounded-lg shadow-md" id="pw-input" type="password" name="Password" required>
+				<p id="pw-error" class="invisible pt-1 text-xs italic text-center text-red-700">Please do not leave spaces in your password</p>
+					<div class="flex items justify-end relative -top-[3.25rem] right-2 pointer-events-none">
+						<svg id="eye1" xmlns="http://www.w3.org/2000/svg" class="pointer-events-auto hidden icon icon-tabler icon-tabler-eye-off" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+							<path d="M3 3l18 18"></path>
+							<path d="M10.584 10.587a2 2 0 0 0 2.828 2.83"></path>
+							<path d="M9.363 5.365a9.466 9.466 0 0 1 2.637 -.365c4 0 7.333 2.333 10 7c-.778 1.361 -1.612 2.524 -2.503 3.488m-2.14 1.861c-1.631 1.1 -3.415 1.651 -5.357 1.651c-4 0 -7.333 -2.333 -10 -7c1.369 -2.395 2.913 -4.175 4.632 -5.341"></path>
+						</svg>
+						<svg id="eye2" xmlns="http://www.w3.org/2000/svg" class="pointer-events-auto icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+							<path d="M12 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+							<path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"></path>
+						</svg>
+					</div>
+				
+			</div>
+			<div class="text-xs flex justify-between">
+				<p>Forget Password</p>
+				<p>Sign Up Now</p>
+			</div>
+			<div class="text-center mt-10 text-3xl">
+				<input class="bg-orange-300 py-4 px-14 rounded-full hover:bg-orange-600 transition-colors duration-75" id="submitbtn" type="submit" value="Login">
+			</div>
+			
+		</form>
+	</div>
+	
+</body>
