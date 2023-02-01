@@ -1,19 +1,44 @@
-$(document).ready(function () {
-    for (var i=0;i<50;i++) {
+import { getProducts } from './firebase.js'
 
+$(document).ready(function () {
+    getProducts()
+
+    checkLocalStorage("products",50,100)
+
+    let products = JSON.parse(localStorage.getItem('products'))
+    let totalItems = 0
+
+    for (let k in products) {
+        let v = products[k]
         let card = 
-            `<div id="card_${i}" class="container px-2 h-fit">
+            `
+            <div id="card_${totalItems}" class="container px-2 h-fit">
+                <a href="guitar.html?${k}">
                 <div class="m-2 mt-8 p-2 h-72 bg-orange-300 rounded-lg shadow-xl">
                     <img class="w-full h-3/5 object-fill" src="../media/burger.jfif">
                     <div class="h-2/5 grid grid-rows-2">
-                        <h1 id="name_${i}" class="text-lg font-semibold truncate">NAME_${i}</h1>
-                        <h3 id="price_${i}" >$123.45</h3>
+                        <h1 id="name_${k}" class="text-lg font-semibold truncate">${v.name}</h1>
+                        <h3 id="price_${k}" >$${v.price}</h3>
                     </div>
-                </div>
-            </div>`
-
-        container = $("#card-container")
+                </div></a>
+            </div>
+            `
+        let container = $("#card-container")
         container.append(card)
+        totalItems++
     }
 });
 
+function checkLocalStorage(target,iterations,delay) {
+    let counter = iterations
+    let checker = setInterval(function(){
+        let products = JSON.parse(localStorage.getItem(target))
+        if (products !== null) {
+            
+            window.clearInterval(checker)
+        } else {
+            counter++
+            console.log(counter)
+        }
+        },delay)
+}
