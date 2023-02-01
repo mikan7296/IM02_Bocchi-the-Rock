@@ -55,7 +55,7 @@ function renderCartDropdown() {
         let cart = JSON.parse(localStorage.getItem('cart'))
         let render = ''
         let totalPrice = 0
-
+        
         for (let k in cart) {
             let v = cart[k]
             totalPrice += v.itemPrice

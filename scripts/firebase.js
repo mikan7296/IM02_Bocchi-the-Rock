@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
-import { getDatabase, ref, set, get, push, child, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
+import { getDatabase, ref, set, get, push, child, onValue, update} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDXbZe3Yr00ZOcOGZVTQ5x9UmMYcT-ht08",
@@ -59,7 +59,7 @@ export function matchPassword(name,password) {
     get(child(dbRef, `users/`)).then((snapshot) => {
        for (const user in snapshot.val()) {
             if ((snapshot.val()[user].name.toUpperCase() == name.toUpperCase()) && (password == snapshot.val()[user].password)) {
-                login(snapshot.val()[user].name)
+                login(snapshot.val()[user])
             }
         
        }
@@ -74,7 +74,7 @@ export function addUserData(name,password) {
     set(ref(db, `users/${name.toUpperCase()}`), {
         name: name,
         password : password,
-        id: `${duplicateNames.length}`,
+        id: Date.now(),
       });
 }
 
@@ -83,12 +83,25 @@ export function addStorage(name,value) {
 }
 
 export function logout() {
+    const db = getDatabase()
+    
+    update(ref(db, `users/${localStorage.name.toUpperCase()}`), {
+        cart : localStorage.getItem('cart')
+    });
+
     localStorage.removeItem("name")
+    localStorage.removeItem("cart")
     location.reload()
 }
 
-export function login(name) {
-    addStorage("name",name)
+export function login(data) {
+    addStorage("name",data.name)
+    if (data.cart == null) {
+        localStorage.removeItem('cart')
+    } else {
+       addStorage('cart',data.cart)
+    }
+    
     location.assign("/index.html")
 }
 
