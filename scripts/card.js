@@ -17,7 +17,7 @@ $(document).ready(function () {
                 <div class="m-2 mt-8 p-2 h-72 bg-orange-300 rounded-lg shadow-xl">
                     <img class="w-full h-3/5 object-fill" src="../media/burger.jfif">
                     <div class="h-2/5 grid grid-rows-2">
-                        <h1 id="name_${k}" class="text-lg font-semibold truncate">${v.name}</h1>
+                        <h1 id="name_${k}" class="forNameSearch_${totalItems} text-lg font-semibold truncate">${v.name}</h1>
                         <h3 id="price_${k}" >$${v.price}</h3>
                     </div>
                 </div></a>

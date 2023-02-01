@@ -14,9 +14,8 @@ $(document).ready(function() {
 function getCards (string) {
     let container = $("#card-container")
     let totalItemsLength =  container.find("h1").length
-    let displayedItems = 0
     for (let i = 0;i<totalItemsLength;i++) {
-        if ($(`#name_${i}`).text().includes(string)) {
+        if ($(`.forNameSearch_${i}`).text().toUpperCase().includes(string.toUpperCase())) {
             $(`#card_${i}`).removeClass("invisible")
             $(`#card_${i}`).css("order",0)
         } else {
