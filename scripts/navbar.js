@@ -13,7 +13,19 @@ function hideSidebar() {
 function assignEvents() {
     $("#dropdownButton").click(function (e) {
         $("#dropdownMenu").toggleClass("scale-0 scale-100")
-        
+        $("#cartdropdownMenu").removeClass("scale-100")
+        $("#cartdropdownMenu").addClass("scale-0")
+
+
+    })
+
+    $("#cartdropdownButton").click(function (e) {
+        console.log("a")
+        $("#cartdropdownMenu").toggleClass("scale-0 scale-100")
+        $("#dropdownMenu").removeClass("scale-100")
+        $("#dropdownMenu").addClass("scale-0")
+
+
     })
 
     $("#mobile-hamburger-dropdown").click(function (e) {
