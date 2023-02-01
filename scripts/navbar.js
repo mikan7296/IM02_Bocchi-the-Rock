@@ -1,14 +1,24 @@
 $(document).ready(function() {
-    
+ 
+    assignEvents()
+    checkLoginStatus()
+    $("#name-Placeholder").text(`${localStorage.name}`)
+})
+
+function hideSidebar() {
+    $("#sidebar").addClass("w-0")
+    $("#sidebar").removeClass("w-full")
+}
+
+function assignEvents() {
     $("#dropdownButton").click(function (e) {
-        console.log("hi")
-        $("#dropdownMenu").toggleClass("hidden")
+        $("#dropdownMenu").toggleClass("scale-0 scale-100")
+        
     })
 
     $("#mobile-hamburger-dropdown").click(function (e) {
         $("#sidebar").removeClass("w-0")
         $("#sidebar").addClass("w-full")
-        console.log("W")
 
     })
 
@@ -21,12 +31,12 @@ $(document).ready(function() {
            hideSidebar()
         }
     })
-
-    $("#dropdownButton").text(`${localStorage.name}`)
-})
-
-function hideSidebar() {
-    $("#sidebar").addClass("w-0")
-    $("#sidebar").removeClass("w-full")
 }
 
+function checkLoginStatus() {
+    if (localStorage.name) {
+        $("#logged-in").removeClass("hidden")
+        $("#logged-out").addClass("hidden")
+
+    }
+}

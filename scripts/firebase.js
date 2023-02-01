@@ -83,7 +83,7 @@ export function addStorage(name,value) {
 }
 
 export function logout() {
-    localStorage.clear()
+    localStorage.removeItem("name")
     location.reload()
 }
 
@@ -93,7 +93,7 @@ export function login(name) {
 }
 
 $(document).ready(function(){
-    $("#logout").click(function(e){
+    $(".logout-button").click(function(e){
         logout()
     })
 })

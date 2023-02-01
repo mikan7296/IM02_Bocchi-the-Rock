@@ -22,23 +22,57 @@
 </head>
 
 <body class="h-screen bg-no-repeat bg-cover overflow-hidden bg-center bg-[url('../media/b.png')] font-[Abel]">                                                                                  
-	<nav class="bg-white mx-auto py-3 w-full">
+	<nav class="bg-green-300 mx-auto py-3 w-full">
 		<div class="flex flex-wrap items-center justify-between mx-auto container">
 			<a href="#" class="flex items-center">
-				<img src="../media/face.jpg" class="mr-5">
-				<span class="self-center font-bold text-4xl whitespace-nowrap">Logo</span>
+				<img src="../media/face.jpg" class="mr-5 w-[64px] h-[64px]">
+				<span class="self-center font-bold text-4xl whitespace-nowrap">Logo where?</span>
 			</a>
 
-
 			<div class="hidden md:block">
-				<button id="dropdownButton" type="button" class="bg-green-50 w-28">Profile</button>
-				<div id="dropdownMenu" class="hidden z-999 absolute bg-green-50 w-28 p-2">
-					<ul>
-						<li><a href="signup.html">To signup</a></li>
-						<li><a href="products.html">To products</a></li>
-						<li><a href="login.html">To login</a></li>
-						<li><a href="#" id="logout">Logout</a></li>
-					</ul>
+				<div id="dropdownButton">
+					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+						<path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+						<path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+						<path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
+					 </svg>
+				</div>
+
+				<div id="dropdownMenu" class="scale-0 z-10 absolute w-56 right-12 transition duration-75 origin-top-right">
+					<div id="logged-in" class="hidden bg-white p-4 ">
+						<div class="flex justify-between border-b-2 border-black">
+							<p id="name-Placeholder" class="text-2xl font-bold">Name Placeholder</p>
+							<div class="flex items-center">
+								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coins" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z"></path>
+									<path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4"></path>
+									<path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"></path>
+									<path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
+									<path d="M3 11c0 .888 .772 1.45 2 2"></path>
+								</svg>
+								<p id="coin-Placeholder">10</p>
+							</div>
+						</div>
+						<ul class="text-lg mt-2 ml-1">
+							<li><a href="products.html">Products</a></li>
+							<li><a href="#">Redeem</a></li>
+							<li><a href="#" class="logout-button">Logout</a></li>
+						</ul>
+					</div>
+
+					<div id="logged-out" class=" bg-white p-4">
+						<p class="text-2xl font-bold">You're not logged in!</p>
+						<div class="my-4 text-center">
+							<a href="login.html" class="bg-yellow-400 font-bold py-2 px-16 rounded-lg">Login</a>
+						</div>
+						<div class="">
+							<p>Not a member?<span class="text-blue-400 hover:text-blue-900 cursor-pointer"><a href="signup.html"> Sign up now!</a></span></p>
+						</div>
+
+					</div>
+
 				</div>
 			</div>
 
