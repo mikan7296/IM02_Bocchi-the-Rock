@@ -2,12 +2,30 @@ import { getProducts } from './firebase.js'
 
 $(document).ready(function () {
     getProducts()
+    checkLocalStorage("products",50,200)
+});
 
-    checkLocalStorage("products",50,100)
+function checkLocalStorage(target,iterations,delay) {
+    let counter = 0
+    let checker = setInterval(function(){
+        console.log(counter)
+        let products = JSON.parse(localStorage.getItem(target))
+        if (products !== null) {
+            window.clearInterval(checker)
+            renderCards()
+        } else {
+            counter++
+            console.log(counter)
+        }
+        if (counter > iterations) {
+            window.clearInterval(checker)
+        }
+        },delay)
+}
 
+function renderCards() {
     let products = JSON.parse(localStorage.getItem('products'))
     let totalItems = 0
-
     for (let k in products) {
         let v = products[k]
         let card = 
@@ -27,21 +45,4 @@ $(document).ready(function () {
         container.append(card)
         totalItems++
     }
-});
-
-function checkLocalStorage(target,iterations,delay) {
-    let counter = 0
-    let checker = setInterval(function(){
-        let products = JSON.parse(localStorage.getItem(target))
-        if (products !== null) {
-            
-            window.clearInterval(checker)
-        } else {
-            counter++
-            console.log(counter)
-        }
-        if (counter > iterations) {
-            window.clearInterval(checker)
-        }
-        },delay)
 }
