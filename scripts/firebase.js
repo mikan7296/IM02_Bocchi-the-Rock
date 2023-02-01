@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
-import { getDatabase, ref, set, get, push, child } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
+import { getDatabase, ref, set, get, push, child, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDXbZe3Yr00ZOcOGZVTQ5x9UmMYcT-ht08",
@@ -12,6 +12,35 @@ const firebaseConfig = {
   };
 const app = initializeApp(firebaseConfig);
 const duplicateNames = []
+const guitarData = []
+
+export function addProduct(name,price) {
+    const db = getDatabase()
+    set(ref(db, `products/${name.toUpperCase()}`), {
+        name: name,
+        price: price,
+        stars: 0,
+        
+      });
+}
+
+
+
+export function getProducts(name) {
+    if (name) {
+        const dbRef = ref(getDatabase());
+        get(child(dbRef, `products/${name}`)).then((snapshot) => {
+            addStorage('currentGuitar',JSON.stringify(snapshot.val()))
+        })
+    } else {
+        const dbRef = ref(getDatabase());
+        get(child(dbRef, `products/`)).then((snapshot) => {
+            addStorage('products',JSON.stringify(snapshot.val()))
+        })
+    }
+  
+}
+ 
 
 export function getDuplicateUsernames() {
     const dbRef = ref(getDatabase());
