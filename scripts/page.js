@@ -4,6 +4,7 @@ import { popup } from './popup.js';
 $(document).ready(function(){
     let name = window.location.href.split("?")[1]
     getProducts(name)
+    checkLocalStorage('currentGuitar',50,200)
     $("#image-carousell").slick({
         arrows : false,
         dots : true,
@@ -11,11 +12,15 @@ $(document).ready(function(){
         speed : 200,
     })
     $(".slick-dots > li > button").html("")
+    
+    
 
-    // loops 50 times w 200ms intervals till item is found 
+})
+
+function checkLocalStorage(target,iterations,delay) {
     let counter = 0
     let checker = setInterval(function(){
-        let data = JSON.parse(localStorage.getItem('currentGuitar'))
+        let data = JSON.parse(localStorage.getItem(target))
         if (data !== null) {
             $("#name").text(`${data.name}`)
             $("#price").text(`$${data.price}`)
@@ -25,16 +30,8 @@ $(document).ready(function(){
             counter++
             console.log(counter)
         }
-    },200)
-      
-       
-
-    
-
-
-})
-
-
-
-
-
+        if (counter > iterations) {
+            window.clearInterval(checker)
+        }
+    },delay)
+}

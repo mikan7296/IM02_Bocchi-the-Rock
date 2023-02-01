@@ -30,7 +30,7 @@ $(document).ready(function () {
 });
 
 function checkLocalStorage(target,iterations,delay) {
-    let counter = iterations
+    let counter = 0
     let checker = setInterval(function(){
         let products = JSON.parse(localStorage.getItem(target))
         if (products !== null) {
@@ -39,6 +39,9 @@ function checkLocalStorage(target,iterations,delay) {
         } else {
             counter++
             console.log(counter)
+        }
+        if (counter > iterations) {
+            window.clearInterval(checker)
         }
         },delay)
 }
