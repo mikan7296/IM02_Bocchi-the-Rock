@@ -5,15 +5,7 @@ $(document).ready(function(){
     let name = window.location.href.split("?")[1]
     getProducts(name)
     checkLocalStorage('currentGuitar',50,200)
-    $("#image-carousell").slick({
-        arrows : false,
-        dots : true,
-        appendDots : $("#left-grid"),
-        speed : 200,
-    })
-    $(".slick-dots > li > button").html("")
-    
-    
+    initiateSlick()
 
 })
 
@@ -35,3 +27,18 @@ function checkLocalStorage(target,iterations,delay) {
         }
     },delay)
 }
+
+function initiateSlick() {
+    $("#image-carousell").slick({
+        arrows : false,
+        dots : true,
+        appendDots : $("#left-grid"),
+        speed : 200,
+    })
+    $(".slick-dots > li > button").html("")
+}
+
+
+
+
+
