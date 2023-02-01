@@ -104,13 +104,33 @@
 					</div>
 				</div>
 
-				<div id="cartdropdownMenu" class="scale-0 z-10 absolute right-[calc(2rem+48px)] transition duration-75 origin-top-right bg-white px-2">
-					<div class="text-2xl mb-2 border-b-2 border-black px-12">
+				<div id="cartdropdownMenu" class="scale-0 z-10 absolute right-[calc(2rem+48px)] transition duration-75 origin-top-right bg-white p-2 w-64">
+					<div class="text-2xl mb-2 border-b-2 border-black">
 						<p>Your Cart</p>
 					</div>
-					<div id="empty" class="py-2">
+
+					<div id="empty-cart" class="py-2">
 						<p>There is nothing in your cart!</p>
 					</div>
+					<div>
+						
+					</div>
+					<div id="not-empty-cart">
+						<div id="cart-dropdown-container" class="grid grid-cols-1 text-lg overflow-y-scroll max-h-40">
+						
+						</div>
+						<div id="" class="border-t-2 border-black pt-2">
+							<div class="grid grid-cols-6 items-center">
+								<p class="text-xl col-span-4">Total:</p>
+								<p id="cart-total-price" class="text-lg col-span-2"></p>
+							</div>
+						<div class="text-center mt-2">
+							<a href="checkout.html" class="text-2xl px-8 py-0.5 rounded-full bg-yellow-200">Checkout</a>
+						</div>
+						
+						</div>
+					</div>
+					
 				</div>
 			</div>
 

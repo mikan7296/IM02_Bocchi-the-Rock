@@ -1,10 +1,6 @@
 $(document).ready(function(){
     assignEvents()
-    localStorage.removeItem('cart')
-
-
 });
-
 
 
 function assignEvents() {
@@ -15,10 +11,7 @@ function assignEvents() {
         if(localStorage.cart){
             cart = JSON.parse(localStorage.cart);
         }
-        cart.push({'itemName' : details.name, 'itemPrice' : details.price});
+        cart.push({'itemId' : Date.now(), 'itemName' : details.name, 'itemPrice' : details.price});
         localStorage.setItem('cart', JSON.stringify(cart));
-        
-        let x = JSON.parse(localStorage.getItem('cart'))
-        console.log(x)
     });
 }
