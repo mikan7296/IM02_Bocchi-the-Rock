@@ -102,7 +102,7 @@ export function login(data) {
        addStorage('cart',data.cart)
     }
     
-    location.assign("/index.html")
+    location.assign("./products.html")
 }
 
 $(document).ready(function(){
