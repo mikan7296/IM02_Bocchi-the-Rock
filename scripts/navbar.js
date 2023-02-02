@@ -79,9 +79,9 @@ function renderCartDropdown() {
 }
 
 function checkLoginStatus() {
+    
     if (localStorage.name) {
         $("#logged-in").removeClass("hidden")
         $("#logged-out").addClass("hidden")
-
-    }
+    } 
 }

@@ -1,10 +1,9 @@
 import { popup } from './popup.js';
 import { getDuplicateUsernames, addUserData, login } from './firebase.js'
 
-let duplicateNames = []
 
 $(document).ready(function () {
-    duplicateNames = getDuplicateUsernames()
+    getDuplicateUsernames()
     $("#eye1, #eye2").click(function (e){
         togglePassword()
     })
@@ -20,7 +19,6 @@ $(document).ready(function () {
         if (validateInputs(name,password)) {
             if (matchUsername(name)) {
                 addUserData(name,password)
-                login(name)
             } 
         }
     });
@@ -59,7 +57,11 @@ function validateInputs(name,password) {
 const checkWhiteSpace = (string) => string.indexOf(' ') >= 0;
 
 function matchUsername(name) {
-    if (duplicateNames.includes(name.toUpperCase())) {
+    let duplicateNames = []
+    if (localStorage.existingUsernames) {
+        duplicateNames = localStorage.existingUsernames.split(',')
+    }
+    if (duplicateNames.includes(window.btoa(name.toUpperCase()))) {
         popup("Error!",`The username ${name} is taken!`)
         return false
     } 

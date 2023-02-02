@@ -21,7 +21,6 @@ $(document).ready(function () {
                 popup("Login Failed","Incorrect Credentials")
             },1000)
         }
-
     });
 
 });

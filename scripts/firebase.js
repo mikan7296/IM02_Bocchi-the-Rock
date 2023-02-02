@@ -11,8 +11,6 @@ const firebaseConfig = {
     appId: "1:408648419436:web:0ee6f6a2495e38383ab049"
   };
 const app = initializeApp(firebaseConfig);
-const duplicateNames = []
-const guitarData = []
 
 export function addProduct(name,price) {
     const db = getDatabase()
@@ -24,89 +22,138 @@ export function addProduct(name,price) {
       });
 }
 
-
-
 export function getProducts(name) {
     if (name) {
         const dbRef = ref(getDatabase());
         get(child(dbRef, `products/${name}`)).then((snapshot) => {
-            addStorage('currentGuitar',JSON.stringify(snapshot.val()))
+            localStorage.setItem('currentGuitar',JSON.stringify(snapshot.val()))
         })
     } else {
         const dbRef = ref(getDatabase());
         get(child(dbRef, `products/`)).then((snapshot) => {
-            addStorage('products',JSON.stringify(snapshot.val()))
+            localStorage.setItem('products',JSON.stringify(snapshot.val()))
         })
     }
   
 }
- 
+
+// export function getDuplicateUsernames() {
+//     const dbRef = ref(getDatabase());
+//     get(child(dbRef, `users/`)).then((snapshot) => {
+//         const data = snapshot.val()
+//         let emptyArray = []
+//         for (const userID in data) {
+//             emptyArray.push(data[`${userID}`].name)
+//             localStorage.setItem('existingUsernames',emptyArray)
+//         }
+//     }).catch((error) => {
+//         console.error(error);
+//     });
+// }
 
 export function getDuplicateUsernames() {
-    const dbRef = ref(getDatabase());
-    get(child(dbRef, `users/`)).then((snapshot) => {
-        for (const user in snapshot.val()) {
-            duplicateNames.push(user.toUpperCase())
+    const dbRef = ref(getDatabase(), 'users/');
+    onValue(dbRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data != null) {
+            let emptyArray = []
+            for (const userID in data) {
+                let userData = data[userID]
+                emptyArray.push(userData.name)
+                localStorage.setItem('existingUsernames',emptyArray)
+            } 
         }
-    }).catch((error) => {
-        console.error(error);
+        
     });
-    return duplicateNames
 }
 
 export function matchPassword(name,password) {
-    const dbRef = ref(getDatabase());
-    get(child(dbRef, `users/`)).then((snapshot) => {
-       for (const user in snapshot.val()) {
-            if ((snapshot.val()[user].name.toUpperCase() == name.toUpperCase()) && (password == snapshot.val()[user].password)) {
-                login(snapshot.val()[user])
+    const dbRef = ref(getDatabase(), 'users/');
+    onValue(dbRef, (snapshot) => {
+        const data = snapshot.val();
+        for (const userID in data) {
+            let userData = data[userID]
+            if ((userData.name == encode(name.toUpperCase())) && (password == userData.password)) {
+                login(userID,userData)
             }
-        
-       }
-    }).catch((error) => {
-        console.error(error);
+        }
     });
     return false
 }
 
+// export function matchPassword(name,password) {
+//     const dbRef = ref(getDatabase());
+//     get(child(dbRef, `users/`)).then((snapshot) => {
+//        for (const user in snapshot.val()) {
+//             if ((snapshot.val()[user].name.toUpperCase() == name.toUpperCase()) && (password == snapshot.val()[user].password)) {
+//                 login(snapshot.val()[user])
+//             }
+//        }
+//     }).catch((error) => {
+//         console.error(error);
+//     });
+//     return false
+// }
+
 export function addUserData(name,password) {
     const db = getDatabase()
-    set(ref(db, `users/${name.toUpperCase()}`), {
-        name: name,
+    let id = Date.now()
+    set(ref(db, `users/${id}`), {
+        name: encode(name.toUpperCase()),
+        displayName : name,
         password : password,
-        id: Date.now(),
+        coins: 0,
       });
-}
-
-export function addStorage(name,value) {
-    localStorage.setItem(`${name}`,`${value}`)
+    login(id)
 }
 
 export function logout() {
     const db = getDatabase()
-    
-    update(ref(db, `users/${localStorage.name.toUpperCase()}`), {
+    update(ref(db, `users/${localStorage.userId}`), {
         cart : localStorage.getItem('cart')
     });
 
-    localStorage.removeItem("name")
+    localStorage.removeItem("userId")
     localStorage.removeItem("cart")
     location.reload()
 }
 
-export function login(data) {
-    addStorage("name",data.name)
-    if (data.cart == null) {
-        localStorage.removeItem('cart')
-    } else {
-       addStorage('cart',data.cart)
+export function login(id,data=false) {
+    localStorage.setItem("userId",id)
+    if (data) {
+        if (data.cart == null) {
+            localStorage.removeItem('cart')
+        } else {
+           localStorage.setItem('cart',data.cart)
+        }
     }
-    
     location.assign("./products.html")
+}
+
+function updateProfileDropdown() {
+    if (localStorage.userId) {
+        const dbRef = ref(getDatabase(), `users/${localStorage.userId}`);
+        onValue(dbRef, (snapshot) => {
+            const data = snapshot.val();
+            if (data != null) {
+                $("#name-Placeholder").text(data.displayName)
+                $("#coin-Placeholder").text(data.coins)
+            }   
+            
+    })
+    }   
 }
 
 $(document).ready(function(){
     $(".logout-button").click(function(e){
         logout()
     })
+
+    $(window).bind('beforeunload', function(){
+        localStorage.removeItem('existingUsernames')
+    });
+    updateProfileDropdown()
 })
+
+export const encode = (string) => window.btoa(string)
+export const decode = (string) => window.atob(string)
