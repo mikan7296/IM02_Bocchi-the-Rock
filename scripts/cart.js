@@ -5,6 +5,7 @@ $(document).ready(function(){
     renderCartSummary()
     assignEvents()
     assignInputEvent()
+    assignPaymentEvents()
 });
 
 
@@ -86,6 +87,7 @@ function renderCartSummary(emptyContainer = true) {
         $("#cart-section").addClass("w-full")
         $("#contact-section").hide()
         $("#cart-price-container").hide()
+        $("#checkout-submit-container").hide()
 
     }
 }
@@ -154,3 +156,17 @@ function assignInputEvent() {
         } else {$("#checkout-submit").attr('disabled',true)}
     }
 }
+
+function assignPaymentEvents() {
+    $(".payment-option").click(function(e){
+        $("#cc-checkout").addClass("hidden")
+    })
+
+    $("#payment-cc-option").click(function(e) {
+        $("#cc-checkout").removeClass("hidden")
+    })
+}
+   
+
+    
+

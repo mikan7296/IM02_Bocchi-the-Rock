@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="w-full bg-blue-200 flex flex-col font-[Abel] overflow-hidden">         
+<body class="w-full bg-blue-200 flex flex-col font-[Abel]">         
 	<nav class="bg-black mx-auto py-3 w-full">
 		<div class="flex flex-wrap items-center justify-between ml-2 lg:ml-12 mr-4">
 
@@ -139,167 +139,121 @@
 	</nav>
 
     <section class="container mx-auto  bg-white px-2">
-		
-		<div class="flex pt-4 gap-2 text-xl h-[100vh]">
-			<div id="contact-section" class="basis-3/5 max-w-[60%]">
-				<div class="border-b-2 border-black text-2xl">
-					<p>Contact Information</p>
+		<form>
+			<div class="flex pt-4 gap-2 text-xl lg:h-[100vh] flex-col lg:flex-row">
+
+				<div id="contact-section" class="lg:basis-3/5 lg:max-w-[60%]">
+
+					<div class="border-b-2 border-black text-2xl">
+						<p>Contact Information</p>
+					</div>
+
+					<div class="py-3">
+						<input id="email-checkout" placeholder="Email" type="email" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
+						<div class="pt-2 flex items-center gap-2">
+							<input id="marketing-checkout" type="checkbox" class="rounded-md border-black w-4 h-4">
+							<label for="marketing-checkout" class="text-sm">Email me with news and offers</label>
+						</div>
+					</div>
+
+					<div class="border-b-2 border-black text-2xl">
+						<p>Payment</p>
+					</div>
+					<div class="flex pt-2 gap-2">
+						<div class="basis-1/3">
+							<input id="payment-cc-option" type="radio" name="shipping-checkout" class="peer/ccpeer hidden" required checked>
+							<label for="payment-cc-option" class="payment-option py-2 block rounded-2xl text-center peer-checked/ccpeer:bg-blue-200">Credit card</label>
+						</div>
+						<div class="basis-1/3">
+							<input id="payment-paypal-option" type="radio" name="shipping-checkout" class= "peer/paypalpeer hidden" required>
+							<label for="payment-paypal-option" class="payment-option py-2 block rounded-2xl text-center peer-checked/paypalpeer:bg-blue-200">GPay logo</label>
+						</div>
+						<div class="basis-1/3">
+							<input id="payment-gpay-option" type="radio" name="shipping-checkout" class= "peer/gpaypeer hidden" required>
+							<label for="payment-gpay-option" class="payment-option py-2 block rounded-2xl text-center peer-checked/gpaypeer:bg-blue-200">Paypal logo</label>
+						</div>
+					</div>
+					<div class="py-3">
+						<input id="cc-checkout" placeholder="Credit card details" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
+					</div>
+
+
+					<div class="border-b-2 border-black text-2xl">
+						<p>Shipping Address</p>
+					</div>
+					
+					<div class="flex pt-2 gap-2">
+						<div class="basis-1/2">
+							<input id="sea-checkout" type="radio" name="shipping-checkout" class="peer/airpeer hidden" required>
+							<label for="sea-checkout" class="shipping-option py-2 block rounded-2xl text-center peer-checked/airpeer:bg-blue-200">Sea Freight</label>
+						</div>
+						<div class="basis-1/2">
+							<input id="air-checkout" type="radio" name="shipping-checkout" class= "peer/seapeer hidden" required>
+							<label for="air-checkout" class="shipping-option py-2 block rounded-2xl text-center peer-checked/seapeer:bg-blue-200">Air Freight</label>
+						</div>
+					</div>
+					<div class="flex pt-4 gap-2">
+						<div class="basis-1/2">
+							<input id="first-name-checkout" placeholder="First name" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md" required>
+						</div>
+						<div class="basis-1/2">
+							<input id="last-name-checkout" placeholder="Last name" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md" required>
+						</div>
+					</div>
+					<div class="flex pt-4 gap-2">
+						<input id="address-checkout" placeholder="Address" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md" required>
+					</div>
+					<div class="flex pt-4 gap-2">
+						<input id="address2-checkout" placeholder="Apartment, suite, etc (optional)" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
+					</div>
+					<div class="flex pt-4 gap-2">
+						<input id="postal-checkout" placeholder="Postal code" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md" required>
+					</div>
+				
 				</div>
 
-				<div class="py-6">
-					<input id="email-checkout" placeholder="Email" type="email" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
-					<div class="pt-2 flex items-center gap-2">
-						<input id="marketing-checkout" type="checkbox" class="rounded-md border-black w-4 h-4">
-						<label for="marketing-checkout" class="text-sm">Email me with news and offers</label>
-					</div>
-				</div>
-				
-				<div class="border-b-2 border-black text-2xl">
-					<p>Shipping Address</p>
-				</div>
-				
-				<div class="flex pt-4 gap-2">
-					<div class="basis-1/2">
-						<input id="sea-checkout" type="radio" name="shipping-checkout" class="peer/airpeer hidden" required>
-						<label for="sea-checkout" class="shipping-option py-2 block rounded-2xl text-center peer-checked/airpeer:bg-blue-200">Sea Freight</label>
-					</div>
-					<div class="basis-1/2">
-						<input id="air-checkout" type="radio" name="shipping-checkout" class= "peer/seapeer hidden" required>
-						<label for="air-checkout" class="shipping-option py-2 block rounded-2xl text-center peer-checked/seapeer:bg-blue-200">Air Freight</label>
-					</div>
-				</div>
-				<div class="flex pt-4 gap-2">
-					<div class="basis-1/2">
-						<input id="first-name-checkout" placeholder="First name" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
-					</div>
-					<div class="basis-1/2">
-						<input id="last-name-checkout" placeholder="Last name" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
-					</div>
-				</div>
-				<div class="flex pt-4 gap-2">
-					<input id="address-checkout" placeholder="Address" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
-				</div>
-				<div class="flex pt-4 gap-2">
-					<input id="address2-checkout" placeholder="Apartment, suite, etc (optional)" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
-				</div>
-				<div class="flex pt-4 gap-2">
-					<input id="postal-checkout" placeholder="Postal code" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
-				</div>
-			
-			</div>
 
-			<div id="cart-section" class="basis-2/3 max-w-[40%] border-l-2 px-2">
-				<div class="border-b-2 border-black text-2xl text-center">
-					<p>Cart Summary</p>
+				<div id="cart-section" class="lg:border-l-2 px-2">
+					<div class="border-b-2 border-black text-2xl text-center">
+						<p>Cart Summary</p>
+						
+					</div>
+
+					<div id="cart-container" class="h-80 overflow-y-scroll border-b-2 border-black">
+						<div class="flex items-center justify-center h-full flex-col">
+							<p class="text-3xl">Your Cart is empty!</p>
+							<div class="mt-6 p-4 px-8 bg-orange-300 rounded-full">
+								<a href="products.html">Back to shop</a>
+							</div>
+						</div>
+					</div>
+					<div id="cart-price-container">
+						<div class="border-b-2 border-black">
+							<div class="flex text-xl">
+								<p class="basis-1/5">Subtotal</p>
+								<p id="subtotal-price" class="basis-4/5 text-right truncate">Price Placeholder</p>
+							</div>
+							<div class="flex text-xl">
+								<p class="basis-1/5">Shipping</p>
+								<p id="shipping-price" class="basis-4/5 text-right truncate">$0</p>
+							</div>
+						</div>
+						<div class="flex text-3xl">
+							<p class="basis-1/5">Total</p>
+							<p id="total-price" class="basis-4/5 text-right truncate">Price Placeholder</p>
+						</div>
+					</div>
+					<div id="checkout-submit-container" class="text-center pt-4 text-4xl">
+						<input class=" bg-orange-300 py-2 px-12 rounded-md disabled:opacity-50" id="checkout-submit" type="submit" value="Proceed to Payment" disabled>
+					</div>
 					
 				</div>
 
-				<div id="cart-container" class="h-[25rem] overflow-y-scroll border-b-2 border-black">
-					<div class="flex items-center justify-center h-full flex-col">
-						<p class="text-3xl">Your Cart is empty!</p>
-						<div class="mt-6 p-4 px-8 bg-orange-300 rounded-full">
-							<a href="products.html">Back to shop</a>
-						</div>
-					</div>
-				</div>
-				<div id="cart-price-container">
-					<div class="border-b-2 border-black">
-						<div class="flex text-xl">
-							<p class="basis-1/5">Subtotal</p>
-							<p id="subtotal-price" class="basis-4/5 text-right truncate">Price Placeholder</p>
-						</div>
-						<div class="flex text-xl">
-							<p class="basis-1/5">Shipping</p>
-							<p id="shipping-price" class="basis-4/5 text-right truncate">$0</p>
-						</div>
-					</div>
-					<div class="flex text-3xl">
-						<p class="basis-1/5">Total</p>
-						<p id="total-price" class="basis-4/5 text-right truncate">Price Placeholder</p>
-					</div>
-				</div>
-				
-				
 			</div>
-
-		</div>
-
+		</form>
 			
 
     </section>
 </body>
 
 
-
-<!-- <div class="grid grid-cols-12 bg-blue-300 mt-10 p-4 text-2xl gap-2 rounded-2xl shadow-xl">
-	
-	<p class="col-span-8 row-start-1 text-4xl text-left font-bold pb-2 border-b-2 border-black">Shipping Details</p>
-	<div class="col-span-4 mx-4 row-start-2">
-		<input id="sea-checkout" type="radio" name="shipping-checkout" class= "peer hidden" required checked>
-		<label for="sea-checkout" class="py-2 block rounded-2xl text-center peer-checked:bg-blue-200">Air Freight</label>
-	</div>
-	<div class="col-span-4 mx-4 row-start-2">
-		<input id="air-checkout" type="radio" name="shipping-checkout" class="peer hidden">
-		<label for="air-checkout" class="py-2 block rounded-2xl text-center peer-checked:bg-blue-200">Sea Freight</label>
-	</div>
-	<div class="col-span-4 mr-2 row-start-3">
-		<label for="first-name-checkout">First Name*</label>
-		<input id="first-name-checkout" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-lg">
-	</div>
-	<div class="col-span-4 ml-2 row-start-3">
-		<label for="last-name-checkout">Last Name*</label>
-		<input id="last-name-checkout" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-lg">
-	</div>
-	<div class="col-span-8 row-start-4">
-		<label for="email-checkout">Email Address*</label>
-		<input id="email-checkout" type="email" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-lg">
-	</div>
-	<div class="col-span-8 row-start-5">
-		<label for="address1-checkout">Address Line*</label>
-		<input id="address1-checkout" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-lg">
-	</div>
-	<div class="col-span-8 row-start-6">
-		<label for="address2-checkout">Address Line 2</label>
-		<input id="address2-checkout" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-lg">
-	</div>
-	<div class="col-span-4 mr-2 row-start-7">
-		<label for="postal-code-checkout">Postal Code*</label>
-		<input id="postal-code-checkout" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-lg">
-	</div>
-	<div class="col-span-4 ml-2 row-start-7">
-		<label for="phone-checkout">Phone Number</label>
-		<input id="phone-checkout" type="number" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-lg">
-	</div>
-
-
-	<p class="col-span-3 col-start-10 row-start-1 text-4xl text-center font-bold pb-2 border-b-2 border-black">Cart Summary</p>
-	<div id="cart-container" class="h-[24rem] col-span-3 col-start-10 row-start-2 row-span-4 overflow-hidden overflow-y-scroll">
-
-		<div class="grid grid-cols-5">
-			<p>1x</p>
-		</div>
-
-	</div>
-	
-	<div class="col-span-3 col-start-10 row-start-6 row-span-2 flex flex-col-reverse">
-		<div class="grid grid-cols-4 gap-12">
-			<p class="col-span-1">Total</p>
-			<p class="col-span-3 text-right truncate">1234567891011121314</p>
-		</div>
-		<div class="border-y-2 text-lg">
-			<div class="grid grid-cols-4 gap-12">
-				<p class="col-span-1">Subtotal</p>
-				<p class="col-span-3 text-right truncate">12345</p>
-			</div>
-			<div class="grid grid-cols-4 gap-12">
-				<p class="col-span-1">Shipping</p>
-				<p class="col-span-3 text-right truncate">12345</p>
-			</div>
-		</div>
-	</div>
-	
-	<div class="col-span-12 row-start-8 text-center mt-6">
-		<input id="submit-checkout" type="submit" value="Checkout" class="bg-orange-200 py-2 px-12 rounded-2xl">
-	</div>
-
-</div> -->
