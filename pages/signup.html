@@ -8,7 +8,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://cdn.tailwindcss.com"></script>
-
+	<link href="../dist/output.css" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
@@ -30,6 +30,7 @@
 				<span class="self-center font-bold text-4xl whitespace-nowrap">Logo where?</span>
 			</a>
 
+
 			<div class="hidden md:block">
 				<div id="dropdownButton">
 					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -39,6 +40,8 @@
 						<path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
 					 </svg>
 				</div>
+
+				
 
 				<div id="dropdownMenu" class="scale-0 z-10 absolute right-4 transition duration-75 origin-top-right">
 					<div id="logged-in" class="hidden bg-white p-4 ">
@@ -75,6 +78,9 @@
 					</div>
 
 				</div>
+
+				
+
 			</div>
 
 			<div id="mobile-hamburger-dropdown" class="block md:hidden">
@@ -105,7 +111,7 @@
 			<h3 class="text-center pb-12 font-bold">Member Registration</h3>
 			<div id="name-input-container" class="mb-2">
 				<label class="block" for="name-input">Name: </label>
-				<input class="border border-gray-400 rounded-lg shadow-md w-full" id="name-input" type="text" name="Name" placeholder="" required>
+				<input class="border border-gray-400 rounded-lg shadow-md w-full" id="name-input" type="text" name="Name" placeholder="" maxlength="10" required>
 				<p id="name-error" class="invisible pt-1 text-xs italic text-center text-red-700">Please do not leave spaces in your name</p>
 			</div>
 

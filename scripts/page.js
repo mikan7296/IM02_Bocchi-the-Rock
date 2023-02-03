@@ -7,6 +7,8 @@ $(document).ready(function(){
     checkLocalStorage('currentGuitar',50,200)
     initiateSlick()
 
+    
+
 })
 
 function checkLocalStorage(target,iterations,delay) {

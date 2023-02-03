@@ -2,7 +2,6 @@ $(document).ready(function() {
  
     assignEvents()
     checkLoginStatus()
-    $("#name-Placeholder").text(`${localStorage.name}`)
 })
 
 function hideSidebar() {
@@ -80,7 +79,7 @@ function renderCartDropdown() {
 
 function checkLoginStatus() {
     
-    if (localStorage.name) {
+    if (localStorage.userId) {
         $("#logged-in").removeClass("hidden")
         $("#logged-out").addClass("hidden")
     } 
