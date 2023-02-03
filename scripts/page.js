@@ -2,7 +2,8 @@ import { addProduct, getProducts } from './firebase.js'
 import { popup } from './popup.js';
 
 $(document).ready(function(){
-    let name = window.location.href.split("?")[1]
+    let name = window.location.href.split("?")[1.].replaceAll("%20"," ")
+
     getProducts(name)
     checkLocalStorage('currentGuitar',50,200)
     initiateSlick()
