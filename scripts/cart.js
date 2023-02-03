@@ -4,6 +4,7 @@ $(document).ready(function(){
     assignShippingEvents()
     renderCartSummary()
     assignEvents()
+    assignInputEvent()
 });
 
 
@@ -29,7 +30,6 @@ function assignEvents() {
             let itemName = cart[k].itemName
             let itemPrice = cart[k].itemPrice
             if (itemId != id) {
-                console.log(cart[k])
                 returnCart.push({'itemId' : itemId, 'itemName' : itemName, 'itemPrice' : itemPrice})
             }
         }
@@ -116,4 +116,40 @@ function updateTotalPrice() {
     let newAmt = basePrice += shippingPrice
     $("#total-price").text(`$${newAmt}`)
 
+}
+
+function assignInputEvent() {
+    const seaOption = $("#sea-checkout")
+    const airOption = $("#air-checkout")
+    const firstName = $("#first-name-checkout")
+    const lastName = $("#last-name-checkout")
+    const address = $("#address-checkout")
+    const postal = $("#postal-checkout")
+    let inputsFields = [firstName,lastName,address,postal]
+    let inputOptions = [seaOption,airOption]
+    for (let k in inputsFields) {
+        (inputsFields[k]).keyup(function() {
+           validate()
+        })
+    }
+    for (let k in inputOptions) {
+        (inputOptions[k]).click(function() {
+           validate()
+        })
+    }
+
+    function validate() {
+        let empty = 0
+        if (($("#air-checkout").is(':checked')) || ($("#sea-checkout").is(':checked'))) {
+        } else {return}
+
+        for (let k in inputsFields) {
+            if ((inputsFields[k].val().length == 0)) {
+                empty++
+            }
+        }
+        if (empty == 0) {
+            $("#checkout-submit").removeAttr('disabled')
+        } else {$("#checkout-submit").attr('disabled',true)}
+    }
 }
