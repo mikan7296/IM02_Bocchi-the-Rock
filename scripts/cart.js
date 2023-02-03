@@ -63,7 +63,7 @@ function renderCartSummary(emptyContainer = true) {
                 </div>
                 <div class="basis-1/5 font-bold truncate">
                     <p class="text-right">$${v.itemPrice}</p>
-                    <p id="${v.itemId}" class="remove-button text-xs text-right">Remove</p>
+                    <p id="${v.itemId}" class="remove-button cursor-pointer text-xs text-right hover:text-red-500">Remove</p>
                 </div>
             </div>`
 
