@@ -37,6 +37,7 @@ function assignEvents() {
         localStorage.setItem('cart',JSON.stringify(returnCart))
         if (cart.length == 1) {
             localStorage.removeItem('cart')
+            location.reload()
         }
         renderCartSummary(false)
     })
@@ -84,6 +85,8 @@ function renderCartSummary(emptyContainer = true) {
         $("#cart-section").removeClass("basis-2/3 max-w-[40%] border-l-2")
         $("#cart-section").addClass("w-full")
         $("#contact-section").hide()
+        $("#cart-price-container").hide()
+
     }
 }
 
