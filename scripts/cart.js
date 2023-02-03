@@ -119,13 +119,14 @@ function updateTotalPrice() {
 }
 
 function assignInputEvent() {
+    const email = $("#email-checkout")
     const seaOption = $("#sea-checkout")
     const airOption = $("#air-checkout")
     const firstName = $("#first-name-checkout")
     const lastName = $("#last-name-checkout")
     const address = $("#address-checkout")
     const postal = $("#postal-checkout")
-    let inputsFields = [firstName,lastName,address,postal]
+    let inputsFields = [email,firstName,lastName,address,postal]
     let inputOptions = [seaOption,airOption]
     for (let k in inputsFields) {
         (inputsFields[k]).keyup(function() {
