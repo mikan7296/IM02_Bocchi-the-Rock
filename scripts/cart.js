@@ -158,13 +158,16 @@ function assignInputEvent() {
 }
 
 function assignPaymentEvents() {
-    $(".payment-option").click(function(e){
-        $("#cc-checkout").addClass("hidden")
+    $("#payment-paypal-option, #payment-gpay-option").click(function(e){
+        $("#cc-checkout-inputs").removeClass("max-h-40 py-4 border-t border-gray-400")
+        $("#cc-checkout-inputs").addClass("max-h-0")
     })
 
     $("#payment-cc-option").click(function(e) {
-        $("#cc-checkout").removeClass("hidden")
+        $("#cc-checkout-inputs").addClass("max-h-40 py-4 border-t border-gray-400")
+        $("#cc-checkout-inputs").removeClass("max-h-0")
     })
+
 }
    
 
