@@ -136,6 +136,7 @@ function assignInputEvent() {
     const address = $("#address-checkout")
     const address2 = $("#address2-checkout")
     const postal = $("#postal-checkout")
+    const method = $("#shipping-information-method")
     let inputsFields = [email,firstName,lastName,address,postal]
     let inputOptions = [shipOption1,shipOption2,shipOption3]
     for (let k in inputsFields) {
@@ -152,29 +153,33 @@ function assignInputEvent() {
         e.preventDefault()
         $("#shipping-information-email").text(email.val())
         $("#shipping-information-address").text([address.val(),address2.val()].join(' '))
-        if ($("#air-checkout").is(':checked')) {
-            $("#shipping-information-method").text("Fedex International Priority - $60")
-        } else {
-            $("#shipping-information-method").text("Fedex International Economy - $30")
+
+        if (shipOption1.is(':checked')) {
+            method.text("DHL Air Economy - $30")
+        } else if (shipOption2.is(':checked')) {
+            method.text("Fedex International Economy - $60")
+        } else { 
+            method.text("Fedex International Priority - $100")
         }
         togglePayment()
     })
 
     function validate() {
         let empty = 0
-        if (($("#shipping-method-option1").is(':checked')) || ($("#shipping-method-option2").is(':checked')) || ($("#shipping-method-option3").is(':checked'))) {} else {empty++}
-        
+        if (!$("input:radio[name='shipping-method']").is(":checked")) {
+            empty++
+        }
         if (email.val().length != 0) {
             if (email.val().includes('@') && email.val().includes('.com')) {
-                $("#email-checkout").removeClass('border-red-600').addClass('border-gray-600')
+                $(email).removeClass('border-red-600').addClass('border-gray-600')
                 $("#email-checkout-error").addClass('hidden').removeClass('block')
             } else {
-                $("#email-checkout").addClass('border-red-600').removeClass('border-gray-600')
+                $(email).addClass('border-red-600').removeClass('border-gray-600')
                 $("#email-checkout-error").addClass('block').removeClass('hidden')
                 empty++
             }
         } else {
-            $("#email-checkout").removeClass('border-red-600').addClass('border-gray-600')
+            $(email).removeClass('border-red-600').addClass('border-gray-600')
             $("#email-checkout-error").addClass('hidden').removeClass('block')
         }
        
