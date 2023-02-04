@@ -158,15 +158,44 @@ function assignInputEvent() {
 }
 
 function assignPaymentEvents() {
-    $("#payment-paypal-option, #payment-gpay-option").click(function(e){
-        $("#cc-checkout-inputs").removeClass("max-h-40 py-4 border-t border-gray-400")
-        $("#cc-checkout-inputs").addClass("max-h-0")
+    const ppContent = $("#payment-paypal-content")
+    const gpayContent = $("#payment-googlepay-content")
+    const ccContent = $("#payment-creditcard-content")
+
+    const ppOption = $("#payment-paypal-option")
+    const gpayOption = $("#payment-googlepay-option")
+    const ccOption = $("#payment-creditcard-option")
+
+    $(ppOption).click(function(e){
+        console.log('pp')
+        hideContent(gpayContent)
+        hideContent(ccContent)
+        showContent(ppContent)
+    })
+    $(gpayOption).click(function(e){
+        console.log('gp')
+        hideContent(ccContent)
+        hideContent(ppContent)
+        showContent(gpayContent)
+
+    })
+    $(ccOption).click(function(e){
+        console.log('cc')
+        hideContent(ppContent)
+        hideContent(gpayContent)
+        showContent(ccContent)
     })
 
-    $("#payment-cc-option").click(function(e) {
-        $("#cc-checkout-inputs").addClass("max-h-40 py-4 border-t border-gray-400")
-        $("#cc-checkout-inputs").removeClass("max-h-0")
-    })
+
+    function showContent(arg1) {
+        arg1.addClass("max-h-40 py-4 border-t border-gray-400")
+        arg1.removeClass("max-h-0")
+
+    }
+    function hideContent(arg1) {
+        arg1.addClass("max-h-0")
+        arg1.removeClass("max-h-40 py-4 border-t border-gray-400")
+    }
 
 }
    

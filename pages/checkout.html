@@ -235,7 +235,7 @@
 			
 
 		<div id="payment-popup" class="transition-all backdrop-brightness-75 w-full h-full flex justify-center z-50 absolute top-0 left-0">
-			<div class="rounded-2xl bg-white w-11/12 lg:w-4/5 max-w-5xl h-4/5 my-auto px-12 pt-8 self-start">
+			<div class="rounded-2xl bg-white w-11/12 lg:w-4/5 max-w-5xl h-4/5 my-auto px-12 pt-8 self-start overflow-scroll">
 				<div class="pb-4">
 					<p class="text-5xl">Payment</p>
 					<span class="text-base relative ">All transactions are secure and encrypted</span>
@@ -267,12 +267,12 @@
 
 				<div id="payment-information-container" class="flex flex-col border border-gray-400 rounded-md text-2xl">
 					
-					<label for="payment-cc-option" class="p-2">
-						<input id="payment-cc-option" type="radio" name="shipping-checkout" class="" required checked>
+					<label for="payment-creditcard-option" class="p-2">
+						<input id="payment-creditcard-option" type="radio" name="shipping-checkout" class="" required checked>
 						<span>Credit Card</span>
 					</label>
 
-					<div id="cc-checkout-inputs" class="transition-[all] max-h-40 overflow-hidden flex flex-col gap-2 px-2 py-4 border-t border-gray-400 bg-slate-100">
+					<div id="payment-creditcard-content" class="transition-[all] max-h-40 overflow-hidden flex flex-col gap-2 px-2 py-4 border-t border-gray-400 bg-slate-100">
 						<div class="">
 							<input id="cc-checkout-card" placeholder="Card Number" type="number" class="col-span-2 text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md [&::-webkit-inner-spin-button]:hidden [&::-webkit-outer-spin-button]:hidden">
 						</div>
@@ -290,16 +290,39 @@
 						<span>Paypal</span>
 					</label>
 
-					<div id="">
-
+					<div id="payment-paypal-content" class="transition-[all] max-h-0 overflow-hidden flex flex-col gap-2 px-2 bg-slate-100">
+						<div class="flex flex-col justify-center items-center">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-app-window" width="80" height="80" viewBox="0 0 24 24" stroke-width="2" stroke="gray" fill="none" stroke-linecap="round" stroke-linejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+									<path d="M6 8h.01"></path>
+									<path d="M9 8h.01"></path>
+								 </svg>
+							</div>
+							<span class="text-sm truncate text-gray-500">You will be asked to login with Paypal.</span>
+						</div>
 					</div>
 
-					<label for="payment-gpay-option" class="p-2 border-t border-gray-400">
-						<input id="payment-gpay-option" type="radio" name="shipping-checkout" class="" required>
+					<label for="payment-googlepay-option" class="p-2 border-t border-gray-400">
+						<input id="payment-googlepay-option" type="radio" name="shipping-checkout" class="" required>
 						<span>Google Pay</span>
 					</label>
 				
-		
+					<div id="payment-googlepay-content" class="transition-[all] max-h-0 overflow-hidden flex flex-col gap-2 px-2 bg-slate-100">
+						<div class="flex flex-col justify-center items-center">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-app-window" width="80" height="80" viewBox="0 0 24 24" stroke-width="2" stroke="gray" fill="none" stroke-linecap="round" stroke-linejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+									<path d="M6 8h.01"></path>
+									<path d="M9 8h.01"></path>
+								 </svg>
+							</div>
+							<span class="text-sm truncate text-gray-500">You will be asked to login with Google.</span>
+						</div>
+					</div>
+
 				</div>
 			</div>
 			
