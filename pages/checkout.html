@@ -226,7 +226,7 @@
 						</div>
 					</div>
 					<div id="checkout-submit-container" class="text-center pt-4 text-4xl">
-						<input class=" bg-orange-300 py-2 px-12 rounded-md disabled:opacity-50" id="checkout-submit" type="submit" value="Proceed to Payment" disabled>
+						<input class=" bg-orange-300 py-2 px-12 rounded-md disabled:opacity-50" id="checkout-submit" type="submit" value="Proceed to Payment">
 					</div>
 					
 				</div>
@@ -234,10 +234,10 @@
 			</div>
 		</form>
 			
-
-		<div id="payment-popup" class="scale-0 transition-all backdrop-brightness-75 w-full h-full flex justify-center z-50 absolute top-0 left-0">
-			<div class="rounded-2xl bg-white w-11/12 lg:w-4/5 max-w-5xl h-4/5 my-auto px-12 pt-8 self-start overflow-scroll">
-				<div class="pb-4">
+		<div id="bg-dark" class="hidden backdrop-brightness-75 w-full h-full z-40 absolute top-0 left-0"></div>
+		<div id="payment-popup" class="transition-all origin-top duration-700 w-full h-0 flex justify-center z-50 absolute top-0 left-0">
+			<div class="rounded-2xl bg-white w-11/12 lg:w-4/5 max-w-5xl h-4/5 my-auto px-12 self-start overflow-scroll">
+				<div class="pb-4 pt-8">
 					<p class="text-5xl">Payment</p>
 					<span class="text-base relative ">All transactions are secure and encrypted</span>
 				</div>
@@ -248,21 +248,21 @@
 						<div class="col-span-5 truncate">
 							<span class="">Example Email</span>
 						</div>
-						<span class="text-sm col-span-1 text-end text-red-600 hover:text-red-300 transition-colors duration-75 cursor-pointer">Change</span>
+						<span class="change-information text-sm col-span-1 text-end text-red-600 hover:text-red-300 transition-colors duration-75 cursor-pointer">Change</span>
 					</div>
 					<div class="grid grid-cols-7 items-center">
 						<span class="col-span-1 truncate">Ship to</span>
 						<div class="col-span-5 truncate">
 							<span class="">Example Address</span>
 						</div>
-						<span class="text-sm col-span-1 text-end text-red-600 hover:text-red-300 transition-colors duration-75 cursor-pointer">Change</span>
+						<span class="change-information text-sm col-span-1 text-end text-red-600 hover:text-red-300 transition-colors duration-75 cursor-pointer">Change</span>
 					</div>
 					<div class="grid grid-cols-7 items-center">
 						<span class="col-span-1 truncate">Method</span>
 						<div class="col-span-5 truncate">
 							<span class="">Example Shipping Method</span>
 						</div>
-						<span class="text-sm col-span-1 text-end text-red-600 hover:text-red-300 transition-colors duration-75 cursor-pointer">Change</span>
+						<span class="change-information text-sm col-span-1 text-end text-red-600 hover:text-red-300 transition-colors duration-75 cursor-pointer">Change</span>
 					</div>
 				</div>
 
@@ -273,7 +273,7 @@
 						<span>Credit Card</span>
 					</label>
 
-					<div id="payment-creditcard-content" class="transition-[all] max-h-40 overflow-hidden flex flex-col gap-2 px-2 py-4 border-t border-gray-400 bg-slate-100">
+					<div id="payment-creditcard-content" class="transition-all max-h-40 overflow-hidden flex flex-col gap-2 px-2 py-4 border-t border-gray-400 bg-slate-100">
 						<div class="">
 							<input id="cc-checkout-card" placeholder="Card Number" type="number" class="col-span-2 text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md [&::-webkit-inner-spin-button]:hidden [&::-webkit-outer-spin-button]:hidden">
 						</div>
@@ -291,7 +291,7 @@
 						<span>Paypal</span>
 					</label>
 
-					<div id="payment-paypal-content" class="transition-[all] max-h-0 overflow-hidden flex flex-col gap-2 px-2 bg-slate-100">
+					<div id="payment-paypal-content" class="transition-all max-h-0 overflow-hidden flex flex-col gap-2 px-2 bg-slate-100">
 						<div class="flex flex-col justify-center items-center">
 							<div>
 								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-app-window" width="80" height="80" viewBox="0 0 24 24" stroke-width="2" stroke="gray" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -310,7 +310,7 @@
 						<span>Google Pay</span>
 					</label>
 				
-					<div id="payment-googlepay-content" class="transition-[all] max-h-0 overflow-hidden flex flex-col gap-2 px-2 bg-slate-100">
+					<div id="payment-googlepay-content" class="transition-all max-h-0 overflow-hidden flex flex-col gap-2 px-2 bg-slate-100">
 						<div class="flex flex-col justify-center items-center">
 							<div>
 								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-app-window" width="80" height="80" viewBox="0 0 24 24" stroke-width="2" stroke="gray" fill="none" stroke-linecap="round" stroke-linejoin="round">

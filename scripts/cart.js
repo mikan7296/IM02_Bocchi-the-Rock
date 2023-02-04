@@ -142,7 +142,7 @@ function assignInputEvent() {
     }
     $("#checkout-submit").click(function(e){
         e.preventDefault()
-        console.log('a')
+        togglePayment()
     })
 
     function validate() {
@@ -185,6 +185,10 @@ function assignPaymentEvents() {
     const gpayOption = $("#payment-googlepay-option")
     const ccOption = $("#payment-creditcard-option")
 
+    $(".change-information").click(function(e){
+        togglePayment()
+    })
+
     $(ppOption).click(function(e){
         console.log('pp')
         hideContent(gpayContent)
@@ -219,5 +223,6 @@ function assignPaymentEvents() {
 }
    
 function togglePayment() {
-    ("#payment-popup").toggleClass('scale-0 scale-100')
+    $("#payment-popup").toggleClass('h-0 h-full')
+    $("#bg-dark").toggleClass('hidden')
 }
