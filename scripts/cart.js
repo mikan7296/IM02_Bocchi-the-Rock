@@ -93,19 +93,25 @@ function renderCartSummary(emptyContainer = true) {
 }
 
 function assignShippingEvents() {
-    const sea = $("#sea-checkout")
-    const air = $("#air-checkout")
+    const shipOption1 = $("#shipping-method-option1")
+    const shipOption2 = $("#shipping-method-option2")
+    const shipOption3 = $("#shipping-method-option3")
     const ph = $("#shipping-price")
     ph.attr('data-price',0)
-    $(sea).click(function(){
-        let optionprice = 30
+    $(shipOption1).click(function(){
+        let optionprice = shipOption1.data('value')
         ph.text(`$${optionprice}`)
         ph.attr('data-price',optionprice)
         updateTotalPrice()
-
     })
-    $(air).click(function(){
-        let optionprice = 60
+    $(shipOption2).click(function(){
+        let optionprice = shipOption2.data('value')
+        ph.text(`$${optionprice}`)
+        ph.attr('data-price',optionprice)
+        updateTotalPrice()
+    })
+    $(shipOption3).click(function(){
+        let optionprice = shipOption3.data('value')
         ph.text(`$${optionprice}`)
         ph.attr('data-price',optionprice)
         updateTotalPrice()
@@ -122,14 +128,16 @@ function updateTotalPrice() {
 
 function assignInputEvent() {
     const email = $("#email-checkout")
-    const seaOption = $("#sea-checkout")
-    const airOption = $("#air-checkout")
+    const shipOption1 = $("#shipping-method-option1")
+    const shipOption2 = $("#shipping-method-option2")
+    const shipOption3 = $("#shipping-method-option3")
     const firstName = $("#first-name-checkout")
     const lastName = $("#last-name-checkout")
     const address = $("#address-checkout")
+    const address2 = $("#address2-checkout")
     const postal = $("#postal-checkout")
     let inputsFields = [email,firstName,lastName,address,postal]
-    let inputOptions = [seaOption,airOption]
+    let inputOptions = [shipOption1,shipOption2,shipOption3]
     for (let k in inputsFields) {
         (inputsFields[k]).keyup(function() {
            validate()
@@ -142,13 +150,20 @@ function assignInputEvent() {
     }
     $("#checkout-submit").click(function(e){
         e.preventDefault()
+        $("#shipping-information-email").text(email.val())
+        $("#shipping-information-address").text([address.val(),address2.val()].join(' '))
+        if ($("#air-checkout").is(':checked')) {
+            $("#shipping-information-method").text("Fedex International Priority - $60")
+        } else {
+            $("#shipping-information-method").text("Fedex International Economy - $30")
+        }
         togglePayment()
     })
 
     function validate() {
         let empty = 0
-        if (($("#air-checkout").is(':checked')) || ($("#sea-checkout").is(':checked'))) {} else {empty++}
-        // Js validation of email + styling, tailwind css has just in time mode so I can't check for classes/data etc using peers, html base validations kinda suck you know
+        if (($("#shipping-method-option1").is(':checked')) || ($("#shipping-method-option2").is(':checked')) || ($("#shipping-method-option3").is(':checked'))) {} else {empty++}
+        
         if (email.val().length != 0) {
             if (email.val().includes('@') && email.val().includes('.com')) {
                 $("#email-checkout").removeClass('border-red-600').addClass('border-gray-600')
@@ -163,7 +178,6 @@ function assignInputEvent() {
             $("#email-checkout-error").addClass('hidden').removeClass('block')
         }
        
-
         for (let k in inputsFields) {
             if ((inputsFields[k].val().length == 0)) {
                 empty++

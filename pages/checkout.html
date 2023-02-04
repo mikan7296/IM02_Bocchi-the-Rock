@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="w-full bg-blue-200 flex flex-col font-[Abel] overflow-hidden">         
+<body class="w-full bg-blue-200 flex flex-col font-[Abel] overflow-hidden select-none">         
 	<nav class="bg-black mx-auto py-3 w-full">
 		<div class="flex flex-wrap items-center justify-between ml-2 lg:ml-12 mr-4">
 
@@ -156,42 +156,60 @@
 							<label for="marketing-checkout" class="text-sm">Email me with news and offers</label>
 						</div>
 					</div>
-
-					
-					
 					
 					<div class="border-b-2 border-black text-2xl">
 						<span class="">Shipping Address</span>
 					</div>
+
+					<div class="py-3">	
+						<div class="flex gap-2">
+							<div class="basis-1/2">
+								<input id="first-name-checkout" placeholder="First name" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md" required>
+							</div>
+							<div class="basis-1/2">
+								<input id="last-name-checkout" placeholder="Last name" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md" required>
+							</div>
+						</div>
+						<div class="flex pt-4 gap-2">
+							<input id="address-checkout" placeholder="Address" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md" required>
+						</div>
+						<div class="flex pt-4 gap-2">
+							<input id="address2-checkout" placeholder="Apartment, suite, etc (optional)" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
+						</div>
+						<div class="flex pt-4 gap-2">
+							<input id="postal-checkout" placeholder="Postal code" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md" required>
+						</div>
+					</div>	
 					
-					<div class="flex pt-2 gap-2">
-						<div class="basis-1/2">
-							<input id="sea-checkout" type="radio" name="shipping-checkout" class="peer/airpeer hidden" required>
-							<label for="sea-checkout" class="shipping-option py-2 block rounded-2xl text-center peer-checked/airpeer:bg-blue-200">Sea Freight</label>
+					
+
+					<div class="border-b-2 border-black text-2xl">
+						<span class="">Shipping Method</span>
+					</div>
+
+					<div class="py-3">
+						<div id="shipping-method-container" class="mb-12 px-2 border border-gray-400 rounded-md text-xl flex flex-col [&>*]:py-2 [&>*:nth-child(n+2)]:border-t [&>*:nth-child(n+2)]:border-gray-400">
+							<label for="shipping-method-option1" class="p-2 flex gap-2">
+								<input id="shipping-method-option1" type="radio" name="shipping-method" class="" data-value=30>
+								<span>DHL Air Economy</span>
+								<span class="grow text-right">$30</span>
+							</label>
+							<label for="shipping-method-option2" class="p-2 flex gap-2">
+								<input id="shipping-method-option2" type="radio" name="shipping-method" class="" data-value=60>
+								<span>Fedex International Economy</span>
+								<span class="grow text-right">$60</span>
+
+							</label>
+							<label for="shipping-method-option3" class="p-2 flex gap-2">
+								<input id="shipping-method-option3" type="radio" name="shipping-method" class="" data-value=100>
+								<span>Fedex International Priority</span>
+								<span class="grow text-right">$100</span>
+
+							</label>
 						</div>
-						<div class="basis-1/2">
-							<input id="air-checkout" type="radio" name="shipping-checkout" class= "peer/seapeer hidden" required>
-							<label for="air-checkout" class="shipping-option py-2 block rounded-2xl text-center peer-checked/seapeer:bg-blue-200">Air Freight</label>
-						</div>
 					</div>
-					<div class="flex pt-4 gap-2">
-						<div class="basis-1/2">
-							<input id="first-name-checkout" placeholder="First name" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md" required>
-						</div>
-						<div class="basis-1/2">
-							<input id="last-name-checkout" placeholder="Last name" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md" required>
-						</div>
-					</div>
-					<div class="flex pt-4 gap-2">
-						<input id="address-checkout" placeholder="Address" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md" required>
-					</div>
-					<div class="flex pt-4 gap-2">
-						<input id="address2-checkout" placeholder="Apartment, suite, etc (optional)" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
-					</div>
-					<div class="flex pt-4 gap-2">
-						<input id="postal-checkout" placeholder="Postal code" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md" required>
-					</div>
-				
+					
+
 				</div>
 
 
@@ -233,108 +251,109 @@
 
 			</div>
 		</form>
-			
-		<div id="bg-dark" class="hidden backdrop-brightness-75 w-full h-full z-40 absolute top-0 left-0"></div>
-		<div id="payment-popup" class="transition-all origin-top duration-700 w-full h-0 flex justify-center z-50 absolute top-0 left-0">
-			<div class="rounded-2xl bg-white w-11/12 lg:w-4/5 max-w-5xl h-4/5 my-auto px-12 self-start overflow-scroll">
-				<div class="pb-4 pt-8">
-					<p class="text-5xl">Payment</p>
-					<span class="text-base relative ">All transactions are secure and encrypted</span>
-				</div>
-
-				<div id="shipping-information-container" class="mb-12 px-2 border border-gray-400 rounded-md text-xl flex flex-col [&>*]:py-2 [&>*:nth-child(n+2)]:border-t [&>*:nth-child(n+2)]:border-gray-400">
-					<div class="grid grid-cols-7 items-center">
-						<span class="col-span-1 truncate">Contact</span>
-						<div class="col-span-5 truncate">
-							<span class="">Example Email</span>
+		
+		<div>
+			<div id="bg-dark" class="hidden backdrop-brightness-75 w-full h-full z-40 absolute top-0 left-0"></div>
+			<div id="payment-popup" class="transition-all origin-top duration-700 w-full h-0 flex justify-center z-50 absolute top-0 left-0">
+				<div class="rounded-2xl bg-white w-11/12 lg:w-4/5 max-w-5xl h-4/5 my-auto px-12 self-start overflow-scroll">
+					<div class="pb-4 pt-8">
+						<p class="text-5xl">Payment</p>
+						<span class="text-base relative ">All transactions are secure and encrypted</span>
+					</div>
+	
+					<div id="shipping-information-container" class="mb-12 px-2 border border-gray-400 rounded-md text-xl flex flex-col [&>*]:py-2 [&>*:nth-child(n+2)]:border-t [&>*:nth-child(n+2)]:border-gray-400">
+						<div class="grid grid-cols-7 items-center">
+							<span class="col-span-1 truncate">Contact</span>
+							<div class="col-span-5 truncate">
+								<span id="shipping-information-email" class="">Example Email</span>
+							</div>
+							<div class="text-end">
+								<span class="change-information text-sm col-span-1 text-end text-red-600 hover:text-red-300 transition-colors duration-75 cursor-pointer">Change</span>
+							</div>
 						</div>
-						<div class="text-end">
-							<span class="change-information text-sm col-span-1 text-end text-red-600 hover:text-red-300 transition-colors duration-75 cursor-pointer">Change</span>
+						<div class="grid grid-cols-7 items-center">
+							<span class="col-span-1 truncate">Ship to</span>
+							<div class="col-span-5 truncate">
+								<span id="shipping-information-address" class="">Example Address</span>
+							</div>
+							<div class="text-end">
+								<span class="change-information text-sm col-span-1 text-end text-red-600 hover:text-red-300 transition-colors duration-75 cursor-pointer">Change</span>
+							</div>
+						</div>
+						<div class="grid grid-cols-7 items-center">
+							<span class="col-span-1 truncate">Method</span>
+							<div class="col-span-5 truncate">
+								<span id="shipping-information-method" class="">Example Shipping Method</span>
+							</div>
+							<div class="text-end">
+								<span class="change-information text-sm col-span-1 text-end text-red-600 hover:text-red-300 transition-colors duration-75 cursor-pointer">Change</span>
+							</div>
 						</div>
 					</div>
-					<div class="grid grid-cols-7 items-center">
-						<span class="col-span-1 truncate">Ship to</span>
-						<div class="col-span-5 truncate">
-							<span class="">Example Address</span>
+	
+					<div id="payment-information-container" class="flex flex-col border border-gray-400 rounded-md text-2xl">
+						
+						<label for="payment-creditcard-option" class="p-2">
+							<input id="payment-creditcard-option" type="radio" name="shipping-checkout" class="" required checked>
+							<span>Credit Card</span>
+						</label>
+	
+						<div id="payment-creditcard-content" class="transition-all max-h-40 overflow-hidden flex flex-col gap-2 px-2 py-4 border-t border-gray-400 bg-slate-100">
+							<div class="">
+								<input id="cc-checkout-card" placeholder="Card Number" type="number" class="col-span-2 text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md [&::-webkit-inner-spin-button]:hidden [&::-webkit-outer-spin-button]:hidden">
+							</div>
+							<div class="">
+								<input id="cc-checkout-name" placeholder="Card Holdername" type="text" class="col-span-2 text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
+							</div>
+							<div class="flex gap-2">
+								<input id="cc-checkout-date" placeholder="Expiration Date (MM/YY)" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
+								<input id="cc-checkout-cvc" placeholder="Security Code" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
+							</div>
 						</div>
-						<div class="text-end">
-							<span class="change-information text-sm col-span-1 text-end text-red-600 hover:text-red-300 transition-colors duration-75 cursor-pointer">Change</span>
+	
+						<label for="payment-paypal-option" class="p-2 border-t border-gray-400">
+							<input id="payment-paypal-option" type="radio" name="shipping-checkout" class="" required >
+							<span>Paypal</span>
+						</label>
+	
+						<div id="payment-paypal-content" class="transition-all max-h-0 overflow-hidden flex flex-col gap-2 px-2 bg-slate-100">
+							<div class="flex flex-col justify-center items-center">
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-app-window" width="80" height="80" viewBox="0 0 24 24" stroke-width="2" stroke="gray" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+										<path d="M6 8h.01"></path>
+										<path d="M9 8h.01"></path>
+									 </svg>
+								</div>
+								<span class="text-sm truncate text-gray-500">You will be asked to login with Paypal.</span>
+							</div>
 						</div>
-					</div>
-					<div class="grid grid-cols-7 items-center">
-						<span class="col-span-1 truncate">Method</span>
-						<div class="col-span-5 truncate">
-							<span class="">Example Shipping Method</span>
-						</div>
-						<div class="text-end">
-							<span class="change-information text-sm col-span-1 text-end text-red-600 hover:text-red-300 transition-colors duration-75 cursor-pointer">Change</span>
-						</div>
-					</div>
-				</div>
-
-				<div id="payment-information-container" class="flex flex-col border border-gray-400 rounded-md text-2xl">
+	
+						<label for="payment-googlepay-option" class="p-2 border-t border-gray-400">
+							<input id="payment-googlepay-option" type="radio" name="shipping-checkout" class="" required>
+							<span>Google Pay</span>
+						</label>
 					
-					<label for="payment-creditcard-option" class="p-2">
-						<input id="payment-creditcard-option" type="radio" name="shipping-checkout" class="" required checked>
-						<span>Credit Card</span>
-					</label>
-
-					<div id="payment-creditcard-content" class="transition-all max-h-40 overflow-hidden flex flex-col gap-2 px-2 py-4 border-t border-gray-400 bg-slate-100">
-						<div class="">
-							<input id="cc-checkout-card" placeholder="Card Number" type="number" class="col-span-2 text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md [&::-webkit-inner-spin-button]:hidden [&::-webkit-outer-spin-button]:hidden">
-						</div>
-						<div class="">
-							<input id="cc-checkout-name" placeholder="Card Holdername" type="text" class="col-span-2 text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
-						</div>
-						<div class="flex gap-2">
-							<input id="cc-checkout-date" placeholder="Expiration Date (MM/YY)" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
-							<input id="cc-checkout-cvc" placeholder="Security Code" type="text" class="text-lg py-[0.125rem] indent-2 w-full border border-gray-500 rounded-md">
-						</div>
-					</div>
-
-					<label for="payment-paypal-option" class="p-2 border-t border-gray-400">
-						<input id="payment-paypal-option" type="radio" name="shipping-checkout" class="" required >
-						<span>Paypal</span>
-					</label>
-
-					<div id="payment-paypal-content" class="transition-all max-h-0 overflow-hidden flex flex-col gap-2 px-2 bg-slate-100">
-						<div class="flex flex-col justify-center items-center">
-							<div>
-								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-app-window" width="80" height="80" viewBox="0 0 24 24" stroke-width="2" stroke="gray" fill="none" stroke-linecap="round" stroke-linejoin="round">
-									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-									<path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
-									<path d="M6 8h.01"></path>
-									<path d="M9 8h.01"></path>
-								 </svg>
+						<div id="payment-googlepay-content" class="transition-all max-h-0 overflow-hidden flex flex-col gap-2 px-2 bg-slate-100">
+							<div class="flex flex-col justify-center items-center">
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-app-window" width="80" height="80" viewBox="0 0 24 24" stroke-width="2" stroke="gray" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+										<path d="M6 8h.01"></path>
+										<path d="M9 8h.01"></path>
+									 </svg>
+								</div>
+								<span class="text-sm truncate text-gray-500">You will be asked to login with Google.</span>
 							</div>
-							<span class="text-sm truncate text-gray-500">You will be asked to login with Paypal.</span>
 						</div>
+	
 					</div>
-
-					<label for="payment-googlepay-option" class="p-2 border-t border-gray-400">
-						<input id="payment-googlepay-option" type="radio" name="shipping-checkout" class="" required>
-						<span>Google Pay</span>
-					</label>
-				
-					<div id="payment-googlepay-content" class="transition-all max-h-0 overflow-hidden flex flex-col gap-2 px-2 bg-slate-100">
-						<div class="flex flex-col justify-center items-center">
-							<div>
-								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-app-window" width="80" height="80" viewBox="0 0 24 24" stroke-width="2" stroke="gray" fill="none" stroke-linecap="round" stroke-linejoin="round">
-									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-									<path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
-									<path d="M6 8h.01"></path>
-									<path d="M9 8h.01"></path>
-								 </svg>
-							</div>
-							<span class="text-sm truncate text-gray-500">You will be asked to login with Google.</span>
-						</div>
-					</div>
-
 				</div>
 			</div>
-			
-			
 		</div>
+
 
 		
     </section>
