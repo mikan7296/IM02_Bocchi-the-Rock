@@ -140,17 +140,36 @@ function assignInputEvent() {
            validate()
         })
     }
+    $("#checkout-submit").click(function(e){
+        e.preventDefault()
+        console.log('a')
+    })
 
     function validate() {
         let empty = 0
-        if (($("#air-checkout").is(':checked')) || ($("#sea-checkout").is(':checked'))) {
-        } else {return}
+        if (($("#air-checkout").is(':checked')) || ($("#sea-checkout").is(':checked'))) {} else {empty++}
+        // Js validation of email + styling, tailwind css has just in time mode so I can't check for classes/data etc using peers, html base validations kinda suck you know
+        if (email.val().length != 0) {
+            if (email.val().includes('@') && email.val().includes('.com')) {
+                $("#email-checkout").removeClass('border-red-600').addClass('border-gray-600')
+                $("#email-checkout-error").addClass('hidden').removeClass('block')
+            } else {
+                $("#email-checkout").addClass('border-red-600').removeClass('border-gray-600')
+                $("#email-checkout-error").addClass('block').removeClass('hidden')
+                empty++
+            }
+        } else {
+            $("#email-checkout").removeClass('border-red-600').addClass('border-gray-600')
+            $("#email-checkout-error").addClass('hidden').removeClass('block')
+        }
+       
 
         for (let k in inputsFields) {
             if ((inputsFields[k].val().length == 0)) {
                 empty++
             }
         }
+        
         if (empty == 0) {
             $("#checkout-submit").removeAttr('disabled')
         } else {$("#checkout-submit").attr('disabled',true)}
@@ -199,6 +218,6 @@ function assignPaymentEvents() {
 
 }
    
-
-    
-
+function togglePayment() {
+    ("#payment-popup").toggleClass('scale-0 scale-100')
+}
