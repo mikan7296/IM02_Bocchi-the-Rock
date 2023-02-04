@@ -227,6 +227,15 @@ function assignPaymentEvents() {
         hideContent(gpayContent)
         showContent(ccContent)
     })
+    $("#payment-popup-pay").click(function(){
+        let duration = Math.floor(1500 + Math.random() * 6000)
+        console.log(duration)
+        $("#payment-popup-main").toggleClass("scale-0 scale-100")
+        $("#payment-popup-lottie").toggleClass("hidden flex")
+        setTimeout(function(){
+            $("#payment-popup-lottie-load, #payment-popup-lottie-done").toggleClass("hidden")
+        },duration)
+    })
 
 
     function showContent(arg1) {
