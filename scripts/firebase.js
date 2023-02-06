@@ -185,11 +185,8 @@ $(document).ready(function(){
     $(".logout-button").click(function(e){
         logout()
     })
-
-    $(window).bind('beforeunload', function(){
-        localStorage.removeItem('existingUsernames')
-    });
     updateProfileDropdown()
+
     $("#name-Placeholder").click(function(){
         addProduct(`${"Your dad's guitar"}`,1000)
     })
