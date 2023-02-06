@@ -3,14 +3,14 @@ import { userPayment } from "./firebase.js";
 $(document).ready(function(){
     assignShippingEvents()
     renderCartSummary()
-    assignEvents()
+    assignRemoveButtons()
     assignInputEvent()
     assignPaymentEvents()
 });
 
 
-function assignEvents() {
-   
+function assignRemoveButtons() {
+
     $(".remove-button").click(function(e){
         let id = e.target.id
         $(`#card_${id}`).remove()
@@ -73,7 +73,7 @@ function renderCartSummary(emptyContainer = true) {
 
     } else {
         $("#cart-container").removeClass("border-b-2")
-        $("#cart-section").removeClass("basis-2/3 max-w-[40%] border-l-2")
+        $("#cart-section").removeClass("basis-2/3 max-w-[40%] lg:border-l-2")
         $("#cart-section").addClass("w-full")
         $("#contact-section").hide()
         $("#cart-price-container").hide()
@@ -216,6 +216,7 @@ function assignPaymentEvents() {
         hideContent(gpayContent)
         showContent(ccContent)
     })
+    
     $("#payment-popup-pay").click(function(){
         $("#payment-popup-pay").attr('disabled',true)
         $("#payment-popup-main").toggleClass("scale-0 scale-100")
@@ -228,10 +229,11 @@ function assignPaymentEvents() {
         },2000)
 
         if (localStorage.userId) {
-            userPayment()
+            let basePrice = parseInt($("#total-price").attr('data-base-price'))
+            userPayment(Math.floor(basePrice/10))
+            $("#payment-popup-lottie-done-message").removeClass('hidden')
         }
     })
-
 
     function showContent(arg1) {
         arg1.addClass("max-h-40 py-4 border-t border-gray-400")

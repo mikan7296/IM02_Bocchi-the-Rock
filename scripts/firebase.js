@@ -68,12 +68,7 @@ export function loadProductPage(productId) {
             localStorage.setItem('cart', JSON.stringify(cart));
         });
     }) 
-
-        
-  
-
 }
-
 
 export function checkDuplicateUsernames(name,password) {
     const dbRef = ref(getDatabase(), 'users/');
@@ -109,10 +104,9 @@ export function matchPassword(name,password) {
             let userData = data[userId]
             if ((userData.name == name.toUpperCase()) && (password == userData.password)) {
                 login(userId,userData)
-            } else {
-                popup('Login Failed!','Incorrect Credentials lol!')
             }
         }
+        popup('Login Failed!','Incorrect Credentials')
     });
 }
 
@@ -159,19 +153,32 @@ function updateProfileDropdown() {
             if (data != null) {
                 $("#name-Placeholder").text(data.displayName)
                 $("#coin-Placeholder").text(data.coins)
-            }   
-            
-    })
+            } 
+        })
     }   
 }
 
-export function userPayment() {
+export function userPayment(amount) {
     const db = getDatabase()
-    let usercart = localStorage.getItem('cart')
     push(ref(db, `users/${localStorage.userId}/purchasehistory`), {
         purchases : localStorage.getItem('cart')
     })
+    addCoins(amount)
+    $("#payment-popup-lottie-done-message-coins").text(`${amount}`)
     localStorage.removeItem('cart')
+}
+
+function addCoins(amount) {
+    const db = getDatabase()
+    const dbRef = ref(db, `users/${localStorage.userId}/coins`);
+    onValue(dbRef, (snapshot) => {
+       let coins = snapshot.val()
+       update(ref(db, `users/${localStorage.userId}`), {
+        coins : coins += amount
+    })
+    }, {
+        onlyOnce: true
+    })
 }
 
 export function getPurchaseHistory() {
@@ -185,8 +192,11 @@ $(document).ready(function(){
     $(".logout-button").click(function(e){
         logout()
     })
-    updateProfileDropdown()
 
+    $(window).bind('beforeunload', function(){
+        localStorage.removeItem('existingUsernames')
+    });
+    updateProfileDropdown()
     $("#name-Placeholder").click(function(){
         addProduct(`${"Your dad's guitar"}`,1000)
     })
