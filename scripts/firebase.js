@@ -13,11 +13,13 @@ const firebaseConfig = {
   };
 const app = initializeApp(firebaseConfig);
 
-export function addProduct(name,price) {
+export function addProduct(name,price,tags,viewer=false) {
     const db = getDatabase()
     push(ref(db, `products/`), {
         name: name,
         price: price,
+        tags : tags,
+        viewer : viewer,
         stars: 0,
       });
 }
@@ -33,7 +35,7 @@ export function getProducts() {
             let v = data[k]
             let card = 
                 `
-                <div id="card_${totalItems}" class="container px-2 h-fit">
+                <div id="card_${totalItems}" class="container px-2 h-fit" data-tags="${v.tags}">
                     <a href="guitar.html?${k}">
                     <div class="m-2 mt-8 p-2 h-72 bg-orange-300 rounded-lg shadow-xl">
                         <img class="w-full h-3/5 object-fill rounded-lg" src="../media/burger.jfif">
@@ -198,7 +200,7 @@ $(document).ready(function(){
     });
     updateProfileDropdown()
     $("#name-Placeholder").click(function(){
-        addProduct(`${"Your dad's guitar"}`,1000)
+        addProduct(`${"epiphone"}`,4,['epiphone'],false)
     })
 })
 
