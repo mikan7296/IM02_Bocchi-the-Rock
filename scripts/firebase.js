@@ -144,6 +144,22 @@ function updateProfileDropdown() {
     }   
 }
 
+export function userPayment() {
+    const db = getDatabase()
+    let usercart = localStorage.getItem('cart')
+    push(ref(db, `users/${localStorage.userId}/purchasehistory`), {
+        purchases : localStorage.getItem('cart')
+    })
+    localStorage.removeItem('cart')
+}
+
+export function getPurchaseHistory() {
+    const dbRef = ref(getDatabase(), `users/${localStorage.userId}/purchasehistory`);
+    onValue(dbRef, (snapshot) => {
+        console.log(snapshot.val())
+    });
+}
+
 $(document).ready(function(){
     $(".logout-button").click(function(e){
         logout()
@@ -153,6 +169,9 @@ $(document).ready(function(){
         localStorage.removeItem('existingUsernames')
     });
     updateProfileDropdown()
+    $("#name-Placeholder").click(function(){
+        getPurchaseHistory()
+    })
 })
 
 export const encode = (string) => window.btoa(string)

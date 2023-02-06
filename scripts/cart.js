@@ -1,4 +1,4 @@
-import { encode } from "./firebase.js";
+import { userPayment } from "./firebase.js";
 
 $(document).ready(function(){
     assignShippingEvents()
@@ -123,7 +123,6 @@ function updateTotalPrice() {
     let shippingPrice = parseInt($("#shipping-price").attr('data-price'))
     let newAmt = basePrice += shippingPrice
     $("#total-price").text(`$${newAmt}`)
-
 }
 
 function assignInputEvent() {
@@ -228,13 +227,19 @@ function assignPaymentEvents() {
         showContent(ccContent)
     })
     $("#payment-popup-pay").click(function(){
-        let duration = Math.floor(1500 + Math.random() * 6000)
-        console.log(duration)
+        $("#payment-popup-pay").attr('disabled',true)
         $("#payment-popup-main").toggleClass("scale-0 scale-100")
-        $("#payment-popup-lottie").toggleClass("hidden flex")
         setTimeout(function(){
-            $("#payment-popup-lottie-load, #payment-popup-lottie-done").toggleClass("hidden")
-        },duration)
+            $("#payment-popup-lottie").toggleClass("hidden flex")
+        },500)
+        setTimeout(function(){
+            $("#payment-popup-lottie").toggleClass("hidden grid")
+            $("#payment-popup-lottie-done").toggleClass("hidden grid")
+        },2000)
+
+        if (localStorage.userId) {
+            userPayment()
+        }
     })
 
 
