@@ -1,5 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
 import { getDatabase, ref, set, get, push, child, onValue, update} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
+import { popup } from './popup.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDXbZe3Yr00ZOcOGZVTQ5x9UmMYcT-ht08",
@@ -73,33 +74,30 @@ export function loadProductPage(productId) {
 
 }
 
-// export function getDuplicateUsernames() {
-//     const dbRef = ref(getDatabase());
-//     get(child(dbRef, `users/`)).then((snapshot) => {
-//         const data = snapshot.val()
-//         let emptyArray = []
-//         for (const userID in data) {
-//             emptyArray.push(data[`${userID}`].name)
-//             localStorage.setItem('existingUsernames',emptyArray)
-//         }
-//     }).catch((error) => {
-//         console.error(error);
-//     });
-// }
 
-export function getDuplicateUsernames() {
+export function checkDuplicateUsernames(name,password) {
     const dbRef = ref(getDatabase(), 'users/');
     onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
-        if (data != null) {
-            let emptyArray = []
-            for (const userID in data) {
-                let userData = data[userID]
-                emptyArray.push(userData.name)
-                localStorage.setItem('existingUsernames',emptyArray)
-            } 
+        let duplicate = false
+        let duplicateNames = []
+        for (let k in data) {
+            let v = data[k]
+            duplicateNames.push(v.name)
         }
-        
+        for (let k in duplicateNames) {
+            let v = duplicateNames[k]
+            if (name.toUpperCase() == v) {
+                duplicate = true
+            }
+        }
+        if (!duplicate) {
+            addUserData(name,password)
+        } else {
+            setTimeout(function(){
+                popup('Duplicate Name!',`Username ${name} is taken!`)
+            },1000)  
+        }
     });
 }
 
@@ -107,35 +105,22 @@ export function matchPassword(name,password) {
     const dbRef = ref(getDatabase(), 'users/');
     onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
-        for (const userID in data) {
-            let userData = data[userID]
-            if ((userData.name == encrypt(name.toUpperCase())) && (password == userData.password)) {
-                login(userID,userData)
+        for (let userId in data) {
+            let userData = data[userId]
+            if ((userData.name == name.toUpperCase()) && (password == userData.password)) {
+                login(userId,userData)
+            } else {
+                popup('Login Failed!','Incorrect Credentials lol!')
             }
         }
     });
-    return false
 }
-
-// export function matchPassword(name,password) {
-//     const dbRef = ref(getDatabase());
-//     get(child(dbRef, `users/`)).then((snapshot) => {
-//        for (const user in snapshot.val()) {
-//             if ((snapshot.val()[user].name.toUpperCase() == name.toUpperCase()) && (password == snapshot.val()[user].password)) {
-//                 login(snapshot.val()[user])
-//             }
-//        }
-//     }).catch((error) => {
-//         console.error(error);
-//     });
-//     return false
-// }
 
 export function addUserData(name,password) {
     const db = getDatabase()
     let id = Date.now()
     set(ref(db, `users/${id}`), {
-        name: encrypt(name.toUpperCase()),
+        name: name.toUpperCase(),
         displayName : name,
         password : password,
         coins: 0,
@@ -206,7 +191,7 @@ $(document).ready(function(){
     });
     updateProfileDropdown()
     $("#name-Placeholder").click(function(){
-        addProduct('Guitar 4',400)
+        addProduct(`${"Your dad's guitar"}`,1000)
     })
 })
 

@@ -1,9 +1,11 @@
-import { popup } from './popup.js';
-import { getDuplicateUsernames, addUserData, login } from './firebase.js'
+import { checkDuplicateUsernames } from './firebase.js'
 
 
 $(document).ready(function () {
-    getDuplicateUsernames()
+   assignEvents()
+});
+
+function assignEvents() {
     $("#eye1, #eye2").click(function (e){
         togglePassword()
     })
@@ -17,13 +19,11 @@ $(document).ready(function () {
             $("#submitbtn").attr("disabled", false);
         },1000)
         if (validateInputs(name,password)) {
-            if (matchUsername(name)) {
-                addUserData(name,password)
-            } 
+           checkDuplicateUsernames(name,password)
         }
     });
 
-});
+}
 
 function togglePassword() {
     if ($("#pw-input").attr("type") == "password") {
@@ -55,19 +55,5 @@ function validateInputs(name,password) {
 }
 
 const checkWhiteSpace = (string) => string.indexOf(' ') >= 0;
-
-function matchUsername(name) {
-    let duplicateNames = []
-    if (localStorage.existingUsernames) {
-        duplicateNames = localStorage.existingUsernames.split(',')
-    }
-    if (duplicateNames.includes(window.btoa(name.toUpperCase()))) {
-        popup("Error!",`The username ${name} is taken!`)
-        return false
-    } 
-    else {
-        return true
-    }
-}
 
 

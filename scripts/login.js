@@ -1,8 +1,11 @@
-import { popup } from './popup.js';
-import { matchPassword} from './firebase.js'
+import { matchPassword } from './firebase.js'
 
 
 $(document).ready(function () {
+   assignEvents()
+});
+
+function assignEvents() {
     $("#eye1, #eye2").click(function (e){
         togglePassword()
     })
@@ -16,14 +19,10 @@ $(document).ready(function () {
             $("#submitbtn").attr("disabled", false);
         },1000)
         
-        if (matchPassword(name,password) == false) {
-            setTimeout(function(){
-                popup("Login Failed","Incorrect Credentials")
-            },1000)
-        }
+        matchPassword(name,password)
     });
 
-});
+}
 
 function togglePassword() {
     if ($("#pw-input").attr("type") == "password") {
