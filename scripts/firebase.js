@@ -14,27 +14,63 @@ const app = initializeApp(firebaseConfig);
 
 export function addProduct(name,price) {
     const db = getDatabase()
-    set(ref(db, `products/${name.toUpperCase()}`), {
+    push(ref(db, `products/`), {
         name: name,
         price: price,
         stars: 0,
-        
       });
 }
 
-export function getProducts(name) {
-    if (name) {
-        const dbRef = ref(getDatabase());
-        get(child(dbRef, `products/${name}`)).then((snapshot) => {
-            localStorage.setItem('currentGuitar',JSON.stringify(snapshot.val()))
-        })
-    } else {
-        const dbRef = ref(getDatabase());
-        get(child(dbRef, `products/`)).then((snapshot) => {
-            localStorage.setItem('products',JSON.stringify(snapshot.val()))
-        })
-    }
+export function getProducts() {
+    const dbRef = ref(getDatabase(), `products`);
+    onValue(dbRef, (snapshot) => {
+        let container = $("#card-container")
+        const data = snapshot.val();
+        container.empty()
+        let totalItems = 0
+        for (let k in data) {
+            let v = data[k]
+            let card = 
+                `
+                <div id="card_${totalItems}" class="container px-2 h-fit">
+                    <a href="guitar.html?${k}">
+                    <div class="m-2 mt-8 p-2 h-72 bg-orange-300 rounded-lg shadow-xl">
+                        <img class="w-full h-3/5 object-fill rounded-lg" src="../media/burger.jfif">
+                        <div class="h-2/5 grid grid-rows-2">
+                            <h1 id="name_${k}" class="forNameSearch_${totalItems} text-lg font-semibold truncate">${v.name}</h1>
+                            <h3 id="price_${k}" >$${v.price}</h3>
+                        </div>
+                    </div></a>
+                </div>
+                `
+            container.append(card)
+            totalItems++
+        }
+    })
+}
+
+export function loadProductPage(productId) {
+    const dbRef = ref(getDatabase(), `products/${productId}`);
+    onValue(dbRef, (snapshot) => {
+        const data = snapshot.val();
+        
+        $("#product-name").text(data.name)
+        $("#product-stars").text(data.stars)
+        $("#product-price").text(`$${data.price}`)
+
+        $("#add-to-cart").click(function(){
+            let cart = []
+            if(localStorage.cart){
+                cart = JSON.parse(localStorage.cart);
+            }
+            cart.push({'itemId' : Date.now(), 'itemName' : data.name, 'itemPrice' : data.price});
+            localStorage.setItem('cart', JSON.stringify(cart));
+        });
+    }) 
+
+        
   
+
 }
 
 // export function getDuplicateUsernames() {
@@ -73,7 +109,7 @@ export function matchPassword(name,password) {
         const data = snapshot.val();
         for (const userID in data) {
             let userData = data[userID]
-            if ((userData.name == encode(name.toUpperCase())) && (password == userData.password)) {
+            if ((userData.name == encrypt(name.toUpperCase())) && (password == userData.password)) {
                 login(userID,userData)
             }
         }
@@ -99,7 +135,7 @@ export function addUserData(name,password) {
     const db = getDatabase()
     let id = Date.now()
     set(ref(db, `users/${id}`), {
-        name: encode(name.toUpperCase()),
+        name: encrypt(name.toUpperCase()),
         displayName : name,
         password : password,
         coins: 0,
@@ -170,9 +206,9 @@ $(document).ready(function(){
     });
     updateProfileDropdown()
     $("#name-Placeholder").click(function(){
-        getPurchaseHistory()
+        addProduct('Guitar 4',400)
     })
 })
 
-export const encode = (string) => window.btoa(string)
-export const decode = (string) => window.atob(string)
+export const encrypt = (string) => window.btoa(string)
+export const decrypt = (string) => window.atob(string)
