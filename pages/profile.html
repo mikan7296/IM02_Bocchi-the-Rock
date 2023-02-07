@@ -14,11 +14,12 @@
 	<script src="../scripts/navbar.js"></script>
 	<script defer type="module" src="../scripts/popup.js"></script>
 
+	<script defer type="module" src="../scripts/profile.js"></script>
     <script defer type="module" src="../scripts/firebase.js"></script>
 
 </head>
 
-<body class="h-screen bg-blue-200 w-full flex flex-col font-[Abel] overflow-hidden">         
+<body class="h-screen bg-blue-200 w-full flex flex-col font-[Abel] h-[5000px]">         
 
 	<nav class="bg-black mx-auto py-3 w-full">
 		<div class="flex flex-wrap items-center justify-between ml-2 lg:ml-12 mr-4">
@@ -226,13 +227,13 @@
 		</div>
 		<div class="grow">
 			
-			<div id="my-profile-container" class="flex flex-col p-12 bg-white h-5/6">
-				<div class="h-16 border-b-2 border-gray-400">
+			<div id="my-profile-container" class="flex flex-col p-12 bg-white gap-4 ">
+				<div class="border-b-2 border-gray-400">
 					<p class="text-2xl font-bold">My profile</p>
 					<p>Manage your account</p>
 				</div>
-				<form class="grow">
-					<div class="grow p-8 flex text-xl gap-5">
+				<form class="">
+					<div class="grow px-8 pt-4 flex text-xl gap-5">
 
 						<div class="basis-7/12">
 							<div class="flex flex-col">
@@ -258,20 +259,93 @@
 	
 	
 						<div class="grow">
-							
+							something goes here
 						</div>
 					</div>
-					<div class="text-center mt-4">
+					<div class="text-center">
 						<button id="my-profile-container-submit" type="submit" class="bg-orange-300 py-2 px-12 rounded-md hover:opacity-90 disabled:opacity-50 cursor-pointer">Save</button>
 					</div>
 				</form>
+				<div class="mt-4 p-1.5 bg-black rounded-2xl text-white mx-8">
+					<div class="p-1 bg-yellow-200 rounded-xl">
+						<div class=" p-4 bg-black rounded-xl grid gap-2">
+							<div class="grid grid-rows-1 grid-cols-6">
+								<div class="">
+									<img src="../media/logo-white.png" class="w-[48px] h-[48px]">
+								</div>
+								<div class="col-start-2 col-span-4 text-center">
+									<span class="text-5xl font-bold">Membership Card</span>
+								</div>
+							</div>
+							<div class="text-2xl font-bold">
+								<div class="grid grid-cols-12 pt-20">
+
+									<p class="name-placeholder col-start-2 col-span-11"></p>
+									<p class="userid-placeholder col-start-2 col-span-11"></p>
+									<p class="tier-placeholder col-start-2 col-span-11">Gold Tier</p>
+								</div>
+								
+							</div>
+						</div>
+					</div>
 				
+
+
+				</div>
 			</div>
 
+			<div id="my-purchases-container" class="flex flex-col p-12 bg-white gap-4">
+				<div class="border-b-2 border-gray-400">
+					<p class="text-2xl font-bold">My purchases</p>
+					<p>View your purchases</p>
+				</div>
+				<div id="purchases-container" class="grid">
+					<div id="purchases-container-empty" class="hidden text-xl gap-2 justify-center">
+						<div class="">
+							<p>You have yet to purchase anything!</p>
+						</div>
+						<div class="text-center">
+							<a href="products.html" id="" class=" bg-orange-300 hover:opacity-90 rounded-md px-8 py-1 cursor-pointer">Back to shop</a>
+						</div>
+					</div>
+					<div class="bg-gray-200">
+						<div>Transaction </div>
+					</div>
+				</div>
+			</div>
 
+			<div id="my-coins-container" class="flex flex-col p-12 bg-white gap-4">
+				<div class="flex justify-between border-b-2 border-gray-400">
+					<div class="">
+						<p class="text-2xl font-bold">My coins</p>
+						<p>Manage and spend your coins</p>
+					</div>
+					<div class="flex items-end gap-0.5">
+						<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coins" width="40" height="40" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+							<path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z"></path>
+							<path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4"></path>
+							<path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"></path>
+							<path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
+							<path d="M3 11c0 .888 .772 1.45 2 2"></path>
+						</svg>
+						<p class="coin-placeholder font-bold text-2xl">0</p>
+					</div>
+				</div>
+				<div id="redeem-container" class="grid grid-cols-3">
+					<div>1</div>
+					<div>2</div>
+					<div>3</div>
+				
+				</div>
+			</div>
 
-
-			
+			<div id="my-vouchers-container" class="flex flex-col p-12 bg-white gap-4">
+				<div class="border-b-2 border-gray-400">
+					<p class="text-2xl font-bold">My vouchers</p>
+					<p>Manage and view your vouchers</p>
+				</div>
+			</div>
 		</div>
 	</div>
 

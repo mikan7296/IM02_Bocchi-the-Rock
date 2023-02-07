@@ -152,10 +152,10 @@ function updateProfileStats() {
         const dbRef = ref(getDatabase(), `users/${localStorage.userId}`);
         onValue(dbRef, (snapshot) => {
             const data = snapshot.val();
-            if (data != null) {
-                $(".name-placeholder").text(data.displayName)
-                $(".coin-placeholder").text(data.coins)
-            } 
+            $(".name-placeholder").text(data.displayName)
+            $(".coin-placeholder").text(data.coins)
+            $(".userid-placeholder").text(localStorage.userId)
+            $(".tier-placeholder").text()
         })
     }   
 }
@@ -186,7 +186,16 @@ function addCoins(amount) {
 export function getPurchaseHistory() {
     const dbRef = ref(getDatabase(), `users/${localStorage.userId}/purchasehistory`);
     onValue(dbRef, (snapshot) => {
-        console.log(snapshot.val())
+        let data = snapshot.val()
+        if (data != null) {
+            $("#purchases-container")
+            for (let k in data) {
+                let v = data[k]
+                console.log(k,v)
+            }
+        } else {
+            $("#purchases-container-empty").toggleClass("hidden grid")
+        }
     });
 }
 
@@ -199,9 +208,7 @@ $(document).ready(function(){
         localStorage.removeItem('existingUsernames')
     });
     updateProfileStats()
-    $("#name-Placeholder").click(function(){
-        addProduct(`${"epiphone"}`,4,['epiphone'],false)
-    })
+  
 })
 
 export const encrypt = (string) => window.btoa(string)
