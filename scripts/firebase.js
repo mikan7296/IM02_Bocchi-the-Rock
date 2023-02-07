@@ -147,14 +147,14 @@ export function login(id,data=false) {
     location.assign("./products.html")
 }
 
-function updateProfileDropdown() {
+function updateProfileStats() {
     if (localStorage.userId) {
         const dbRef = ref(getDatabase(), `users/${localStorage.userId}`);
         onValue(dbRef, (snapshot) => {
             const data = snapshot.val();
             if (data != null) {
-                $("#name-Placeholder").text(data.displayName)
-                $("#coin-Placeholder").text(data.coins)
+                $(".name-placeholder").text(data.displayName)
+                $(".coin-placeholder").text(data.coins)
             } 
         })
     }   
@@ -198,7 +198,7 @@ $(document).ready(function(){
     $(window).bind('beforeunload', function(){
         localStorage.removeItem('existingUsernames')
     });
-    updateProfileDropdown()
+    updateProfileStats()
     $("#name-Placeholder").click(function(){
         addProduct(`${"epiphone"}`,4,['epiphone'],false)
     })
