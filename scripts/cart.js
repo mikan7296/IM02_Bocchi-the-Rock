@@ -230,7 +230,7 @@ function assignPaymentEvents() {
 
         if (localStorage.userId) {
             let basePrice = parseInt($("#total-price").attr('data-base-price'))
-            userPayment(Math.floor(basePrice/10))
+            userPayment(basePrice/10)
             $("#payment-popup-lottie-done-message").removeClass('hidden')
         }
     })

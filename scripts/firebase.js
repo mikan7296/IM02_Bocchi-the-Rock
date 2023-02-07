@@ -188,10 +188,51 @@ export function getPurchaseHistory() {
     onValue(dbRef, (snapshot) => {
         let data = snapshot.val()
         if (data != null) {
-            $("#purchases-container")
             for (let k in data) {
                 let v = data[k]
-                console.log(k,v)
+                let card =`
+                <div id="container_${k}" class="bg-gray-200 rounded-md p-4 text-xl">
+                    <div class="flex justify-between">
+                        <div>
+                            <span>Transaction ID:</span>
+                            <span>${k}</span>
+                        </div>
+                        <div class="flex items-center gap-0.5">
+                            <p id="totalcoins_${k}" class="font-bold">+0</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coins" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z"></path>
+                                <path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4"></path>
+                                <path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"></path>
+                                <path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
+                                <path d="M3 11c0 .888 .772 1.45 2 2"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="item-container_${k}">
+
+                    <div>
+                </div>`
+                $("#purchases-container").append(card)
+
+                for (let k2 in v) {
+                    let v2 = JSON.parse(v[k2])
+                    let totalCoins = 0
+                    for (let k3 in v2) {
+                        let v3 = v2[k3]
+                        totalCoins += v3.itemPrice/10
+                        console.log(totalCoins)
+                        let card2 = `
+                        <div class="w-full flex justify-between">
+                            <span>${v3.itemName}</span>
+                            <span>$${v3.itemPrice}</span>
+                        </div>
+                        `
+                        $(`#item-container_${k}`).append(card2)
+                    }
+                    $(`#totalcoins_${k}`).text(`+${totalCoins}`)
+
+                }
             }
         } else {
             $("#purchases-container-empty").toggleClass("hidden grid")
