@@ -138,7 +138,7 @@
 	</nav>
 	
 	<div class="container mx-auto flex gap-6 h-full mt-6">
-		<div class="w-36 flex flex-col gap-2">
+		<div class="w-36 hidden flex-col gap-2 md:flex">
 
 			<div class="w-full flex gap-2 mb-8 bg-yellow-100 p-1 rounded-lg">
 				<div class="flex items-center">
@@ -227,30 +227,31 @@
 		</div>
 		<div class="grow">
 			
-			<div id="my-profile-container" class="flex flex-col p-12 bg-white gap-4">
+			<div id="my-profile-container" class="hidden flex flex-col p-12 bg-white gap-4">
 				<div class="border-b-2 border-gray-400">
 					<p class="text-2xl font-bold">My profile</p>
 					<p>Manage your account</p>
 				</div>
 				<form class="">
-					<div class="grow px-8 pt-4 flex text-xl gap-5">
+					<div class="grow px-2 pt-4 flex text-xl gap-5">
 
 						<div class="basis-7/12">
 							<div class="flex flex-col">
-								<div class="grid grid-rows-2 grid-cols-4 gap-2">
-									<label for="my-profile-container-username" class="row-start-1 basis-24 text-right">Username</label>
-									<input id="my-profile-container-username" class="row-start-1 col-start-2 col-span-3 border border-black rounded-md grow">
-									<span class="col-start-2 text-xs">Max 10 characters</span>
+								<div class="grid grid-cols-5 gap-2">
+									<label for="my-profile-container-username" class="row-start-1 col-span-2 basis-24 text-right">Username</label>
+									<input id="my-profile-container-username" class="row-start-1 col-start-3 col-span-3 border border-black rounded-md grow">
 								</div>
-								
-								<div class="grid grid-rows-2 grid-cols-4 gap-2">
-									<label for="my-profile-container-password" class="row-start-1 basis-24 text-right">Password</label>
-									<input id="my-profile-container-password" class="row-start-1 col-start-2 col-span-3 border border-black rounded-md grow">
+								<div class="grid grid-cols-5 gap-2 mb-2">
+									<span class="col-start-3 col-span-3 text-xs">Max 10 characters</span>
+								</div>
+								<div class="grid grid-cols-5 gap-2 mb-2">
+									<label for="my-profile-container-password" class="row-start-1 col-span-2 basis-24 text-right">Password</label>
+									<input id="my-profile-container-password" class="row-start-1 col-start-3 col-span-3 border border-black rounded-md grow">
 								</div>
 
-								<div class="grid grid-rows-2 grid-cols-4 gap-2">
-									<label for="my-profile-container-email" class="row-start-1 basis-24 text-right">Email</label>
-									<input id="my-profile-container-email" class="row-start-1 col-start-2 col-span-3 border border-black rounded-md grow">
+								<div class="grid grid-cols-5 gap-2 mb-2">
+									<label for="my-profile-container-email" class="row-start-1 col-span-2 basis-24 text-right">Email</label>
+									<input id="my-profile-container-email" class="row-start-1 col-start-3 col-span-3 border border-black rounded-md grow">
 								</div>
 							</div>
 						
@@ -258,7 +259,7 @@
 						</div>
 	
 	
-						<div class="grow">
+						<div class="grow" id="hehe">
 							something goes here
 						</div>
 					</div>
@@ -266,15 +267,16 @@
 						<button id="my-profile-container-submit" type="submit" class="bg-orange-300 py-2 px-12 rounded-md hover:opacity-90 disabled:opacity-50 cursor-pointer">Save</button>
 					</div>
 				</form>
+
 				<div class="mt-4 p-1.5 bg-black rounded-2xl text-white mx-8">
 					<div class="p-1 bg-yellow-200 rounded-xl">
 						<div class=" p-4 bg-black rounded-xl grid gap-2">
 							<div class="grid grid-rows-1 grid-cols-6">
-								<div class="">
+								<div class="hidden md:block">
 									<img src="../media/logo-white.png" class="w-[48px] h-[48px]">
 								</div>
 								<div class="col-start-2 col-span-4 text-center">
-									<span class="text-5xl font-bold">Membership Card</span>
+									<span class="text-3xl lg:text-5xl font-bold">Membership Card</span>
 								</div>
 							</div>
 							<div class="text-2xl font-bold">
@@ -294,20 +296,13 @@
 				</div>
 			</div>
 
-			<div id="my-purchases-container" class="flex flex-col p-12 bg-white gap-4">
+			<div id="my-purchases-container" class="hidden flex flex-col p-12 bg-white gap-4">
 				<div class="border-b-2 border-gray-400">
 					<p class="text-2xl font-bold">My purchases</p>
 					<p>View and manage your purchases</p>
 				</div>
 				<div id="purchases-container" class="grid gap-2">
-					<div id="purchases-container-empty" class="hidden text-xl gap-2 justify-center">
-						<div class="">
-							<p>You have yet to purchase anything!</p>
-						</div>
-						<div class="text-center">
-							<a href="products.html" id="" class=" bg-orange-300 hover:opacity-90 rounded-md px-8 py-1 cursor-pointer">Back to shop</a>
-						</div>
-					</div>
+					
 
 				</div>
 			</div>
@@ -330,11 +325,7 @@
 						<p class="coin-placeholder font-bold text-2xl">0</p>
 					</div>
 				</div>
-				<div id="redeem-container" class="grid grid-cols-3">
-					<div>1</div>
-					<div>2</div>
-					<div>3</div>
-				</div>
+			
 			</div>
 
 			<div id="my-vouchers-container" class="flex flex-col p-12 bg-white gap-4">
@@ -342,6 +333,19 @@
 					<p class="text-2xl font-bold">My vouchers</p>
 					<p>Manage and view your vouchers</p>
 				</div>
+
+				<div class="flex justify-center">
+					<span class="">Your inventory</span>
+				</div>
+
+				<div id="voucher-redeem-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-2 gap-2">
+
+				
+					
+				
+				</div>
+
+
 			</div>
 		</div>
 	</div>

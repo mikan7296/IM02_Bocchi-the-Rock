@@ -188,6 +188,7 @@ export function getPurchaseHistory() {
     onValue(dbRef, (snapshot) => {
         let data = snapshot.val()
         if (data != null) {
+            $("#purchases-container").empty()
             for (let k in data) {
                 let v = data[k]
                 let card =`
@@ -221,7 +222,6 @@ export function getPurchaseHistory() {
                     for (let k3 in v2) {
                         let v3 = v2[k3]
                         totalCoins += v3.itemPrice/10
-                        console.log(totalCoins)
                         let card2 = `
                         <div class="w-full flex justify-between">
                             <span>${v3.itemName}</span>
@@ -230,26 +230,93 @@ export function getPurchaseHistory() {
                         `
                         $(`#item-container_${k}`).append(card2)
                     }
-                    $(`#totalcoins_${k}`).text(`+${totalCoins}`)
+                    $(`#totalcoins_${k}`).text(`+${Math.round(totalCoins)}`)
 
                 }
             }
         } else {
-            $("#purchases-container-empty").toggleClass("hidden grid")
+            let card = `
+            <div id="purchases-container-empty" class="text-xl grid gap-2 justify-center">
+                <div class="">
+                    <p>You have yet to purchase anything!</p>
+                </div>
+                <div class="text-center">
+                    <a href="products.html" id="" class=" bg-orange-300 hover:opacity-90 rounded-md px-8 py-1 cursor-pointer">Back to shop</a>
+                </div>
+            </div>`
+            $("#purchases-container").append(card)
         }
     });
+}
+
+function addVoucher(discount,limit,type,cost) {
+    const db = getDatabase()
+    push(ref(db, `vouchers/`), {
+        discount : discount,
+        limit : limit,
+        type : type,
+        cost : cost
+    })
+}
+
+export function getVouchers(userId=false) {
+    const dbRef = ref(getDatabase(), `vouchers/`);
+    onValue(dbRef, (snapshot) => {
+        let data = snapshot.val()
+        let container = $("#voucher-redeem-container")
+        container.empty()
+        for (let k in data) {
+            let v = data[k]
+            let card = 	`
+            <div id="voucher_${k}" class="h-22 bg-red-200 p-2 rounded-md">
+                <div class="col-span-2 flex flex-col justify-between text-center">
+                    <h1 class="text-xl font-bold h-8"><span id="voucher-value_${k}">5%</span> <span id="voucher-cap_${k}"></span></h1>
+                    <div class="grid grid-cols-2 h-12">
+                        <div class="grid">
+                            <div class="flex items-end justify-end gap-0.5 font-bold text-xl">
+                                <p>Costs: </p>
+                                <p id="voucher-cost_${k}">10</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coins" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z"></path>
+                                    <path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4"></path>
+                                    <path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"></path>
+                                    <path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
+                                    <path d="M3 11c0 .888 .772 1.45 2 2"></path>
+                                </svg>
+                            </div>																	
+                        </div>
+                        <div class="flex items-end justify-center">
+                            <div class="bg-orange-300 hover:opacity-90 rounded-md px-4 py-1 cursor-pointer">Redeem</div>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+            container.append(card)
+            $(`#voucher-cost_${k}`).text(v.cost)
+            if (v.type == "m") {
+                $(`#voucher-value_${k}`).text(`${v.discount}%`)
+                $(`#voucher-cap_${k}`).text(`off capped at $${v.limit}`)
+            } else {
+                $(`#voucher-value_${k}`).text(`$${v.discount}`)
+                $(`#voucher-cap_${k}`).text(`off`)
+            }
+            
+        }
+    })
 }
 
 $(document).ready(function(){
     $(".logout-button").click(function(e){
         logout()
     })
-
-    $(window).bind('beforeunload', function(){
-        localStorage.removeItem('existingUsernames')
-    });
     updateProfileStats()
-  
+
+    
+    $("#hehe").click(function(){
+        // addProduct("Gibson Les Paul Custom",4999,['Gibson','Les Paul'])
+        addVoucher(10,300,'a',500)
+    })
 })
 
 export const encrypt = (string) => window.btoa(string)
