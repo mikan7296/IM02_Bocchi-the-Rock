@@ -248,6 +248,8 @@ function assignPaymentEvents() {
 }
    
 function togglePayment() {
+    window.scrollTo(0,0)
     $("#payment-popup").toggleClass('h-0 h-full')
     $("#bg-dark").toggleClass('hidden')
+    $('body').toggleClass('overflow-hidden')
 }
