@@ -249,7 +249,7 @@ export function getPurchaseHistory() {
     });
 }
 
-function addVoucher(discount,limit,type,cost) {
+function addVoucher(discount,type,cost,limit=false) {
     const db = getDatabase()
     push(ref(db, `vouchers/`), {
         discount : discount,
@@ -259,7 +259,18 @@ function addVoucher(discount,limit,type,cost) {
     })
 }
 
-export function getVouchers(userId=false) {
+function addUserVoucher(discount,type,cost,limit) {
+    const db = getDatabase()
+    push(ref(db, `users/${localStorage.userId}/vouchers`), {
+        discount : discount,
+        limit : limit,
+        type : type,
+        cost : cost
+    })
+}
+
+
+export function getVouchers() {
     const dbRef = ref(getDatabase(), `vouchers/`);
     onValue(dbRef, (snapshot) => {
         let data = snapshot.val()
@@ -287,7 +298,7 @@ export function getVouchers(userId=false) {
                             </div>																	
                         </div>
                         <div class="flex items-end justify-center">
-                            <div class="bg-orange-300 hover:opacity-90 rounded-md px-4 py-1 cursor-pointer">Redeem</div>
+                            <button id="voucher-redemption_,_${k}" class="voucher-redeem bg-orange-300 hover:opacity-90 rounded-md px-4 py-1 cursor-pointer">Redeem</button>
                         </div>
                     </div>
                 </div>
@@ -301,8 +312,41 @@ export function getVouchers(userId=false) {
                 $(`#voucher-value_${k}`).text(`$${v.discount}`)
                 $(`#voucher-cap_${k}`).text(`off`)
             }
-            
         }
+        $(".voucher-redeem").click(function(){
+            let voucherId = $(this).attr('id').split('_,_')[1]
+            validateVoucher(voucherId)
+        })
+
+    })
+
+  
+}
+
+function validateVoucher(id) {
+    const db = getDatabase()
+    const dbRef = ref(db, `vouchers/${id}`);
+    onValue(dbRef, (snapshot) => {
+        let data = snapshot.val()
+        if (data != null) {
+            const dbRef = ref(getDatabase(), `users/${localStorage.userId}/coins`);
+            onValue(dbRef, (snapshot) => {
+                let coinData = snapshot.val();
+                if (coinData >= data.cost) {
+                    addCoins(data.cost*-1)
+                    addUserVoucher(data.discount,data.type,data.cost,data.limit)
+                } else {
+                    popup('You are broke!','You do not have enough coins lol')
+                }
+            }, {
+                onlyOnce: true
+            })
+
+        } else {
+            popup('Error',`Voucher doesn't exist! Did you change something?`)
+        }
+    }, {
+        onlyOnce: true
     })
 }
 
@@ -315,7 +359,7 @@ $(document).ready(function(){
     
     $("#hehe").click(function(){
         // addProduct("Gibson Les Paul Custom",4999,['Gibson','Les Paul'])
-        addVoucher(10,300,'a',500)
+        addVoucher(10,'a',1)
     })
 })
 
