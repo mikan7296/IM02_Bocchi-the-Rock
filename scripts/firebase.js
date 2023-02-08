@@ -289,20 +289,35 @@ function renderUserVouchers(data) {
     for (let k in data) {
         let v = data[k]
         let card = 	`
-        <div id="voucher_${k}" class="h-22 bg-red-200 p-2 rounded-md">
-            <div class="col-span-2 flex flex-col justify-between text-center">
-                <h1 class="text-xl font-bold h-20"><span id="voucher-value_${k}">5%</span> <span id="voucher-cap_${k}"></span></h1>
-                  
+
+        <div id="voucher_${k}" class="font-medium h-22 p-1 rounded-lg bg-black">
+            <div class="p-0.5 rounded-md bg-yellow-200">
+                <div class="p-1 rounded-md bg-black">
+                    <div class="p-2 rounded-md flex items-center text-white">
+                        <div class="basis-1/2 text-center">
+                            <p id="voucher-value_${k}" class="text-5xl">$30</p>
+                            <p id="voucher-cap_${k}"></p>
+                        </div>
+                        <div class="grow grid grid-rows-2">
+                            <div>
+                                <img src="../media/logo-white.png" class="mx-auto w-[48px] h-[40px]">
+                            </div>
+                            <div class="flex justify-center items-center">
+                                <span class="text-xl">DISCOUNT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>`
+
         container.append(card)
         $(`#voucher-cost_${k}`).text(v.cost)
-        if (v.type == "m") {
+        if ((v.type == "m") && (v.limit != false)) {
             $(`#voucher-value_${k}`).text(`${v.discount}%`)
-            $(`#voucher-cap_${k}`).text(`off capped at $${v.limit}`)
+            $(`#voucher-cap_${k}`).text(`Capped at $${v.limit}`)
         } else {
             $(`#voucher-value_${k}`).text(`$${v.discount}`)
-            $(`#voucher-cap_${k}`).text(`off`)
         }
     }
 }
