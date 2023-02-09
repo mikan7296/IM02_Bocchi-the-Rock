@@ -1,7 +1,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
 import { getDatabase, ref, set, get, push, child, onValue, update} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { popup } from './popup.js';
-
+import { updateTotalPrice } from './cart.js';
 const firebaseConfig = {
     apiKey: "AIzaSyDXbZe3Yr00ZOcOGZVTQ5x9UmMYcT-ht08",
     authDomain: "np-y1s2-ip.firebaseapp.com",
@@ -269,7 +269,7 @@ function addUserVoucher(discount,type,cost,limit) {
     })
 }
 
-export function getUserVouchers() {
+export function getUserVouchers(usage=false) {
     const dbRef = ref(getDatabase(), `users/${localStorage.userId}/vouchers`);
     onValue(dbRef, (snapshot) => {
         let data = snapshot.val()
@@ -280,6 +280,9 @@ export function getUserVouchers() {
         }
         renderUserVouchers(data)
 
+        if (usage) {
+            assignVoucherEvents(data)
+        }
     })
 }
 
@@ -290,10 +293,10 @@ function renderUserVouchers(data) {
         let v = data[k]
         let card = 	`
 
-        <div id="voucher_${k}" class="font-medium h-22 p-1 rounded-lg bg-black">
-            <div class="p-0.5 rounded-md bg-yellow-200">
-                <div class="p-1 rounded-md bg-black">
-                    <div class="p-2 rounded-md flex items-center text-white">
+        <div id="voucher_${k}" class="font-medium p-1 rounded-lg bg-black">
+            <div class="p-0.5 rounded-md bg-yellow-200 h-full">
+                <div class="p-1 rounded-md bg-black h-full">
+                    <div class="p-2 rounded-md flex items-center text-white h-full">
                         <div class="basis-1/2 text-center">
                             <p id="voucher-value_${k}" class="text-5xl">$30</p>
                             <p id="voucher-cap_${k}"></p>
@@ -302,7 +305,7 @@ function renderUserVouchers(data) {
                             <div>
                                 <img src="../media/logo-white.png" class="mx-auto w-[48px] h-[40px]">
                             </div>
-                            <div class="flex justify-center items-center">
+                            <div class="flex justify-center items-end">
                                 <span class="text-xl">DISCOUNT</span>
                             </div>
                         </div>
@@ -321,6 +324,41 @@ function renderUserVouchers(data) {
         }
     }
 }
+
+function assignVoucherEvents(data) {
+    let voucherKeys = []
+    for (let k in data) {
+        voucherKeys.push(k)
+        let v = data[k] 
+        console.log(k,v)
+        let currentVoucher = $(`#voucher_${k}`)
+        let voucherPrice = $("#discount-price")
+        currentVoucher.click(function(){
+            currentVoucher.addClass('opacity-30')
+            if (v.type == 'm') {
+                voucherPrice.text(`-${v.discount}%`)
+            } else {
+                voucherPrice.text(`-$${v.discount}`)
+            }
+            voucherPrice.attr('data-price',v.discount)
+            voucherPrice.attr('data-type',v.type)
+            voucherPrice.attr('data-cap',v.limit)
+            updateTotalPrice()
+            removeExcept(k)
+        })
+    }
+    function removeExcept(key) {
+        for (let k in voucherKeys) {
+            let v = voucherKeys[k]
+            console.log(v,key)
+            if (key != v) {
+                let voucher = $(`#voucher_${v}`)
+                voucher.removeClass('opacity-30')
+            }
+        }
+    }
+}
+
 
 export function getVouchers() {
     const dbRef = ref(getDatabase(), `vouchers/`);

@@ -143,7 +143,8 @@
 		<section class="container mx-auto bg-white px-2 grow">
 			<div id="bg-dark" class="hidden backdrop-brightness-75 w-full h-full z-40 absolute top-0 left-0"></div>
 
-			<form class="pt-2 lg:gap-2 lg:grid lg:grid-cols-5">
+			<form class="pt-2 lg:gap-2 lg:grid lg:grid-cols-5 h-full">
+
 				<div id="contact-section" class="lg:col-span-3">
 					<div class="border-b-2 border-black text-2xl">
 						<p>Contact Information</p>
@@ -206,6 +207,16 @@
 							</label>
 						</div>
 					</div>
+
+					<div class="border-b-2 border-black text-2xl">
+						<span class="">Apply Vouchers</span>
+					</div>
+
+					<div class="pt-3 overflow-hidden">
+						<div id="user-voucher-container" class="flex gap-3 overflow-x-scroll [&>*]:basis-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style]:hidden [scrollbar-width:none]">
+							
+						</div>
+					</div>
 				</div>
 				
 				<div id="cart-section" class="lg:col-span-2 lg:border-l-2 px-2">
@@ -227,6 +238,10 @@
 								<p id="subtotal-price" class="basis-4/5 text-right truncate">Price Placeholder</p>
 							</div>
 							<div class="flex text-xl">
+								<p class="basis-1/5">Discount</p>
+								<p id="discount-price" class="basis-4/5 text-right truncate">$0</p>
+							</div>
+							<div class="flex text-xl">
 								<p class="basis-1/5">Shipping</p>
 								<p id="shipping-price" class="basis-4/5 text-right truncate">$0</p>
 							</div>
@@ -237,7 +252,7 @@
 						</div>
 					</div>
 					<div id="checkout-submit-container" class="pb-4 text-center lg:pt-4 text-2xl lg:text-4xl">
-						<input class=" bg-orange-300 py-2 px-5 rounded-md hover:opacity-90 disabled:opacity-50 cursor-pointer" id="checkout-submit" type="submit" value="Proceed to Payment" disabled>
+						<input class=" bg-orange-300 py-2 px-5 rounded-md hover:opacity-90 disabled:opacity-50 cursor-pointer" id="checkout-submit" type="submit" value="Proceed to Payment">
 					</div>
 				</div>
 	

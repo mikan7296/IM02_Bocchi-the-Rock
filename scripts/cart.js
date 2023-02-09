@@ -1,4 +1,4 @@
-import { userPayment } from "./firebase.js";
+import { userPayment, getUserVouchers } from "./firebase.js";
 
 $(document).ready(function(){
     assignShippingEvents()
@@ -6,6 +6,7 @@ $(document).ready(function(){
     assignRemoveButtons()
     assignInputEvent()
     assignPaymentEvents()
+    getUserVouchers(true)
 });
 
 
@@ -73,8 +74,7 @@ function renderCartSummary(emptyContainer = true) {
 
     } else {
         $("#cart-container").removeClass("border-b-2")
-        $("#cart-section").removeClass("basis-2/3 max-w-[40%] lg:border-l-2")
-        $("#cart-section").addClass("w-full")
+        $("#cart-section").removeClass("lg:col-span-2 lg:border-l-2").addClass("lg:col-span-5")
         $("#contact-section").hide()
         $("#cart-price-container").hide()
         $("#checkout-submit-container").hide()
@@ -108,9 +108,24 @@ function assignShippingEvents() {
     })
 }
 
-function updateTotalPrice() {
+export function updateTotalPrice() {
     let basePrice = parseInt($("#total-price").attr('data-base-price'))
     let shippingPrice = parseInt($("#shipping-price").attr('data-price'))
+    let voucherPrice = parseInt($("#discount-price").attr('data-price'))
+    let voucherType = $("#discount-price").attr('data-type')
+    let voucherCap = $("#discount-price").attr('data-cap')
+    let discount = 0
+    if (voucherType == "m") {
+        discount = (100-voucherPrice)/100
+        if ((basePrice*(1-discount)) >= voucherCap) {
+            basePrice -= voucherCap
+        } else {
+            basePrice *= discount
+        }
+    } else if (voucherType == 'a') {
+        discount = voucherPrice*-1
+        basePrice += discount
+    }
     let newAmt = basePrice += shippingPrice
     $("#total-price").text(`$${newAmt}`)
 }
@@ -253,3 +268,4 @@ function togglePayment() {
     $("#bg-dark").toggleClass('hidden')
     $('body').toggleClass('overflow-hidden')
 }
+
