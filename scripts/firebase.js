@@ -35,16 +35,18 @@ export function getProducts() {
             let v = data[k]
             let card = 
                 `
-                <div id="card_${totalItems}" class="container px-2 h-fit" data-tags="${v.tags}">
+                <div id="card_${totalItems}" class="" data-tags="${v.tags}">
                     <a href="guitar.html?${k}">
-                    <div class="m-2 mt-8 p-2 h-72 bg-orange-300 rounded-lg shadow-xl">
-                        <img class="w-full h-3/5 object-fill rounded-lg" src="../media/burger.jfif">
-                        <div class="h-2/5 grid grid-rows-2">
+                        <div class=" border-gray-400 border flex items-center">
+                            <img class="object-fill" src="../media/guitars/thumbnailwhite.png">
+                        </div>
+                        <div class="">
                             <h1 id="name_${k}" class="forNameSearch_${totalItems} text-lg font-semibold truncate">${v.name}</h1>
                             <h3 id="price_${k}" >$${v.price}</h3>
                         </div>
-                    </div></a>
+                    </a>
                 </div>
+
                 `
             container.append(card)
             totalItems++
@@ -330,27 +332,26 @@ function assignVoucherEvents(data) {
     for (let k in data) {
         voucherKeys.push(k)
         let v = data[k] 
-        console.log(k,v)
         let currentVoucher = $(`#voucher_${k}`)
         let voucherPrice = $("#discount-price")
         currentVoucher.click(function(){
-            currentVoucher.addClass('opacity-30')
-            if (v.type == 'm') {
-                voucherPrice.text(`-${v.discount}%`)
+            if (currentVoucher.hasClass('opacity-30')) {
+                voucherPrice.attr('data-type',false)
+                removeExcept()
             } else {
-                voucherPrice.text(`-$${v.discount}`)
+                currentVoucher.addClass('opacity-30')
+                voucherPrice.attr('data-price',v.discount)
+                voucherPrice.attr('data-type',v.type)
+                voucherPrice.attr('data-cap',v.limit)
+                removeExcept(k)
             }
-            voucherPrice.attr('data-price',v.discount)
-            voucherPrice.attr('data-type',v.type)
-            voucherPrice.attr('data-cap',v.limit)
             updateTotalPrice()
-            removeExcept(k)
+          
         })
     }
-    function removeExcept(key) {
+    function removeExcept(key=false) {
         for (let k in voucherKeys) {
             let v = voucherKeys[k]
-            console.log(v,key)
             if (key != v) {
                 let voucher = $(`#voucher_${v}`)
                 voucher.removeClass('opacity-30')
@@ -450,8 +451,8 @@ $(document).ready(function(){
 
     
     $("#hehe").click(function(){
-        // addProduct("Gibson Les Paul Custom",4999,['Gibson','Les Paul'])
-        addVoucher(10,'a',1)
+        // addProduct("Epiphone SG Standard",499,['epiphone','bass'])
+        // addVoucher(10,'a',1)
     })
 })
 

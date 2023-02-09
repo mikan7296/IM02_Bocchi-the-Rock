@@ -115,7 +115,10 @@ export function updateTotalPrice() {
     let voucherType = $("#discount-price").attr('data-type')
     let voucherCap = $("#discount-price").attr('data-cap')
     let discount = 0
+
+    
     if (voucherType == "m") {
+        $("#discount-price").text(`-${voucherPrice}%`)
         discount = (100-voucherPrice)/100
         if ((basePrice*(1-discount)) >= voucherCap) {
             basePrice -= voucherCap
@@ -123,9 +126,13 @@ export function updateTotalPrice() {
             basePrice *= discount
         }
     } else if (voucherType == 'a') {
+        $("#discount-price").text(`-$${voucherPrice}`)
         discount = voucherPrice*-1
         basePrice += discount
+    } else {
+        $("#discount-price").text("Not applied")
     }
+
     let newAmt = basePrice += shippingPrice
     $("#total-price").text(`$${newAmt}`)
 }

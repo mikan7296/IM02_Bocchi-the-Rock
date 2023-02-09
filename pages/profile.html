@@ -267,36 +267,37 @@
 						<button id="my-profile-container-submit" type="submit" class="bg-orange-300 py-2 px-12 rounded-md hover:opacity-90 disabled:opacity-50 cursor-pointer">Save</button>
 					</div>
 				</form>
-
-				<div class="mt-4 p-1.5 bg-black rounded-2xl text-white mx-8">
-					<div class="p-1 bg-yellow-200 rounded-xl">
-						<div class=" p-4 bg-black rounded-xl grid gap-2">
-							<div class="grid grid-rows-1 grid-cols-6">
-								<div class="hidden md:block">
-									<img src="../media/logo-white.png" class="w-[48px] h-[48px]">
+				<div class="flex justify-center">
+					<div class="mt-4 p-1.5 bg-black rounded-2xl text-white mx-8">
+						<div class="p-1 bg-yellow-200 rounded-xl">
+							<div class=" p-4 bg-[url('../media/glp.png')] bg-cover bg-no-repeat rounded-xl grid gap-2">
+								<div class="grid grid-rows-1 grid-cols-6">
+									<div class="hidden md:block">
+										<img src="../media/logo-white.png" class="w-[48px] h-[48px]">
+									</div>
+									<div class="col-start-2 col-span-4 text-center">
+										<span class="text-3xl lg:text-5xl font-bold">Membership Card</span>
+									</div>
 								</div>
-								<div class="col-start-2 col-span-4 text-center">
-									<span class="text-3xl lg:text-5xl font-bold">Membership Card</span>
+								<div class="text-2xl font-bold">
+									<div class="grid grid-cols-12 pt-20">
+	
+										<p class="name-placeholder col-start-2 col-span-11"></p>
+										<p class="userid-placeholder col-start-2 col-span-11"></p>
+										<p class="tier-placeholder col-start-2 col-span-11">Gold Tier</p>
+									</div>
+									
 								</div>
-							</div>
-							<div class="text-2xl font-bold">
-								<div class="grid grid-cols-12 pt-20">
-
-									<p class="name-placeholder col-start-2 col-span-11"></p>
-									<p class="userid-placeholder col-start-2 col-span-11"></p>
-									<p class="tier-placeholder col-start-2 col-span-11">Gold Tier</p>
-								</div>
-								
+							
 							</div>
 						</div>
+					
 					</div>
-				
-
-
 				</div>
+				
 			</div>
 
-			<div id="my-purchases-container" class="hidden flex flex-col p-12 bg-white gap-4">
+			<div id="my-purchases-container" class="flex flex-col p-12 bg-white gap-4">
 				<div class="border-b-2 border-gray-400">
 					<p class="text-2xl font-bold">My purchases</p>
 					<p>View and manage your purchases</p>
@@ -312,10 +313,12 @@
 					<p class="text-2xl font-bold">My vouchers</p>
 					<p>Manage and view your vouchers</p>
 				</div>
-
 				<p id="no-vouchers-message" class="text-2xl text-center">Your inventory is empty..</p>
-				<div id="user-voucher-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-2 gap-2">
 
+				<div id="user-voucher-container" class="grid sm:grid-cols-2 lg:grid-cols-3 px-2 gap-2">
+
+					
+					
 				</div>
 
 				<div class="flex justify-between border-b-2 border-gray-400">
@@ -335,7 +338,7 @@
 						<p class="coin-placeholder font-bold text-2xl">0</p>
 					</div>
 				</div>
-				<div id="voucher-redeem-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-2 gap-2">
+				<div id="voucher-redeem-container" class="grid sm:grid-cols-2 lg:grid-cols-3 px-2 gap-2">
 
 				
 				</div>
