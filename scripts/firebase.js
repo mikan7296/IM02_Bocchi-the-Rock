@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
-import { getDatabase, ref, set, get, push, child, onValue, update} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
+import { getDatabase, ref, set, get, push, child, onValue, update, remove} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { popup } from './popup.js';
 import { updateTotalPrice } from './cart.js';
 const firebaseConfig = {
@@ -168,6 +168,7 @@ export function userPayment(amount) {
         purchases : localStorage.getItem('cart')
     })
     addCoins(amount)
+    removeVoucher($("#discount-price").attr("data-id"))
     $("#payment-popup-lottie-done-message-coins").text(`${amount}`)
     localStorage.removeItem('cart')
 }
@@ -337,12 +338,14 @@ function assignVoucherEvents(data) {
         currentVoucher.click(function(){
             if (currentVoucher.hasClass('opacity-30')) {
                 voucherPrice.attr('data-type',false)
+                voucherPrice.attr('data-id',false)
                 removeExcept()
             } else {
                 currentVoucher.addClass('opacity-30')
                 voucherPrice.attr('data-price',v.discount)
                 voucherPrice.attr('data-type',v.type)
                 voucherPrice.attr('data-cap',v.limit)
+                voucherPrice.attr('data-id',k)
                 removeExcept(k)
             }
             updateTotalPrice()
@@ -358,6 +361,19 @@ function assignVoucherEvents(data) {
             }
         }
     }
+}
+
+function removeVoucher(id) {
+    const dbRef = ref(getDatabase(), `users/${localStorage.userId}/vouchers/${id}`);
+    onValue(dbRef, (snapshot) => {
+        let data = snapshot.val()
+        if (data) {
+            remove(dbRef)
+        }
+
+    }, {
+        onlyOnce: true
+    })
 }
 
 
@@ -452,7 +468,7 @@ $(document).ready(function(){
     
     $("#hehe").click(function(){
         // addProduct("Epiphone SG Standard",499,['epiphone','bass'])
-        // addVoucher(10,'a',1)
+        // addVoucher(100,'m',1)
     })
 })
 

@@ -116,7 +116,6 @@ export function updateTotalPrice() {
     let voucherCap = $("#discount-price").attr('data-cap')
     let discount = 0
 
-    
     if (voucherType == "m") {
         $("#discount-price").text(`-${voucherPrice}%`)
         discount = (100-voucherPrice)/100
@@ -220,20 +219,17 @@ function assignPaymentEvents() {
     })
 
     $(ppOption).click(function(e){
-        console.log('pp')
         hideContent(gpayContent)
         hideContent(ccContent)
         showContent(ppContent)
     })
     $(gpayOption).click(function(e){
-        console.log('gp')
         hideContent(ccContent)
         hideContent(ppContent)
         showContent(gpayContent)
 
     })
     $(ccOption).click(function(e){
-        console.log('cc')
         hideContent(ppContent)
         hideContent(gpayContent)
         showContent(ccContent)
