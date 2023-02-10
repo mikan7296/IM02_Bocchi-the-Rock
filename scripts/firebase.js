@@ -110,7 +110,9 @@ export function matchPassword(name,password) {
                 login(userId,userData)
             }
         }
-        popup('Login Failed!','Incorrect Credentials')
+        setTimeout(function(){
+            popup('Login Failed!','Incorrect Credentials')
+        },2000)
     });
 }
 
@@ -468,7 +470,7 @@ $(document).ready(function(){
     
     $("#hehe").click(function(){
         // addProduct("Epiphone SG Standard",499,['epiphone','bass'])
-        // addVoucher(100,'m',1)
+        addVoucher(100,'m',1)
     })
 })
 
