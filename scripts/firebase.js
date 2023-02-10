@@ -104,15 +104,20 @@ export function matchPassword(name,password) {
     const dbRef = ref(getDatabase(), 'users/');
     onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
+        let found = false
         for (let userId in data) {
             let userData = data[userId]
             if ((userData.name == name.toUpperCase()) && (password == userData.password)) {
+                found = true
                 login(userId,userData)
             }
         }
         setTimeout(function(){
-            popup('Login Failed!','Incorrect Credentials')
-        },2000)
+            if (found) {
+            } else {
+                popup('Login Failed!','Incorrect Credentials')
+            }
+        },4000)
     });
 }
 
