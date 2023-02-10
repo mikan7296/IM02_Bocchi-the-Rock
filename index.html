@@ -12,18 +12,18 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
 
-	<script src="../scripts/navbar.js"></script>
-	<script defer type="module" src="../scripts/popup.js"></script>
+	<script src="./scripts/navbar.js"></script>
+	<script defer type="module" src="./scripts/popup.js"></script>
 
-	<script defer type="module" src="../scripts/firebase.js"></script>
+	<script defer type="module" src="./scripts/firebase.js"></script>
 </head>
 
 <body class="h-screen flex flex-col font-[Abel] bg-white overflow-hidden">
     <nav class="bg-black mx-auto py-3 w-full">
 		<div class="flex flex-wrap items-center justify-between ml-2 lg:ml-12 mr-4">
 
-			<a href="../index.html" class="flex items-center ml-1">
-				<img src="../media/logo-white.png" class="mr-5 w-[64px] h-[64px]">
+			<a href="#" class="flex items-center ml-1">
+				<img src="./media/logo-white.png" class="mr-5 w-[64px] h-[64px]">
 			</a>
 
 			<div class="hidden md:block">
@@ -53,8 +53,8 @@
 							</div>
 						</div>
 						<ul class="text-lg mt-2 ml-1">
-							<li><a href="pages/products.html">Products</a></li>
-							<li><a href="pages/profile.html">Profile</a></li>
+							<li><a href="./pages/products.html">Products</a></li>
+							<li><a href="./pages/profile.html">Profile</a></li>
 							<li><a href="" class="logout-button">Logout</a></li>
 						</ul>
 					</div>
@@ -62,10 +62,10 @@
 					<div id="logged-out" class=" bg-white p-4">
 						<p class="text-2xl font-bold">You're not logged in!</p>
 						<div class="my-4 text-center">
-							<a href="pages/login.html" class="bg-yellow-400 font-bold py-2 px-16 rounded-lg">Login</a>
+							<a href="./pages/login.html" class="bg-yellow-400 font-bold py-2 px-16 rounded-lg">Login</a>
 						</div>
 						<div class="">
-							<p>Not a member?<span class="text-blue-400 hover:text-blue-900 cursor-pointer"><a href="pages/signup.html"> Sign up now!</a></span></p>
+							<p>Not a member?<span class="text-blue-400 hover:text-blue-900 cursor-pointer"><a href="./pages/signup.html"> Sign up now!</a></span></p>
 						</div>
 
 					</div>
@@ -100,7 +100,7 @@
 
     <div class="snap-mandatory snap-y scroll-smooth overflow-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style]:hidden [scrollbar-width:none]">
 
-        <div class="h-[calc(100vh-88px)] snap-center bg-[url('../media/starrybg.png')] bg-no-repeat bg-cover bg-center">
+        <div class="h-[calc(100vh-88px)] snap-center bg-[url('./media/starrybg.png')] bg-no-repeat bg-cover bg-center">
             <div class="h-full w-full bg-gradient-to-b from-white/30 via-pink-400/30 to-black/80">
                 <div class="h-full w-full grid grid-cols-6 grid-rows-6">
                     <div class="text-white text-5xl font-bold row-start-1 col-start-2 col-span-4 flex items-end">
@@ -115,7 +115,7 @@
                         <span class="text-5xl">Join us!</span>
                         <span class="text-xl">Come browse our instruments that are currently available</span>
                         <div class="grow w-full flex items-center justify-center text-black">
-                            <a href="/pages/signup.html" class="text-xl py-2 px-12 bg-yellow-200 rounded-full brightness-[1.35] shadow-[0px_0px_30px_2px_rgba(255,255,255,.8)]">
+                            <a href="./pages/signup.html" class="text-xl py-2 px-12 bg-yellow-200 rounded-full brightness-[1.35] shadow-[0px_0px_30px_2px_rgba(255,255,255,.8)]">
                                 Sign up
                             </a>
                         </div>
@@ -125,7 +125,7 @@
             </div>
         </div>
 
-        <div class="h-[calc(100vh-88px)] snap-center bg-[url('../media/sketchfablogo.png')] bg-no-repeat  bg-auto bg-center">
+        <div class="h-[calc(100vh-88px)] snap-center bg-[url('./media/sketchfablogo.png')] bg-no-repeat  bg-auto bg-center">
             <!-- <div class="h-full w-full bg-gradient-to-b from-black via-blue-400/40 to-black"> 
             </div> -->
             <div class="h-full w-full bg-[radial-gradient(var(--tw-gradient-stops))] from-blue-400/40 to-black">
@@ -138,7 +138,8 @@
             </div>
 
         </div>
-        <div class="h-[calc(100vh-88px)] snap-center bg-[url('../media/glp.png')] bg-no-repeat bg-cover bg-center">
+
+        <div class="h-[calc(100vh-88px)] snap-center bg-[url('./media/glp.png')] bg-no-repeat bg-cover bg-center">
             <div class="w-full h-full bg-gradient-to-b from-black/40 via-white/20 to-black backdrop-blur-sm">
                 <div class="h-full w-full grid grid-cols-6 grid-rows-6">
                     <div class="text-white font-bold row-start-5 col-start-2 col-span-4 flex flex-col items-start gap-2">
