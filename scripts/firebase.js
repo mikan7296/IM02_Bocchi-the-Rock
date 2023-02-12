@@ -13,14 +13,14 @@ const firebaseConfig = {
   };
 const app = initializeApp(firebaseConfig);
 
-export function addProduct(name,price,tags,viewer=false) {
+export function addProduct(name,price,brand,shape,viewer=false) {
     const db = getDatabase()
     push(ref(db, `products/`), {
         name: name,
         price: price,
-        tags : tags,
+        brand : brand,
+        shape : shape,
         viewer : viewer,
-        stars: 0,
       });
 }
 
@@ -35,7 +35,7 @@ export function getProducts() {
             let v = data[k]
             let card = 
                 `
-                <div id="card_${totalItems}" class="" data-tags="${v.tags}">
+                <div id="card_${totalItems}" class="" data-brand="${v.brand}" data-shape="${v.shape}">
                     <a href="guitar.html?${k}">
                         <div class=" border-gray-400 border flex items-center">
                             <img class="object-fill" src="../media/guitars/thumbnailwhite.png">
@@ -104,20 +104,13 @@ export function matchPassword(name,password) {
     const dbRef = ref(getDatabase(), 'users/');
     onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
-        let found = false
         for (let userId in data) {
             let userData = data[userId]
             if ((userData.name == name.toUpperCase()) && (password == userData.password)) {
-                found = true
                 login(userId,userData)
             }
         }
-        setTimeout(function(){
-            if (found) {
-            } else {
-                popup('Login Failed!','Incorrect Credentials')
-            }
-        },4000)
+        popup('Login Failed!','Incorrect Credentials')
     });
 }
 
@@ -474,10 +467,7 @@ $(document).ready(function(){
 
     
     $("#hehe").click(function(){
-        // addProduct("Epiphone SG Standard",499,['epiphone','bass'])
-        addVoucher(100,'m',1)
+        // addProduct("YAMAHA PAC012 PACIFICA ENTRY-LEVEL MODEL ELECTRIC GUITAR",279,'yamaha','stratocaster')
+        // addVoucher(100,'m',1)
     })
 })
-
-export const encrypt = (string) => window.btoa(string)
-export const decrypt = (string) => window.atob(string)
