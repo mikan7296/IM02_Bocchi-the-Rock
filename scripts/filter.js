@@ -13,10 +13,15 @@ $(document).ready(function() {
         $("#category-container-shapes").toggleClass("max-h-0 max-h-40")
     })  
 
+    $(window).on('resize', function(){
+        let width = $(this).width();
+        if (width > 786 && !$("#bg-dark").hasClass('hidden')) {
+            toggleFilterSidebar()
+        }
+    });
+
     $(".mobile-filter-toggle").click(function(e){
-        $("#bg-dark").toggleClass('hidden')
-        $('body').toggleClass('overflow-hidden')
-        $("#filter-section").toggleClass('hidden flex z-50')
+        toggleFilterSidebar()
     })
 
     $("#search").keyup(function(){
@@ -35,6 +40,12 @@ $(document).ready(function() {
         filter(shape,filters)
     })
 });
+
+function toggleFilterSidebar() {
+    $("#bg-dark").toggleClass('hidden')
+    $('body').toggleClass('overflow-hidden')
+    $("#filter-section").toggleClass('hidden flex z-50')
+}
 
 function getFilters() {
     let container = $("#card-container")
