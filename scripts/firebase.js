@@ -60,16 +60,23 @@ export function loadProductPage(productId) {
     onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
         let images = data.images
+        let sketchfab = data.sketchfab
         let container = $("#image-carousell")
-        container.empty()
-        for (let k in images) {
-            let v = images[k]
-            let card = `<img src="${v}" class="h-[600px] object-contain">`
+        if (images) {
+            container.empty()
+            for (let k in images) {
+                let v = images[k]
+                let card = `<img src="${v}" class="h-[600px] object-contain">`
+                container.append(card)
+            }
+        }
+        if (sketchfab) {
+            let card  = `
+            <div class="sketchfab-embed-wrapper"> <iframe class="w-4/5 mx-auto h-[600px]" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="${sketchfab}"> </iframe> </div>`   
             container.append(card)
-            console.log(card)
         }
         initiateSlick()
-
+        
         $("#product-name").text(data.name)
         // $("#product-material").text(data.material)
         // $("#product-finish").text(data.finish)
@@ -489,9 +496,10 @@ $(document).ready(function(){
 
     
     $("#hehe").click(function(){
-        let thumbnail = ['../media/guitars/image(3).png']
+        let thumbnail = ['../media/guitars/thumbnail.png']
+        let sketchfab = 'https://sketchfab.com/models/6277939ec397455ba811117793319032/embed?autospin=1&camera=0&ui_hint=0&ui_theme=dark'
         let images = ['../media/guitars/image.png','../media/guitars/thumbnail.png','../media/glp.png','../media/b2.png','../media/b.png']
-        addProduct("Epiphone SG 5",100,'epiphone','sg',thumbnail,images)
+        addProduct("Epiphone les paul",100,'epiphone','les paul',thumbnail,images,sketchfab)
         // addVoucher(100,'m',1)
     })
 })

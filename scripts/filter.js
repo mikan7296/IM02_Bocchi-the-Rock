@@ -36,7 +36,6 @@ $(document).ready(function() {
 
     $(".shape-filter-option").click(function(e){
         let shape = $(this).attr('data-filter-name')
-        console.log()
         filter(shape,filters)
     })
 });
