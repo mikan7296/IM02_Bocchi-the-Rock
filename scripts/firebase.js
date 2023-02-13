@@ -13,14 +13,15 @@ const firebaseConfig = {
   };
 const app = initializeApp(firebaseConfig);
 
-export function addProduct(name,price,brand,shape,viewer=false) {
+export function addProduct(name,price,brand,shape,images=false,sketchfab=false) {
     const db = getDatabase()
     push(ref(db, `products/`), {
         name: name,
         price: price,
         brand : brand,
         shape : shape,
-        viewer : viewer,
+        images : images,
+        sketchfab : sketchfab,
       });
 }
 
@@ -58,9 +59,21 @@ export function loadProductPage(productId) {
     const dbRef = ref(getDatabase(), `products/${productId}`);
     onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
-        
+        let images = data.images
+        let container = $("#image-carousell")
+        container.empty()
+        for (let k in images) {
+            let v = images[k]
+            let card = `<img src="${v}" class="h-[600px] object-contain">`
+            container.append(card)
+            console.log(card)
+        }
+        initiateSlick()
+
         $("#product-name").text(data.name)
-        $("#product-stars").text(data.stars)
+        // $("#product-material").text(data.material)
+        // $("#product-finish").text(data.finish)
+
         $("#product-price").text(`$${data.price}`)
 
         $("#add-to-cart").click(function(){
@@ -72,6 +85,16 @@ export function loadProductPage(productId) {
             localStorage.setItem('cart', JSON.stringify(cart));
         });
     }) 
+
+    function initiateSlick() {
+        $("#image-carousell").slick({
+            arrows : false,
+            dots : true,
+            appendDots : $("#left-grid"),
+            speed : 200,
+        })
+        $(".slick-dots > li > button").html("")
+    }
 }
 
 export function checkDuplicateUsernames(name,password) {
@@ -467,7 +490,8 @@ $(document).ready(function(){
 
     
     $("#hehe").click(function(){
-        // addProduct("YAMAHA PAC012 PACIFICA ENTRY-LEVEL MODEL ELECTRIC GUITAR",279,'yamaha','stratocaster')
+        let images = ['../media/guitars/image.png','../media/guitars/thumbnail.png','../media/glp.png','../media/b2.png','../media/b.png']
+        addProduct("Yamaha Les Paul",279,'yamaha','les pauL',images)
         // addVoucher(100,'m',1)
     })
 })

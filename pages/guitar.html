@@ -6,11 +6,9 @@
 	<meta name="viewport" content="width=device-width">
 	<title>Bocchi the Rock!</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<script src="https://cdn.tailwindcss.com"></script>
-
 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
+	<script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
@@ -164,11 +162,10 @@
 			<div id="left-grid" class="lg:h-full w-full pt-16 px-4 lg:px-12 lg:col-span-2 row-span-4">
 
 				<div id="image-carousell" class="overflow-hidden h-[600px]">
-					<img src="../media/b.png" class="h-[600px] object-contain">
+					<!-- <img src="../media/b.png" class="h-[600px] object-contain">
 					<img src="../media/guitars/image.png" class="h-[600px] object-contain">
-					<img src="../media/guitars/image (4).png" class="h-[600px] object-contain">
-					<img src="../media/b2.png" class="h-[600px] object-contain">
-					<div class="sketchfab-embed-wrapper"> <iframe class="w-4/5 mx-auto h-[600px]" title="Gibson Les Paul Custom" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/a72c9b81dc0c42009c20a335faa39105/embed"> </iframe> </div>
+					<img src="../media/guitars/image(4).png" class="h-[600px] object-contain">
+					<img src="../media/b2.png" class="h-[600px] object-contain"> -->
 					<!-- <div class="sketchfab-embed-wrapper"> <iframe class="w-4/5 mx-auto h-[600px]" title="LingJingXuan_3DF_ASG2" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/6277939ec397455ba811117793319032/embed?autospin=1&camera=0&ui_hint=0&ui_theme=dark"> </iframe> </div> -->
 				</div>
 			
@@ -182,19 +179,13 @@
 					<div class="mx-4 my-5 grid grid-cols-5 grid-rows-1 items-center">
 						<div class="col-span-2">
 							<p class="font-bold text-lg">Body Material</p>
-							<p>Ebony</p>
+							<p id="product-material">Ebony</p>
 						</div>
-						<div class="col-span-2">
+						<div class="col-span-2 col-start-4">
 							<p class="font-bold text-lg">Body Finish</p>
-							<p>Gloss</p>
+							<p id="product-finish">Gloss</p>
 						</div>
-						<div class="mt-4 flex items-center relative -top-2">
-							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-								<path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
-							</svg>
-							<p id="product-stars"class="text-lg font-bold">3.9</p>
-						</div>
+						
 					</div>
 			
 				</div>

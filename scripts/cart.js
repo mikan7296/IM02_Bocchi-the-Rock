@@ -132,7 +132,7 @@ export function updateTotalPrice() {
         $("#discount-price").text("Not applied")
     }
 
-    let newAmt = basePrice += shippingPrice
+    let newAmt = Math.round(basePrice += shippingPrice)
     $("#total-price").text(`$${newAmt}`)
 }
 
