@@ -31,7 +31,7 @@ export function getProducts() {
     onValue(dbRef, (snapshot) => {
         let container = $("#card-container")
         const data = snapshot.val();
-        // container.empty()
+        container.empty()
         let totalItems = 0
         for (let k in data) {
             let v = data[k]
@@ -491,7 +491,7 @@ $(document).ready(function(){
     $("#hehe").click(function(){
         let thumbnail = ['../media/guitars/image(3).png']
         let images = ['../media/guitars/image.png','../media/guitars/thumbnail.png','../media/glp.png','../media/b2.png','../media/b.png']
-        addProduct("Epiphone SG 3",100,'epiphone','sg',thumbnail,images)
+        addProduct("Epiphone SG 5",100,'epiphone','sg',thumbnail,images)
         // addVoucher(100,'m',1)
     })
 })
