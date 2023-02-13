@@ -13,13 +13,14 @@ const firebaseConfig = {
   };
 const app = initializeApp(firebaseConfig);
 
-export function addProduct(name,price,brand,shape,images=false,sketchfab=false) {
+export function addProduct(name,price,brand,shape,thumbnail,images=false,sketchfab=false) {
     const db = getDatabase()
     push(ref(db, `products/`), {
         name: name,
         price: price,
         brand : brand,
         shape : shape,
+        thumbnail : thumbnail,
         images : images,
         sketchfab : sketchfab,
       });
@@ -30,7 +31,7 @@ export function getProducts() {
     onValue(dbRef, (snapshot) => {
         let container = $("#card-container")
         const data = snapshot.val();
-        container.empty()
+        // container.empty()
         let totalItems = 0
         for (let k in data) {
             let v = data[k]
@@ -38,16 +39,15 @@ export function getProducts() {
                 `
                 <div id="card_${totalItems}" class="" data-brand="${v.brand}" data-shape="${v.shape}">
                     <a href="guitar.html?${k}">
-                        <div class=" border-gray-400 border flex items-center">
-                            <img class="object-fill" src="../media/guitars/thumbnailwhite.png">
+                        <div class="h-5/6 border-gray-400 border flex justify-center items-center">
+                            <img class="h-[98%] w-[98%]" src="${v.thumbnail}">
                         </div>
-                        <div class="">
+                        <div class="h-1/6">
                             <h1 id="name_${k}" class="forNameSearch_${totalItems} text-lg font-semibold truncate">${v.name}</h1>
                             <h3 id="price_${k}" >$${v.price}</h3>
                         </div>
                     </a>
                 </div>
-
                 `
             container.append(card)
             totalItems++
@@ -399,7 +399,6 @@ function removeVoucher(id) {
     })
 }
 
-
 export function getVouchers() {
     const dbRef = ref(getDatabase(), `vouchers/`);
     onValue(dbRef, (snapshot) => {
@@ -490,8 +489,9 @@ $(document).ready(function(){
 
     
     $("#hehe").click(function(){
+        let thumbnail = ['../media/guitars/image(3).png']
         let images = ['../media/guitars/image.png','../media/guitars/thumbnail.png','../media/glp.png','../media/b2.png','../media/b.png']
-        addProduct("Yamaha Les Paul",279,'yamaha','les pauL',images)
+        addProduct("Epiphone SG 3",100,'epiphone','sg',thumbnail,images)
         // addVoucher(100,'m',1)
     })
 })
