@@ -59,10 +59,9 @@ function renderCartDropdown() {
             let v = cart[k]
             totalPrice += v.itemPrice
             let card = `
-            <div data="" class="grid grid-cols-6 grid-rows-1 gap-2">
+            <div class="grid grid-cols-6 grid-rows-1 gap-2">
                 <p class="col-span-4 truncate">${v.itemName}</p>
                 <p class="">$${v.itemPrice}</p>
-                <p class="text-center text-red-600 font-bold">&times;</p>
             </div>`
             render += card
         }

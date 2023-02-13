@@ -11,6 +11,12 @@ $(document).ready(function() {
     $("#category-dropdown-shapes").click(function (e){
         $("#category-dropdown-icon-shapes").toggleClass("rotate-180")
         $("#category-container-shapes").toggleClass("max-h-0 max-h-40")
+    })  
+
+    $(".mobile-filter-toggle").click(function(e){
+        $("#bg-dark").toggleClass('hidden')
+        $('body').toggleClass('overflow-hidden')
+        $("#filter-section").toggleClass('hidden flex z-50')
     })
 
     $("#search").keyup(function(){
@@ -99,6 +105,7 @@ function filter(name,filters) {
         if (show) {
             $(`#card_${i}`).removeClass("invisible")
             $(`#card_${i}`).css("order",0)
+
         } else {
             $(`#card_${i}`).addClass("invisible")
             $(`#card_${i}`).css("order",1)
