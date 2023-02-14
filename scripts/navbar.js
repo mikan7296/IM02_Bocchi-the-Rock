@@ -79,7 +79,7 @@ function renderCartDropdown() {
 function checkLoginStatus() {
     
     if (localStorage.userId) {
-        $("#logged-in").removeClass("hidden")
-        $("#logged-out").addClass("hidden")
+        $(".logged-in").removeClass("hidden")
+        $(".logged-out").addClass("hidden")
     } 
 }
