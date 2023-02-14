@@ -179,7 +179,7 @@
 
 	</nav>
 	
-	<div class="container mx-auto flex gap-6 h-full mt-6 ">
+	<div class="container mx-auto flex gap-6 h-full sm:mt-6">
 		<div class="w-36 hidden flex-col gap-2 md:flex">
 
 			<div class="w-full flex gap-2 mb-8 bg-yellow-100 p-1 rounded-lg">
@@ -269,48 +269,37 @@
 		</div>
 		<div class="grow bg-gray-100">
 			
-			<div id="my-profile-container" class="flex flex-col p-12 gap-4 ">
+			<div id="my-profile-container" class="flex flex-col gap-4 ">
 				<div class="border-b-2 border-gray-400">
 					<p class="text-2xl font-bold">My profile</p>
 					<p>Manage your account</p>
 				</div>
-				<form class="">
+				<form class="px-6">
 					<div class="grow px-2 pt-4 flex text-xl gap-5">
 
-						<div class="basis-7/12">
-							<div class="flex flex-col">
-								<div class="grid grid-cols-5 gap-2">
-									<label for="my-profile-container-username" class="row-start-1 col-span-2 basis-24 text-right">Username</label>
-									<input id="my-profile-container-username" class="row-start-1 col-start-3 col-span-3 border border-black rounded-md grow">
-								</div>
-								<div class="grid grid-cols-5 gap-2 mb-2">
-									<span class="col-start-3 col-span-3 text-xs">Max 10 characters</span>
-								</div>
-								<div class="grid grid-cols-5 gap-2 mb-2">
-									<label for="my-profile-container-password" class="row-start-1 col-span-2 basis-24 text-right">Password</label>
-									<input id="my-profile-container-password" class="row-start-1 col-start-3 col-span-3 border border-black rounded-md grow">
-								</div>
-
-								<div class="grid grid-cols-5 gap-2 mb-2">
-									<label for="my-profile-container-email" class="row-start-1 col-span-2 basis-24 text-right">Email</label>
-									<input id="my-profile-container-email" class="row-start-1 col-start-3 col-span-3 border border-black rounded-md grow">
-								</div>
+						<div class="flex flex-col grow">
+							<div class="grid grid-cols-5 gap-2">
+								<label for="my-profile-container-username" class="row-start-1 basis-24 col-span-2 sm:col-span-1 text-left">Username</label>
+								<input id="my-profile-container-username" maxlength="10" class="row-start-1 col-span-3 sm:col-span-4 border border-black rounded-md grow">
 							</div>
+							<div class="grid grid-cols-5 gap-2 mb-2">
+								<span class="col-start-3 sm:col-start-2 col-span-3 text-xs">Max 10 characters</span>
+							</div>
+							<div class="grid grid-cols-5 gap-2 mb-2">
+								<label for="my-profile-container-password" class="row-start-1 basis-24 col-span-2 sm:col-span-1 text-left">Password</label>
+								<input id="my-profile-container-password" class="row-start-1 col-span-3 sm:col-span-4 border border-black rounded-md grow">
+							</div>
+
+						</div>
 						
-	
-						</div>
-	
-	
-						<div class="grow" id="hehe">
-							something goes here
-						</div>
 					</div>
 					<div class="text-center">
 						<button id="my-profile-container-submit" type="submit" class="bg-orange-300 py-2 px-12 rounded-md hover:opacity-90 disabled:opacity-50 cursor-pointer">Save</button>
 					</div>
 				</form>
+
 				<div class="flex justify-center">
-					<div class="mt-4 p-1.5 bg-black rounded-2xl text-white mx-8">
+					<div class="p-1.5 bg-black rounded-2xl text-white mx-0.5 w-full sm:w-4/5">
 						<div class="p-1 bg-yellow-200 rounded-xl">
 							<div class=" p-4 bg-[url('../media/glp.png')] bg-cover bg-no-repeat rounded-xl grid gap-2">
 								<div class="grid grid-rows-1 grid-cols-6">
@@ -323,10 +312,8 @@
 								</div>
 								<div class="text-2xl font-bold">
 									<div class="grid grid-cols-12 pt-20">
-	
 										<p class="name-placeholder col-start-2 col-span-11"></p>
 										<p class="userid-placeholder col-start-2 col-span-11"></p>
-										<p class="tier-placeholder col-start-2 col-span-11">Gold Tier</p>
 									</div>
 									
 								</div>
@@ -339,7 +326,7 @@
 				
 			</div>
 
-			<div id="my-purchases-container" class="flex flex-col p-12 gap-4">
+			<div id="my-purchases-container" class="flex flex-col p-6 gap-4">
 				<div class="border-b-2 border-gray-400">
 					<p class="text-2xl font-bold">My purchases</p>
 					<p>View and manage your purchases</p>
@@ -350,7 +337,7 @@
 				</div>
 			</div>
 
-			<div id="my-vouchers-container" class="flex flex-col p-12 gap-4">
+			<div id="my-vouchers-container" class="flex flex-col p-6 gap-4">
 				<div class="border-b-2 border-gray-400">
 					<p class="text-2xl font-bold">My vouchers</p>
 					<p>Manage and view your vouchers</p>

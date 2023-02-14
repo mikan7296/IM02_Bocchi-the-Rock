@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
-import { getDatabase, ref, set, get, push, child, onValue, update, remove} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
+import { getDatabase, ref, set, push, onValue, update, remove} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { popup } from './popup.js';
 import { updateTotalPrice } from './cart.js';
 const firebaseConfig = {
@@ -137,7 +137,7 @@ export function matchPassword(name,password) {
         for (let userId in data) {
             let userData = data[userId]
             if ((userData.name == name.toUpperCase()) && (password == userData.password)) {
-                localStorage.clear()    
+                localStorage.clear()
                 login(userId,userData)
             }
         }
@@ -487,6 +487,28 @@ function validateVoucher(id) {
     }, {
         onlyOnce: true
     })
+}
+
+export function updateUserData(type,name,password) {
+    const db = getDatabase()
+    if (type == 'pw') {
+        update(ref(db, `users/${localStorage.userId}`), {
+            password : password
+        });
+    } else if (type == 'name') {
+        update(ref(db, `users/${localStorage.userId}`), {
+            displayName : name,
+            name : name.toUpperCase(),
+        });
+    } else {
+        update(ref(db, `users/${localStorage.userId}`), {
+            displayName : name,
+            name : name.toUpperCase(),
+            password : password
+        });
+    }
+    
+
 }
 
 $(document).ready(function(){

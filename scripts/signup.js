@@ -1,5 +1,5 @@
 import { checkDuplicateUsernames } from './firebase.js'
-
+import { popup } from './popup.js';
 
 $(document).ready(function () {
    assignEvents()
