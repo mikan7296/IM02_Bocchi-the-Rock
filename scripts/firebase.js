@@ -137,6 +137,7 @@ export function matchPassword(name,password) {
         for (let userId in data) {
             let userData = data[userId]
             if ((userData.name == name.toUpperCase()) && (password == userData.password)) {
+                localStorage.clear()
                 login(userId,userData)
             }
         }
