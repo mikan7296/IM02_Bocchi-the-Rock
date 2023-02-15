@@ -10,7 +10,7 @@ $(document).ready(function () {
         let name = $("#my-profile-container-username").val()
         let password = $("#my-profile-container-password").val()
         if (name == "" && password == "") {
-            popup("Error - Empty Fields","Please do not leave the fields empty")
+            popup("Error - Empty Fields","Please do not leave the fields empty",true)
         } else if (name == "" && !(password == "")){
             updateUserData('pw',name,password)
             popup("Success","Details successfully changed")
@@ -23,6 +23,19 @@ $(document).ready(function () {
         }
     })
 
+    $("#profile-my-account, #profile-my-purchases, #profile-my-vouchers").click(function(e){
+        let val = $(this).attr('data-category')
+        if (val == 'account') {
+            $("#my-purchases-container, #my-vouchers-container").removeClass('flex').addClass('md:hidden')
+            $("#my-account-container").removeClass('md:hidden').addClass('flex')
+        } else if (val == 'purchase') {
+            $("#my-account-container, #my-vouchers-container").removeClass('flex').addClass('md:hidden')
+            $("#my-purchases-container").removeClass('md:hidden').addClass('flex')
+        } else if (val =='voucher') {
+            $("#my-account-container, #my-purchases-container").removeClass('flex').addClass('md:hidden')
+            $("#my-vouchers-container").removeClass('md:hidden').addClass('flex')
+        }
+    })
 });
 
   
