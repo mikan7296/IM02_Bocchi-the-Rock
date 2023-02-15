@@ -475,7 +475,7 @@ function validateVoucher(id) {
                     addCoins(data.cost*-1)
                     addUserVoucher(data.discount,data.type,data.cost,data.limit)
                 } else {
-                    popup('You are broke!','You do not have enough coins lol')
+                    popup('You are broke!','You do not have enough coins lol',true)
                 }
             }, {
                 onlyOnce: true

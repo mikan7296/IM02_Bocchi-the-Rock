@@ -1,4 +1,4 @@
-export function popup(title,message) {
+export function popup(title,message,lock) {
 
     const template = `
     <div id="messageContainer" class="messageContainer transition-all backdrop-brightness-75 w-full h-full flex justify-center items-center z-50 absolute top-0 left-0">
@@ -13,10 +13,15 @@ export function popup(title,message) {
 		</div>
 	</div>`
 
-
     $("body").append(template)
-
+	if (lock) {
+		window.scrollTo(0,0)
+		$('body').addClass('overflow-hidden')
+	}
     $(".messageClose").click(function () {
         $(".messageContainer").remove()
+		if (lock) {
+			$('body').removeClass('overflow-hidden')
+		}
     })
 }
