@@ -15,14 +15,14 @@
 	<script src="../scripts/navbar.js"></script>
 	<script defer type="module" src="../scripts/popup.js"></script>
 
-	<script defer type="module" src="../scripts/profile.js"></script>
     <script defer type="module" src="../scripts/firebase.js"></script>
+    <script defer type="module" src="../scripts/filter.js"></script>
 
 </head>
 
-<body class="flex flex-col font-[Abel] bg-white select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style]:hidden [scrollbar-width:none]">         
+<body class="flex flex-col font-[Abel] bg-white [&::-webkit-scrollbar]:hidden [-ms-overflow-style]:hidden [scrollbar-width:none]">         
 
-	<nav class="bg-black mx-auto py-3 w-full">
+	<nav class="bg-black mx-auto py-3 w-full sticky top-0">
 		<div class="flex flex-wrap items-center justify-between ml-2 lg:ml-12 mr-4">
 
 			<a href="../index.html" class="flex items-center ml-1">
@@ -55,7 +55,7 @@
 				<div id="dropdownMenu" class="scale-0 z-10 absolute right-4 transition duration-75 origin-top-right">
 					<div class="logged-in hidden bg-white p-4">
 						<div class="flex gap-4 justify-between border-b-2 border-black">
-							<p class="name-placeholder text-2xl font-bold">Name Placeholder</p>
+							<p id="" class="name-placeholder text-2xl font-bold">Name Placeholder</p>
 							<div class="flex items-center">
 								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coins" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -65,7 +65,7 @@
 									<path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
 									<path d="M3 11c0 .888 .772 1.45 2 2"></path>
 								</svg>
-								<p class="coin-placeholder">0</p>
+								<p class="coin-placeholder font-bold">0</p>
 							</div>
 						</div>
 						<ul class="text-lg mt-2 ml-1">
@@ -126,6 +126,7 @@
 
 		</div>
 
+
 		<div id="sidebar" class="fixed h-full flex flex-col w-0 z-50 top-0 right-0 overflow-x-hidden transition-all duration-500 bg-[#292929] text-white text-center">
 
 			<div class="text-5xl font-semibold text-right mx-4">
@@ -179,184 +180,122 @@
 
 	</nav>
 	
-	<div class="container mx-auto flex gap-6 h-full sm:mt-6">
-		<div class="hidden flex-col gap-2 md:flex">
-
-			<div class="w-full flex gap-2 mb-4 bg-yellow-100 p-1 px-2 rounded-lg">
-				<div class="flex items-center">
-					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-						<path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-						<path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-						<path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
-					 </svg>
-				</div>
-				<div class="grow">
-					<p class="name-placeholder truncate font-bold">Name Placeholder</p>
-					<div class="flex items-center gap-0.5">
-						<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coins" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-							<path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z"></path>
-							<path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4"></path>
-							<path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"></path>
-							<path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
-							<path d="M3 11c0 .888 .772 1.45 2 2"></path>
-						</svg>
-						<p class="coin-placeholder font-bold">0</p>
-					</div>
-				</div>
-			</div>
-
-			<div id="profile-my-account" class="w-full flex gap-1">
-				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-						<path d="M12 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-						<path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-					 </svg>
-				</div>
-				<div>
-					<span class="font-bold text-lg">Account</span>
-				</div>
-			</div>
-
-			<div id="profile-my-purchases" class="w-full flex gap-1">
-				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checklist" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-						<path d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8"></path>
-						<path d="M14 19l2 2l4 -4"></path>
-						<path d="M9 8h4"></path>
-						<path d="M9 12h2"></path>
-					 </svg>
-				</div>
-				<div>
-					<span class="font-bold text-lg">Purchases</span>
-				</div>
-			</div>
-
-			<div id="profile-my-vouchers" class="w-full flex gap-1">
-				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-briefcase" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-						<path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
-						<path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path>
-						<path d="M12 12l0 .01"></path>
-						<path d="M3 13a20 20 0 0 0 18 0"></path>
-					 </svg>
-				</div>
-				<div>
-					<span class="font-bold text-lg">Vouchers</span>
-				</div>
-			</div>
-
-		</div>
-
-		<div class="grow bg-gray-100">
-			
-			<div id="my-profile-container" class="flex flex-col px-6 pt-2 gap-4 ">
-				<div class="border-b-2 border-gray-400">
-					<p class="text-2xl font-bold">Profile</p>
-					<p>Manage your account</p>
-				</div>
-				<form class="px-6">
-					<div class="grow px-2 pt-4 flex text-xl gap-5">
-
-						<div class="flex flex-col grow">
-							<div class="grid grid-cols-5 gap-2">
-								<label for="my-profile-container-username" class="row-start-1 basis-24 col-span-2 sm:col-span-1 text-left">Username</label>
-								<input id="my-profile-container-username" maxlength="10" class="row-start-1 col-span-3 sm:col-span-4 border border-black rounded-md grow">
-							</div>
-							<div class="grid grid-cols-5 gap-2 mb-2">
-								<span class="col-start-3 sm:col-start-2 col-span-3 text-xs">Max 10 characters</span>
-							</div>
-							<div class="grid grid-cols-5 gap-2 mb-2">
-								<label for="my-profile-container-password" class="row-start-1 basis-24 col-span-2 sm:col-span-1 text-left">Password</label>
-								<input id="my-profile-container-password" class="row-start-1 col-span-3 sm:col-span-4 border border-black rounded-md grow">
-							</div>
-
+	<section id="body" class="flex h-full self-center gap-6 px-2">
+		<div id="bg-dark" class="hidden backdrop-brightness-75 w-full h-full z-40 absolute top-0 left-0"></div>
+		<div id="filter-section" class="hidden md:flex absolute top-0 left-0 md:static h-screen md:h-fit text-center px-2 bg-[#292929] md:bg-white text-white md:text-black border-gray-200 transition-all">
+			<div>
+				<div class="filter-section-brands px-2 mt-8">	
+					<div id="category-dropdown-brands" class="font-bold text-2xl flex justify-between items-center">
+						<span>Brands</span>
+						<div id="category-dropdown-icon-brands" class="transition">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="36" height="36" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path d="M6 9l6 6l6 -6"></path>
+							 </svg>
 						</div>
 						
 					</div>
-					<div class="text-center">
-						<button id="my-profile-container-submit" type="submit" class="bg-orange-300 py-2 px-12 rounded-md hover:opacity-90 disabled:opacity-50 cursor-pointer">Save</button>
-					</div>
-				</form>
-
-				<div class="flex justify-center">
-					<div class="p-1.5 bg-black rounded-2xl text-white mx-0.5 w-full sm:w-3/5">
-						<div class="p-1 bg-yellow-200 rounded-xl">
-							<div class="p-4 bg-black rounded-xl grid gap-2">
-								<div class="flex justify-center">
-									<span class="text-3xl lg:text-5xl font-bold">Membership Card</span>
-								</div>
-								<div class="flex pt-20 items-end">
-									<div class="basis-2/3 text-lg md:text-4xl font-bold">
-										<p class="name-placeholder"></p>
-										<p class="userid-placeholder"></p>
-									</div>
-									<div class="basis-1/3">
-										<img src="../media/logo-white.png" class="w-full h-full">
-									</div>
-								</div>
-							
-							</div>
+					
+					<div id="category-container-brands" class="max-h-0 overflow-hidden text-xl transition-all duration-200 origin-top flex flex-col gap-2">
+	
+						<div class="flex gap-2">
+							<input type="checkbox" id="brand-gibson" name="brand-gibson" class="brand-filter-option" data-filter-name="gibson">
+							<label class="truncate grow text-left" for="brand-gibson">Gibson</label><br>
+							<span class="ml-auto"></span>
 						</div>
-					
+	
+						<div class="flex gap-2">
+							<input type="checkbox" id="brand-epiphone" name="brand-epiphone" class="brand-filter-option" data-filter-name="epiphone">
+							<label class="truncate grow text-left" for="brand-epiphone">Epiphone</label><br>
+							<span class="ml-auto"></span>
+						</div>
+	
+						<div class="flex gap-2">
+							<input type="checkbox" id="brand-yamaha" name="brand-yamaha" class="brand-filter-option" data-filter-name="yamaha">
+							<label class="truncate grow text-left" for="brand-yamaha">Yamaha</label><br>
+							<span class="ml-auto"></span>
+						</div>
+	
 					</div>
 				</div>
 				
-			</div>
-
-			<div id="my-purchases-container" class="flex flex-col p-6 gap-4">
-				<div class="border-b-2 border-gray-400">
-					<p class="text-2xl font-bold">Purchases</p>
-					<p>View and manage your purchases</p>
-				</div>
-				<div id="purchases-container" class="grid gap-2">
-					
-
-				</div>
-			</div>
-
-			<div id="my-vouchers-container" class="flex flex-col p-6 gap-4">
-				<div class="border-b-2 border-gray-400">
-					<p class="text-2xl font-bold">Vouchers</p>
-					<p>Manage and view your vouchers</p>
-				</div>
-				<p id="no-vouchers-message" class="text-2xl text-center">Your inventory is empty..</p>
-
-				<div id="user-voucher-container" class="grid sm:grid-cols-2 lg:grid-cols-3 px-2 gap-2">
-
-					
-					
-				</div>
-
-				<div class="flex justify-between border-b-2 border-gray-400">
-					<div class="">
-						<p class="text-2xl font-bold">Redeem vouchers</p>
-						<p>Spend your coins!</p>
+				<div class="filter-section-shapes px-2 mt-8">	
+					<div id="category-dropdown-shapes" class="font-bold text-2xl flex justify-between items-center">
+						<span>Shapes</span>
+						<div id="category-dropdown-icon-shapes" class="transition">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="36" height="36" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path d="M6 9l6 6l6 -6"></path>
+							 </svg>
+						</div>
+						
 					</div>
-					<div class="flex items-end gap-0.5">
-						<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coins" width="40" height="40" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-							<path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z"></path>
-							<path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4"></path>
-							<path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"></path>
-							<path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
-							<path d="M3 11c0 .888 .772 1.45 2 2"></path>
-						</svg>
-						<p class="coin-placeholder font-bold text-2xl">0</p>
+					<div id="category-container-shapes" class="max-h-0 overflow-hidden text-xl transition-all duration-200 origin-top flex flex-col gap-2">
+	
+						<div class="flex gap-2">
+							<input type="checkbox" id="shape-lespaul" name="shape-lespaul" class="shape-filter-option" data-filter-name="les paul">
+							<label class="truncate grow text-left" for="shape-lespaul">Les Paul</label><br>
+							<span class="ml-auto"></span>
+						</div>
+	
+						<div class="flex gap-2">
+							<input type="checkbox" id="shape-flying-v" name="shape-flying-v" class="shape-filter-option" data-filter-name="flying v">
+							<label class="truncate grow text-left" for="shape-flying-v">Flying V</label><br>
+							<span class="ml-auto"></span>
+						</div>
+	
+						<div class="flex gap-2">
+							<input type="checkbox" id="shape-sg" name="shape-sg" class="shape-filter-option" data-filter-name="sg">
+							<label class="truncate grow text-left" for="shape-sg">SG</label><br>
+							<span class="ml-auto"></span>
+						</div>
+	
 					</div>
+	
+					
 				</div>
-				<div id="voucher-redeem-container" class="grid sm:grid-cols-2 lg:grid-cols-3 px-2 gap-2">
-
-				
-				</div>
-
-
 			</div>
+
+			<div class="flex md:hidden">
+				<p class="mobile-filter-toggle text-4xl text-white font-bold">&times;</p>
+			</div>
+
 		</div>
-	</div>
+
+		<div class="h-full grow">
+			<div class="flex items-center">
+				<div class="basis-11/12 md:grow">
+					<input type="search" id="search" class="my-4 w-full p-4 rounded-full text-center" placeholder = "Search your favourite items!">
+				</div>
+				<div class="mobile-filter-toggle block md:hidden">
+					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-filter" width="36" height="36" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+						<path d="M5.5 5h13a1 1 0 0 1 .5 1.5l-5 5.5l0 7l-4 -3l0 -4l-5 -5.5a1 1 0 0 1 .5 -1.5"></path>
+					 </svg>
+				</div>
+			</div>
+			<div id="card-container" class="mx-4 lg:mx-10 xl:mx-14 2xl:mx-40 flex-1 h-5/6 grid grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-x-4 auto-rows-fr">
+
+				<!-- <div id="card_${totalItems}" class="" data-tags="${v.tags}">
+					<a class="m-2 mt-8 p-2 h-72 rounded-lg">
+						<div class="h-[90%] border-gray-400 border flex items-center justify-center">
+							<img class="object-fill" src="../media/guitars/thumbnailwhite.png">
+						</div>
+						<div class="h-[10%]">
+							<h1 id="name_${k}" class="forNameSearch_${totalItems} text-lg font-semibold truncate">${v.name}</h1>
+							<h3 id="price_${k}" >$${v.price}</h3>
+						</div>
+					</a>
+                </div> -->
+
+				
+
+			</div>
+		
+		</div>
+		
+	</section>
+	
+   
 
 </body>

@@ -180,9 +180,9 @@
 	</nav>
 	
 	<div class="container mx-auto flex gap-6 h-full sm:mt-6">
-		<div class="w-36 hidden flex-col gap-2 md:flex">
+		<div class="hidden flex-col gap-2 md:flex">
 
-			<div class="w-full flex gap-2 mb-8 bg-yellow-100 p-1 rounded-lg">
+			<div class="w-full flex gap-2 mb-4 bg-yellow-100 p-1 px-2 rounded-lg">
 				<div class="flex items-center">
 					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -216,7 +216,7 @@
 					 </svg>
 				</div>
 				<div>
-					<span class="font-bold text-lg">My account</span>
+					<span class="font-bold text-lg">Account</span>
 				</div>
 			</div>
 
@@ -231,23 +231,7 @@
 					 </svg>
 				</div>
 				<div>
-					<span class="font-bold text-lg">My purchases</span>
-				</div>
-			</div>
-
-			<div id="profile-my-coins" class="w-full flex gap-1">
-				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coins" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-						<path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z"></path>
-						<path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4"></path>
-						<path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"></path>
-						<path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
-						<path d="M3 11c0 .888 .772 1.45 2 2"></path>
-					</svg>
-				</div>
-				<div>
-					<span class="font-bold text-lg">My coins</span>
+					<span class="font-bold text-lg">Purchases</span>
 				</div>
 			</div>
 
@@ -262,16 +246,17 @@
 					 </svg>
 				</div>
 				<div>
-					<span class="font-bold text-lg">My vouchers</span>
+					<span class="font-bold text-lg">Vouchers</span>
 				</div>
 			</div>
 
 		</div>
+
 		<div class="grow bg-gray-100">
 			
-			<div id="my-profile-container" class="flex flex-col gap-4 ">
+			<div id="my-profile-container" class="flex flex-col px-6 pt-2 gap-4 ">
 				<div class="border-b-2 border-gray-400">
-					<p class="text-2xl font-bold">My profile</p>
+					<p class="text-2xl font-bold">Profile</p>
 					<p>Manage your account</p>
 				</div>
 				<form class="px-6">
@@ -299,23 +284,20 @@
 				</form>
 
 				<div class="flex justify-center">
-					<div class="p-1.5 bg-black rounded-2xl text-white mx-0.5 w-full sm:w-4/5">
+					<div class="p-1.5 bg-black rounded-2xl text-white mx-0.5 w-full sm:w-3/5">
 						<div class="p-1 bg-yellow-200 rounded-xl">
-							<div class=" p-4 bg-[url('../media/glp.png')] bg-cover bg-no-repeat rounded-xl grid gap-2">
-								<div class="grid grid-rows-1 grid-cols-6">
-									<div class="hidden md:block">
-										<img src="../media/logo-white.png" class="w-[48px] h-[48px]">
-									</div>
-									<div class="col-start-2 col-span-4 text-center">
-										<span class="text-3xl lg:text-5xl font-bold">Membership Card</span>
-									</div>
+							<div class="p-4 bg-black rounded-xl grid gap-2">
+								<div class="flex justify-center">
+									<span class="text-3xl lg:text-5xl font-bold">Membership Card</span>
 								</div>
-								<div class="text-2xl font-bold">
-									<div class="grid grid-cols-12 pt-20">
-										<p class="name-placeholder col-start-2 col-span-11"></p>
-										<p class="userid-placeholder col-start-2 col-span-11"></p>
+								<div class="flex pt-20 items-end">
+									<div class="basis-2/3 text-lg md:text-4xl font-bold">
+										<p class="name-placeholder"></p>
+										<p class="userid-placeholder"></p>
 									</div>
-									
+									<div class="basis-1/3">
+										<img src="../media/logo-white.png" class="w-full h-full">
+									</div>
 								</div>
 							
 							</div>
@@ -328,7 +310,7 @@
 
 			<div id="my-purchases-container" class="flex flex-col p-6 gap-4">
 				<div class="border-b-2 border-gray-400">
-					<p class="text-2xl font-bold">My purchases</p>
+					<p class="text-2xl font-bold">Purchases</p>
 					<p>View and manage your purchases</p>
 				</div>
 				<div id="purchases-container" class="grid gap-2">
@@ -339,7 +321,7 @@
 
 			<div id="my-vouchers-container" class="flex flex-col p-6 gap-4">
 				<div class="border-b-2 border-gray-400">
-					<p class="text-2xl font-bold">My vouchers</p>
+					<p class="text-2xl font-bold">Vouchers</p>
 					<p>Manage and view your vouchers</p>
 				</div>
 				<p id="no-vouchers-message" class="text-2xl text-center">Your inventory is empty..</p>
