@@ -4,8 +4,8 @@
 Project "Boccher" is an eCommerce website that sells string instruments, mainly electric guitars from Gibson and Epiphone. The website has many features that are relevant for an eCommerce website. The website has gamification features made to attract a variety of customers, which can increase sales of products.
 
 ## Features
-<br>
-Feature 1 - navigation bar: at the top of all pages for users to navigate the website with interactable icons.
+
+Feature 1 - navigation bar: at the top of all pages for users to navigate the website with interactable icons.<br>
 
 Feature 2 - account creation: sign in and sign up for users to log in and access the website.
 
@@ -41,7 +41,7 @@ Feature 17 - logout: users can logout by clicking on 'logout' in the dropdown me
 
 Feature 18 - membership card: users can see their username and user ID displayed on the card in the profile page under Account.
 
-Additional Features:
+### Additional Features
 
 Click the Bunny minigame: users can find and click on bunnies that appear behind the products on the products page. Users can get BTR coins by clicking the bunnies. The bunnies would appear for a short time before hiding again.
 
@@ -50,26 +50,25 @@ Clip Submission System: users can submit music clips (mp3/mp4) of themselves pla
 Achievement system: users can find and collect achievements on the website. The users can also get BTR coins by unlocking achievements.
 
 ## Credits
-<br>
 
 ### Content
 
-Guitar descriptions taken from [Gibson](https://www.gibson.com/en-US/) and [Epiphone](https://www.epiphone.com/en-US/).
+Guitar descriptions taken from [Gibson](https://www.gibson.com/en-US/) and [Epiphone](https://www.epiphone.com/en-US/).<br>
 3D viewer embed from [Sketchfab](https://sketchfab.com/).
 
 ### Media
 
-Epiphone Les Paul Custom inspired by Gibson - https://www.epiphone.com/en-US/Electric-Guitar/EPIUYZ684/Ebony
-Epiphone Flying V Prophecy - https://www.epiphone.com/en-US/Electric-Guitar/EPI191650/Yellow-Tiger-Aged-Gloss
+Epiphone Les Paul Custom inspired by Gibson - https://www.epiphone.com/en-US/Electric-Guitar/EPIUYZ684/Ebony<br>
+Epiphone Flying V Prophecy - https://www.epiphone.com/en-US/Electric-Guitar/EPI191650/Yellow-Tiger-Aged-Gloss<br>
 
-Boccher logo font - https://www.myfonts.com/collections/gitfiddler-nf-font-nicks-fonts
+Boccher logo font - https://www.myfonts.com/collections/gitfiddler-nf-font-nicks-fonts<br>
 
-Web icons taken from [Tabler](https://tabler-icons.io).
-Menu Icon - https://tabler-icons.io/i/menu-2
-User Icon - https://tabler-icons.io/i/user-circle
-Cart Icon - https://tabler-icons.io/i/shopping-cart
-Add Cart Icon - https://tabler-icons.io/i/shopping-cart-plus
-Eye Icon - https://tabler-icons.io/i/eye
-Close Eye Icon - https://tabler-icons.io/i/eye-off
-Coins Icon - https://tabler-icons.io/i/coins
-Close Icon - https://tabler-icons.io/i/x
+Web icons taken from [Tabler](https://tabler-icons.io).<br>
+Menu Icon - https://tabler-icons.io/i/menu-2<br>
+User Icon - https://tabler-icons.io/i/user-circle<br>
+Cart Icon - https://tabler-icons.io/i/shopping-cart<br>
+Add Cart Icon - https://tabler-icons.io/i/shopping-cart-plus<br>
+Eye Icon - https://tabler-icons.io/i/eye<br>
+Close Eye Icon - https://tabler-icons.io/i/eye-off<br>
+Coins Icon - https://tabler-icons.io/i/coins<br>
+Close Icon - https://tabler-icons.io/i/x<br>
