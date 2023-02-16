@@ -42,7 +42,7 @@ export function getProducts() {
                 <div id="card_${totalItems}" class="" data-brand="${v.brand}" data-shape="${v.shape}">
                     <a href="guitar.html?${k}">
                         <div class="h-5/6 border-gray-400 border flex justify-center items-center">
-                            <img class="h-[98%] w-[98%]" src="${v.thumbnail}">
+                            <img class="h-full aspect-[10/16]" src="${v.thumbnail}">
                         </div>
                         <div class="h-1/6">
                             <h1 id="name_${k}" class="forNameSearch_${totalItems} text-lg font-semibold truncate">${v.name}</h1>
@@ -68,13 +68,13 @@ export function loadProductPage(productId) {
             container.empty()
             for (let k in images) {
                 let v = images[k]
-                let card = `<img src="${v}" class="h-[600px] object-contain">`
+                let card = `<img src="${v}" class="h-[580px] object-contain">`
                 container.append(card)
             }
         }
         if (sketchfab) {
             let card  = `
-            <div class="sketchfab-embed-wrapper"> <iframe class="w-4/5 mx-auto h-[600px]" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="${sketchfab}"> </iframe> </div>`   
+            <div class="sketchfab-embed-wrapper"> <iframe class="w-4/5 mx-auto h-[580px]" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="${sketchfab}"> </iframe> </div>`   
             container.append(card)
         }
         initiateSlick()
@@ -527,17 +527,17 @@ $(document).ready(function(){
     updateProfileStats()
 
     
-    $(".product-name").click(function(){
-        let name ='Epiphone Les Paul Custom'
-        let price = 100
-        let brand = 'epiphone'
-        let shape = 'les paul'
-        let thumbnail = ['../media/glp.png']
-        let material = 'ebony'
-        let finish = 'gloss'
-        let sketchfab = 'https://sketchfab.com/models/6277939ec397455ba811117793319032/embed?autospin=1&camera=0&ui_hint=0&ui_theme=dark'
-        let images = ['../media/guitars/image.png','../media/guitars/thumbnail.png','../media/glp.png','../media/b2.png','../media/b.png']
-        addProduct("Epiphone les paul",100,'epiphone','les paul',thumbnail,material,finish,images,sketchfab)
-        // addVoucher(100,'m',1)
-    })
+    // $("span").click(function(){
+    //     let name ='Epiphone Flying V Prophecy'
+    //     let price = 899
+    //     let brand = 'epiphone'
+    //     let shape = 'flying v'
+    //     let thumbnail = ['../media/guitars/jingxuan/front.jpg']
+    //     let material = 'mahogany'
+    //     let finish = 'yellow tiger aged gloss'
+    //     let sketchfab = 'https://sketchfab.com/models/f57e9510d1b04945a0a917baebfe4df1/embed'
+    //     let images = ['../media/guitars/jingxuan/front.jpg','../media/guitars/jingxuan/back.jpg','../media/guitars/jingxuan/top.png','../media/guitars/jingxuan/side.png']
+    //     addProduct(name,price,brand,shape,thumbnail,material,finish,images,sketchfab)
+    //     // addVoucher(100,'m',1)
+    // })
 })
