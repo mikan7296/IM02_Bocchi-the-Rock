@@ -366,6 +366,7 @@ function assignVoucherEvents(data) {
         voucherKeys.push(k)
         let v = data[k] 
         let currentVoucher = $(`#voucher_${k}`)
+        currentVoucher.addClass('cursor-pointer')
         let voucherPrice = $("#discount-price")
         currentVoucher.click(function(){
             if (currentVoucher.hasClass('opacity-30')) {

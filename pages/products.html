@@ -31,7 +31,7 @@
 
 			<div class="hidden md:block">
 				<div class="flex gap-4">
-					<div id="cartdropdownButton">
+					<div id="cartdropdownButton" class="cursor-pointer">
 						<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
 							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 							<path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
@@ -42,7 +42,7 @@
 					</div>
 	
 					
-					<div id="dropdownButton">
+					<div id="dropdownButton" class="cursor-pointer">
 						<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
 							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 							<path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
@@ -186,7 +186,7 @@
 		<div id="filter-section" class="hidden md:flex absolute top-0 left-0 md:static h-screen md:h-fit text-center px-2 bg-[#292929] md:bg-white text-white md:text-black border-gray-200 transition-all">
 			<div>
 				<div class="filter-section-brands px-2 mt-8">	
-					<div id="category-dropdown-brands" class="font-bold text-2xl flex justify-between items-center">
+					<div id="category-dropdown-brands" class="font-bold text-2xl flex justify-between items-center cursor-pointer">
 						<span>Brands</span>
 						<div id="category-dropdown-icon-brands" class="transition">
 							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="36" height="36" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -200,20 +200,20 @@
 					<div id="category-container-brands" class="max-h-0 overflow-hidden text-xl transition-all duration-200 origin-top flex flex-col gap-2">
 	
 						<div class="flex gap-2">
-							<input type="checkbox" id="brand-gibson" name="brand-gibson" class="brand-filter-option" data-filter-name="gibson">
-							<label class="truncate grow text-left" for="brand-gibson">Gibson</label><br>
+							<input type="checkbox" id="brand-gibson" name="brand-gibson" class="brand-filter-option cursor-pointer" data-filter-name="gibson">
+							<label class="truncate grow text-left cursor-pointer" for="brand-gibson">Gibson</label><br>
 							<span class="ml-auto"></span>
 						</div>
 	
 						<div class="flex gap-2">
-							<input type="checkbox" id="brand-epiphone" name="brand-epiphone" class="brand-filter-option" data-filter-name="epiphone">
-							<label class="truncate grow text-left" for="brand-epiphone">Epiphone</label><br>
+							<input type="checkbox" id="brand-epiphone" name="brand-epiphone" class="brand-filter-option cursor-pointer" data-filter-name="epiphone">
+							<label class="truncate grow text-left cursor-pointer" for="brand-epiphone">Epiphone</label><br>
 							<span class="ml-auto"></span>
 						</div>
 	
 						<div class="flex gap-2">
-							<input type="checkbox" id="brand-yamaha" name="brand-yamaha" class="brand-filter-option" data-filter-name="yamaha">
-							<label class="truncate grow text-left" for="brand-yamaha">Yamaha</label><br>
+							<input type="checkbox" id="brand-yamaha" name="brand-yamaha" class="brand-filter-optio cursor-pointer" data-filter-name="yamaha">
+							<label class="truncate grow text-left cursor-pointer" for="brand-yamaha">Yamaha</label><br>
 							<span class="ml-auto"></span>
 						</div>
 	
@@ -221,7 +221,7 @@
 				</div>
 				
 				<div class="filter-section-shapes px-2 mt-8">	
-					<div id="category-dropdown-shapes" class="font-bold text-2xl flex justify-between items-center">
+					<div id="category-dropdown-shapes" class="font-bold text-2xl flex justify-between items-center cursor-pointer">
 						<span>Shapes</span>
 						<div id="category-dropdown-icon-shapes" class="transition">
 							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="36" height="36" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -234,20 +234,20 @@
 					<div id="category-container-shapes" class="max-h-0 overflow-hidden text-xl transition-all duration-200 origin-top flex flex-col gap-2">
 	
 						<div class="flex gap-2">
-							<input type="checkbox" id="shape-lespaul" name="shape-lespaul" class="shape-filter-option" data-filter-name="les paul">
-							<label class="truncate grow text-left" for="shape-lespaul">Les Paul</label><br>
+							<input type="checkbox" id="shape-lespaul" name="shape-lespaul" class="shape-filter-option cursor-pointer" data-filter-name="les paul">
+							<label class="truncate grow text-left cursor-pointer" for="shape-lespaul">Les Paul</label><br>
 							<span class="ml-auto"></span>
 						</div>
 	
 						<div class="flex gap-2">
-							<input type="checkbox" id="shape-flying-v" name="shape-flying-v" class="shape-filter-option" data-filter-name="flying v">
-							<label class="truncate grow text-left" for="shape-flying-v">Flying V</label><br>
+							<input type="checkbox" id="shape-flying-v" name="shape-flying-v" class="shape-filter-option cursor-pointer" data-filter-name="flying v">
+							<label class="truncate grow text-left cursor-pointer" for="shape-flying-v">Flying V</label><br>
 							<span class="ml-auto"></span>
 						</div>
 	
 						<div class="flex gap-2">
-							<input type="checkbox" id="shape-sg" name="shape-sg" class="shape-filter-option" data-filter-name="sg">
-							<label class="truncate grow text-left" for="shape-sg">SG</label><br>
+							<input type="checkbox" id="shape-sg" name="shape-sg" class="shape-filter-option cursor-pointer" data-filter-name="sg">
+							<label class="truncate grow text-left cursor-pointer" for="shape-sg">SG</label><br>
 							<span class="ml-auto"></span>
 						</div>
 	
