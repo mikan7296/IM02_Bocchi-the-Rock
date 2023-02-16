@@ -142,9 +142,12 @@ export function matchPassword(name,password) {
                 login(userId,userData)
             }
         }
-        popup('Login Failed!','Incorrect Credentials')
+        setTimeout(function(){
+            popup('Login Failed!','Incorrect Credentials')
+        },2000)
     });
 }
+
 
 export function addUserData(name,password) {
     const db = getDatabase()
