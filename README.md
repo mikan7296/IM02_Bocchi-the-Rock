@@ -54,7 +54,8 @@ Achievement system: users can find and collect achievements on the website. The 
 ### Content
 
 Guitar descriptions taken from [Gibson](https://www.gibson.com/en-US/) and [Epiphone](https://www.epiphone.com/en-US/).<br>
-3D viewer embed from [Sketchfab](https://sketchfab.com/).
+3D viewer embed from [Sketchfab](https://sketchfab.com/).<br>
+Animations taken from [LottiFiles](https://lottiefiles.com)
 
 ### Media
 
@@ -62,6 +63,8 @@ Epiphone Les Paul Custom inspired by Gibson - https://www.epiphone.com/en-US/Ele
 Epiphone Flying V Prophecy - https://www.epiphone.com/en-US/Electric-Guitar/EPI191650/Yellow-Tiger-Aged-Gloss<br>
 
 Boccher logo font - https://www.myfonts.com/collections/gitfiddler-nf-font-nicks-fonts<br>
+
+Loading animation - https://lottiefiles.com/96226-loading<br>
 
 Web icons taken from [Tabler](https://tabler-icons.io).<br>
 Menu Icon - https://tabler-icons.io/i/menu-2<br>
