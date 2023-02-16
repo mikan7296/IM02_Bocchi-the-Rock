@@ -13,7 +13,7 @@ const firebaseConfig = {
   };
 const app = initializeApp(firebaseConfig);
 
-export function addProduct(name,price,brand,shape,thumbnail,images=false,sketchfab=false) {
+export function addProduct(name,price,brand,shape,thumbnail,material,finish,images=false,sketchfab=false) {
     const db = getDatabase()
     push(ref(db, `products/`), {
         name: name,
@@ -21,6 +21,8 @@ export function addProduct(name,price,brand,shape,thumbnail,images=false,sketchf
         brand : brand,
         shape : shape,
         thumbnail : thumbnail,
+        material : material,
+        finish : finish,
         images : images,
         sketchfab : sketchfab,
       });
@@ -77,11 +79,10 @@ export function loadProductPage(productId) {
         }
         initiateSlick()
         
-        $("#product-name").text(data.name)
-        // $("#product-material").text(data.material)
-        // $("#product-finish").text(data.finish)
-
-        $("#product-price").text(`$${data.price}`)
+        $(".product-name").text(data.name)
+        $(".product-material").text(data.material)
+        $(".product-finish").text(data.finish)
+        $(".product-price").text(`$${data.price}`)
 
         $("#add-to-cart").click(function(){
             let cart = []
@@ -518,11 +519,17 @@ $(document).ready(function(){
     updateProfileStats()
 
     
-    $("#hehe").click(function(){
-        let thumbnail = ['../media/guitars/thumbnail.png']
+    $(".product-name").click(function(){
+        let name ='Epiphone Les Paul Custom'
+        let price = 100
+        let brand = 'epiphone'
+        let shape = 'les paul'
+        let thumbnail = ['../media/glp.png']
+        let material = 'ebony'
+        let finish = 'gloss'
         let sketchfab = 'https://sketchfab.com/models/6277939ec397455ba811117793319032/embed?autospin=1&camera=0&ui_hint=0&ui_theme=dark'
         let images = ['../media/guitars/image.png','../media/guitars/thumbnail.png','../media/glp.png','../media/b2.png','../media/b.png']
-        addProduct("Epiphone les paul",100,'epiphone','les paul',thumbnail,images,sketchfab)
+        addProduct("Epiphone les paul",100,'epiphone','les paul',thumbnail,material,finish,images,sketchfab)
         // addVoucher(100,'m',1)
     })
 })

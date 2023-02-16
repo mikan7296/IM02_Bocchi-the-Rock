@@ -42,7 +42,7 @@
 		<div class="flex flex-wrap items-center justify-between ml-2 lg:ml-12 mr-4">
 
 			<a href="../index.html" class="flex items-center ml-1">
-				<img src="../media/logo-white.png" class="mr-5 w-[98px] h-[64px]">
+				<img src="../media/logo-white.png" class="mr-5 w-[64px] h-[64px]">
 			</a>
 
 			<div class="hidden md:block">
@@ -196,13 +196,15 @@
 
     <section id="body" class="flex flex-col px-2">
         <div id="fakebreadcrumbs" class="mt-4 grow-0 mx-auto container">
-            <p>Products/Electric Guitars/Les Paul Custom</p>
+            <p>Products/<span class="product-name"></span></p>
         </div>
 
 		<div id="product-section" class="lg:grid lg:h-full grid-rows-5 grid-cols-1 container mx-auto lg:grid-rows-1 lg:grid-cols-3">
-			<div id="left-grid" class="lg:h-full w-full pt-16 px-4 lg:px-12 lg:col-span-2 row-span-4">
-
-				<div id="image-carousell" class="overflow-hidden h-[600px]">
+			<div id="left-grid" class="lg:h-full w-full px-4 lg:px-12 lg:col-span-2 row-span-4">
+				<div class="font-bold text-xl pt-4">
+					<a href="products.html">&#8592; Back</a>
+				</div>
+				<div id="image-carousell" class="overflow-hidden h-[600px] pt-8">
 					<img src="../media/guitars/thumbnail.png" class="h-[600px] object-contain">
 					<img src="../media/guitars/thumbnail.png" class="h-[600px] object-contain">
 					<img src="../media/guitars/thumbnail.png" class="h-[600px] object-contain">
@@ -215,17 +217,17 @@
 
 			<div id="right-grid" class="lg:h-full w-full mt-8">
 
-				<p id="product-name" class="text-3xl font-bold truncate">Gibson Les Paul Custom</p>
+				<p class="product-name text-3xl font-bold truncate capitalize">Gibson Les Paul Custom</p>
 
-				<div class="border-t-2 border-b-2 border-black">
+				<div class="border-t-2 border-b-2 border-black capitalize">
 					<div class="mx-4 my-5 grid grid-cols-5 grid-rows-1 items-center">
 						<div class="col-span-2">
 							<p class="font-bold text-lg">Body Material</p>
-							<p id="product-material">Ebony</p>
+							<p class="product-material">?</p>
 						</div>
 						<div class="col-span-2 col-start-4">
 							<p class="font-bold text-lg">Body Finish</p>
-							<p id="product-finish">Gloss</p>
+							<p class="product-finish">?</p>
 						</div>
 						
 					</div>
@@ -234,9 +236,9 @@
 					
 
 				<div class="mt-7 text-2xl">
-					<p id="product-price" class="font-bold">$123.45</p>
+					<p class="product-price font-bold">$123.45</p>
 					<div class="flex justify-center mt-4">
-						<div id="add-to-cart" class="flex items-center bg-orange-200 py-3 px-16 rounded-lg">
+						<div id="add-to-cart" class="flex items-centerpy-3 px-16 rounded-lg bg-orange-300 hover:opacity-90 py-2 cursor-pointer">
 							<p>Add to cart</p>
 							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -250,46 +252,17 @@
 					</div>
 				</div>
 				
-
-				
-
 			</div>
 		</div>
 
 
 		<div id="product-description" class="mt-5 container mx-auto">
-			<p class="font-bold text-6xl">Cool Descriptive Header</p>
-			<p class="text-2xl">Cool Descriptive Paragraph</p>
+			<p class="font-bold text-2xl">The <span class="product-name">guitarname</span> is a very good electric guitar</p>
+			<p class="leading-snug mt-2 text-lg">The <span class="product-name">guitarname</span> is a part of our list of guitars recommended for beginners, it features a lightweight <span class="product-material"></span> body with a <span class="product-finish"></span> finish. It is a record breaking guitar that was purchased over 30000 times in a month! Optional hardshell casing is available. </p>
 
-			<div id="product-details">
-				idk see how
-			</div>
+		
 		</div>
 
     </section>
 	
 </body>
-
-	
-				<!-- <div class="flex justify-between">
-
-					<div id="prev"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-						<path d="M5 12l14 0"></path>
-						<path d="M5 12l6 6"></path>
-						<path d="M5 12l6 -6"></path>
-					 </svg></div>
-					<div id="next"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-						<path d="M5 12l14 0"></path>
-						<path d="M13 18l6 -6"></path>
-						<path d="M13 6l6 6"></path>
-					 </svg></div>
-				</div> -->
-				
-				<!-- <div class="slick-dots flex justify-evenly">
-					<button class="p-4">A</button>
-					<button class="p-4">A</button>
-					<button class="p-4">A</button>
-					<button class="p-4">A</button>
-				</div> -->
