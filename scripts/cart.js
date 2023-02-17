@@ -277,6 +277,9 @@ function assignPaymentEvents() {
         if (localStorage.userId) {
             let basePrice = parseInt($("#total-price").attr('data-base-price'))
             userPayment(Math.round(basePrice/10))
+            $("#payment-popup-lottie-done-message").removeClass('hidden')
+        } else {
+            localStorage.removeItem('cart')
         }
     })
     //To show the content card by changing max height
