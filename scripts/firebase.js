@@ -562,17 +562,22 @@ $(document).ready(function(){
 
     //To add products/vouchers to the database
 
-    // $("span").click(function(){
-    //     let name ='Epiphone Flying V Prophecy'
-    //     let price = 899
-    //     let brand = 'epiphone'
-    //     let shape = 'flying v'
-    //     let thumbnail = ['../media/guitars/jingxuan/front.jpg']
-    //     let material = 'mahogany'
-    //     let finish = 'yellow tiger aged gloss'
-    //     let sketchfab = 'https://sketchfab.com/models/f57e9510d1b04945a0a917baebfe4df1/embed'
-    //     let images = ['../media/guitars/jingxuan/front.jpg','../media/guitars/jingxuan/back.jpg','../media/guitars/jingxuan/top.png','../media/guitars/jingxuan/side.png']
-    //     addProduct(name,price,brand,shape,thumbnail,material,finish,images,sketchfab)
-    //     // addVoucher(100,'m',1)
-    // })
+    $("").click(function(){
+        let name ='70s Explorer Ebony'
+        let price = 2499
+        let brand = 'gibson'
+        let shape = 'explorer'
+        let thumbnail = ['../media/guitars/70s_explorer_ebony/front.jpg']
+        let material = 'Mahogany'
+        let finish = 'ebony'
+        // let sketchfab = 'https://sketchfab.com/models/f57e9510d1b04945a0a917baebfe4df1/embed'
+        let images = [
+            '../media/guitars/70s_explorer_ebony/front.jpg',
+            '../media/guitars/70s_explorer_ebony/back.jpg',
+            '../media/guitars/70s_explorer_ebony/top.png',
+            '../media/guitars/70s_explorer_ebony/side.png',
+        ]
+        addProduct(name,price,brand,shape,thumbnail,material,finish,images)
+        // addVoucher(100,'m',1)
+    })
 })

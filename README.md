@@ -1,77 +1,103 @@
-# IM02_Bocchi-the-Rock
+# **Bocchi The Rock!**
 
-<br>
 Project "Boccher" is an eCommerce website that sells string instruments, mainly electric guitars from Gibson and Epiphone. The website has many features that are relevant for an eCommerce website. The website has gamification features made to attract a variety of customers, which can increase sales of products.
 
-## Features
+## **Features**
 
-Feature 1 - navigation bar: at the top of all pages for users to navigate the website with interactable icons.<br>
+Navigation Bar - Allows users to see their details and navigate between pages
 
-Feature 2 - account creation: sign in and sign up for users to log in and access the website.
+Mobile hamburger sidebar - Allows users to see their details and navigate between pages
 
-Feature 3 - cart system: users can add products to cart and view when clicking on the cart icon on the navigation bar.
+Account Creation / Signup - Users can create account to unlock more features, duplicate names are not allowed 
 
-Feature 4 - checkout and payment system: users can checkout and purchase products. Users can apply discount vouchers on the checkout page.
+Login - Users can login if they enter the correct username and password
 
-Feature 5 - search system: users can search for specific products on the products page. The search system filters products in real time.
+Account Configuration - Users can change their name and password 
 
-Feature 6 - filter system: users can filter products on the products page by brand, and shape. Tick multiple boxes filters products in real time.
+Purchase History - Users can see their purchase history with the items purchased and coins earned
 
-Feature 7 - sildes viewer: users can scroll through slides with images of the product to see multiple angles of the product.
+Cart - The user can choose multiple products they want to buy and add to a cart instead of individually checking out.
 
-Feature 8 - 3D viewer: using Sketchfab, users can view the 3D models embed from Sketchfab on the slides viewer of specific products.
+Cart saving - If the user is logged in, their cart saves when they log out and log back in
 
-Feature 9 - account configuration: users can change their usernames or passwords in the profile page under Account.
+Coins/Vouchers - Users can redeem vouchers to use for their next purchase
 
-Feature 10 - purchase history: users can view their past purchases in the profile page under Purchases. Users can see the transaction ID, coins earned and product.
+Search - Users can search for products by the names
 
-Feature 11 - voucher redemption: users can view and redeem vouchers using BTR coins to use for future purchases in the profile page under Vouchers.
+Filter - Users can filter products by brand, shape or both
 
-Feature 12 - cart saving: users can save their cart items once they have added the products to cart. The items will stay in cart unless removed or purchased.
+(Dynamic) Slides - Users are able to view multiple images for the products
 
-Feature 13 - dynamic listing: the products page have a dynamic listing to list new products in a systematic format.
+(Dynamic) 3D viewer - Users are able to view the product in 3D using sketchfab( if the product has one )
 
-Feature 14 - dynamic product: the individual product page can list new images in the slider dynamically.
+## **Additional Features**
 
-Feature 15 - dynamic vouchers: the profile page can create new vouchers dynamically so that users can buy different vouchers.
+Click the Bunny - Users can find and click on bunnies that randomly appears behind product cards to earn a few coins. The bunny disappears after awhile and will respawn after a random interval
 
-Feature 16 - dropdown menu: users can access more functions on the website by clicking on the user icon on the navigation bar and the dropdown menu will appear.
+Clip Submission System - Users can submit music clips (mp3/mp4) of themselves playing music to let other users see on the community. Users can leave a like or comment on the clips.
 
-Feature 17 - logout: users can logout by clicking on 'logout' in the dropdown menu on the navigation bar.
+Achievement system - Users can find and collect achievements on the website. The users can also get BTR coins by unlocking achievements.
 
-Feature 18 - membership card: users can see their username and user ID displayed on the card in the profile page under Account.
+Adding Products - Users can add products with images and sketchfab links 
 
-### Additional Features
+Reviewing Products - Users can review products to gain some coins
 
-Click the Bunny minigame: users can find and click on bunnies that appear behind the products on the products page. Users can get BTR coins by clicking the bunnies. The bunnies would appear for a short time before hiding again.
+## **Testing**
+Compability testing - All pages were checked using Google Chrome's Mobile Simulation (iPhone SE), everything is responsive and no layout runs outside of the screen<br>
 
-Clip Submission System: users can submit music clips (mp3/mp4) of themselves playing music to let other users see on the community. Users can leave a like or comment on the clips.
+Signup - Duplicate names will not be accepted into the database<br>
 
-Achievement system: users can find and collect achievements on the website. The users can also get BTR coins by unlocking achievements.
+Login - Incorrect username/passwords will not log the user in<br>
 
-## Credits
+Changing username - Duplicate names will not be accepted<br>
 
-### Content
+Checkout - User will have to fill in the required fields and put an email that contains '@' and '.com', they will also have to choose a shipping method before being allowed to checkout<br>
 
-Guitar descriptions taken from [Gibson](https://www.gibson.com/en-US/) and [Epiphone](https://www.epiphone.com/en-US/).<br>
-3D viewer embed from [Sketchfab](https://sketchfab.com/).<br>
-Animations taken from [LottiFiles](https://lottiefiles.com)
+## **Technology used**
+This project uses [JQuery](https://jquery.com/) to simplify DOM manipulation<br>
+This project uses [Tailwind CSS](https://tailwindcss.com/) to make my life easier in making the website<br>
+This project uses [Slick Slider](https://kenwheeler.github.io/slick/) to make the image/3D viewer slides in the individual product pages<br>
 
-### Media
+## **Credits**
+Guitar descriptions taken from [Gibson](https://www.gibson.com/en-US/) and [Epiphone](https://www.epiphone.com/en-US/)<br>
+3D viewer embedded from [Sketchfab](https://sketchfab.com/)<br>
+Lottie Animations taken from [LottieFiles](https://lottiefiles.com)<br>
+Logo Font taken from [Logo Font](https://www.myfonts.com/collections/gitfiddler-nf-font-nicks-fonts)<br>
+Abel font taken from [Google Fonts](https://fonts.google.com/)<br>
+Starrybg.png Image from [Official Video](https://youtu.be/Yd8kUoB72xU)<br>
 
-Epiphone Les Paul Custom inspired by Gibson - https://www.epiphone.com/en-US/Electric-Guitar/EPIUYZ684/Ebony<br>
-Epiphone Flying V Prophecy - https://www.epiphone.com/en-US/Electric-Guitar/EPI191650/Yellow-Tiger-Aged-Gloss<br>
+### **Guitars**
+Jing Xuan's [Flying V Prophecy Yellow - Tiger Aged Gloss](https://www.epiphone.com/en-US/Electric-Guitar/EPI191650/Yellow-Tiger-Aged-Gloss)<br>
+Daron's [Epiphone Les Paul - Custom Ebony](https://www.epiphone.com/en-US/Electric-Guitar/EPIUYZ684/Ebony)<br>
+[Les Paul Special - TV Yellow](https://www.epiphone.com/en-US/Electric-Guitar/EPIKNE179/TV-Yellow)<br>
+[Epiphone Les Paul Junior - Tobacco Burst](https://www.epiphone.com/en-US/Electric-Guitar/EPI8U8980/Tobacco-Burst)<br>
+[Epiphone SG Custom - Ebony](https://www.epiphone.com/en-US/Electric-Guitar/EPI9HC214/Ebony)<br>
+[Epiphone SG Standard 60s - Vintage Cherry](https://www.epiphone.com/en-US/Electric-Guitar/EPINKN592/Vintage-Cherry)<br>
+[Flying V - Antique Natural](https://www.gibson.com/en-US/Electric-Guitar/USAM1U838/Antique-Natural)<br>
+[Explorer - Antique Natural](https://www.gibson.com/en-US/Electric-Guitar/USAI3T44/Antique-Natural)<br>
+[70s Flying V - Clasic White](https://www.gibson.com/en-US/Electric-Guitar/USADW9572/Classic-White)<br>
+[70s Explorer - Ebony](https://www.gibson.com/en-US/Electric-Guitar/USAFF9540/Ebony)<br>
 
-Boccher logo font - https://www.myfonts.com/collections/gitfiddler-nf-font-nicks-fonts<br>
+### **SVG Icons**
+Web SVG icons are taken from [Tabler Icons](https://tabler-icons.io)<br>
+[Hamburger Menu](https://tabler-icons.io/i/menu-2)<br>
+[Profile Icon](https://tabler-icons.io/i/user-circle)<br>
+[Cart Icon](https://tabler-icons.io/i/shopping-cart)<br>
+[Cart plus Icon](https://tabler-icons.io/i/shopping-cart-plus)<br>
+[Eye Icon](https://tabler-icons.io/i/eye)<br>
+[Eye off Icon](https://tabler-icons.io/i/eye-off)<br>
+[Coins Icon](https://tabler-icons.io/i/coins)<br>
+[Close Icon](https://tabler-icons.io/i/x)<br>
+[Chevron Down Icon](https://tabler-icons.io/i/chevron-down)<br>
+[External Link Icon](https://tabler-icons.io/i/external-link)<br>
+[Filter Icon](https://tabler-icons.io/i/filter)<br>
+[Briefcase Icon](https://tabler-icons.io/i/briefcase)<br>
+[Checklist Icon](https://tabler-icons.io/i/checklist)<br>
 
-Loading animation - https://lottiefiles.com/96226-loading<br>
+### **Lottie Animations**
+[Payment Loading Animation](https://lottiefiles.com/96226-loading)<br>
 
-Web icons taken from [Tabler](https://tabler-icons.io).<br>
-Menu Icon - https://tabler-icons.io/i/menu-2<br>
-User Icon - https://tabler-icons.io/i/user-circle<br>
-Cart Icon - https://tabler-icons.io/i/shopping-cart<br>
-Add Cart Icon - https://tabler-icons.io/i/shopping-cart-plus<br>
-Eye Icon - https://tabler-icons.io/i/eye<br>
-Close Eye Icon - https://tabler-icons.io/i/eye-off<br>
-Coins Icon - https://tabler-icons.io/i/coins<br>
-Close Icon - https://tabler-icons.io/i/x<br>
+## **Acknowledgement**
+Bocchi The Rock! Anime<br>
+My Mentor<br>
+Gibson and Epiphone website<br>
