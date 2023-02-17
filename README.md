@@ -66,6 +66,11 @@ Lottie Animations taken from [LottieFiles](https://lottiefiles.com)<br>
 Logo Font taken from [Logo Font](https://www.myfonts.com/collections/gitfiddler-nf-font-nicks-fonts)<br>
 Abel font taken from [Google Fonts](https://fonts.google.com/)<br>
 Starrybg.png Image from [Official Video](https://youtu.be/Yd8kUoB72xU)<br>
+Checkout Page inspired by [Wooting](https://wooting.io/) and [Epiphone](https://www.epiphone.com/en-US/)<br>
+Gamification feature inspired by [Shopee](https://shopee.sg/)
+Filter bar inspired by [Swee Lee](https://www.sweelee.com.sg/collections/guitar-bass)
+Mobile hamburger inspired by [Ebay](https://www.ebay.com/)
+Mobile filter sidebar inspired by [EpicNPC](https://www.epicnpc.com/)
 
 ### **Guitars**
 Jing Xuan's [Flying V Prophecy Yellow - Tiger Aged Gloss](https://www.epiphone.com/en-US/Electric-Guitar/EPI191650/Yellow-Tiger-Aged-Gloss)<br>
