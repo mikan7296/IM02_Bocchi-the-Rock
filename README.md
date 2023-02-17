@@ -1,4 +1,5 @@
 # **Bocchi The Rock!**
+https://mikan7296.github.io/IM02_Bocchi-the-Rock/<br>
 
 Project "Boccher" is an eCommerce website that sells string instruments, mainly electric guitars from Gibson and Epiphone. The website has many features that are relevant for an eCommerce website. The website has gamification features made to attract a variety of customers, which can increase sales of products.
 
