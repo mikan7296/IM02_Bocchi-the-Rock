@@ -55,8 +55,9 @@ Checkout - User will have to fill in the required fields and put an email that c
 
 ## **Technology used**
 This project uses [JQuery](https://jquery.com/) to simplify DOM manipulation<br>
-This project uses [Tailwind CSS](https://tailwindcss.com/) to make my life easier in making the website<br>
+This project uses [Tailwind CSS](https://tailwindcss.com/) to make my life easier in making the website [Documentation](https://tailwindcss.com/docs/installation<br> 
 This project uses [Slick Slider](https://kenwheeler.github.io/slick/) to make the image/3D viewer slides in the individual product pages<br>
+This project uses [Firebase](https://firebase.google.com/) as the database. [Documentation](https://firebase.google.com/docs/database/web/read-and-write)<br>
 
 ## **Credits**
 Guitar descriptions taken from [Gibson](https://www.gibson.com/en-US/) and [Epiphone](https://www.epiphone.com/en-US/)<br>
