@@ -82,6 +82,7 @@ Daron's [Epiphone Les Paul - Custom Ebony](https://www.epiphone.com/en-US/Electr
 Web SVG icons are taken from [Tabler Icons](https://tabler-icons.io)<br>
 [Hamburger Menu](https://tabler-icons.io/i/menu-2)<br>
 [Profile Icon](https://tabler-icons.io/i/user-circle)<br>
+[User Icon](https://tabler-icons.io/i/user)<br>
 [Cart Icon](https://tabler-icons.io/i/shopping-cart)<br>
 [Cart plus Icon](https://tabler-icons.io/i/shopping-cart-plus)<br>
 [Eye Icon](https://tabler-icons.io/i/eye)<br>
@@ -93,7 +94,7 @@ Web SVG icons are taken from [Tabler Icons](https://tabler-icons.io)<br>
 [Filter Icon](https://tabler-icons.io/i/filter)<br>
 [Briefcase Icon](https://tabler-icons.io/i/briefcase)<br>
 [Checklist Icon](https://tabler-icons.io/i/checklist)<br>
-
+[App Window Icon](https://tabler-icons.io/)<br>
 ### **Lottie Animations**
 [Payment Loading Animation](https://lottiefiles.com/96226-loading)<br>
 
