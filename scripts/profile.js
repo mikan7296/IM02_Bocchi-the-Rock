@@ -1,10 +1,11 @@
 import { getPurchaseHistory, getUserVouchers, getVouchers, updateUserData } from './firebase.js'
 import { popup } from './popup.js';
 $(document).ready(function () {
-    getPurchaseHistory()
-    getVouchers()
-    getUserVouchers()
+    getPurchaseHistory() // Get user's purchase history
+    getVouchers() // Get all vouchers for redemption
+    getUserVouchers()// Get all of user's vouchers
 
+    //To update account details with some validations(empty spaces)
     $("#my-profile-container-submit").click(function(e){
         e.preventDefault()
         let name = $("#my-profile-container-username").val()
@@ -23,6 +24,7 @@ $(document).ready(function () {
         }
     })
 
+    //For toggling between the profile sections on PC
     $("#profile-my-account, #profile-my-purchases, #profile-my-vouchers").click(function(e){
         let val = $(this).attr('data-category')
         if (val == 'account') {
