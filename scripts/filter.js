@@ -148,7 +148,8 @@ function getCards (string) {
     //For every card, check product name includes string argument
     for (let i = 0;i<totalItemsLength;i++) {
         //Show if includes, else hide
-        if ($(`.forNameSearch_${i}`).text().includes(string.toUpperCase())) {
+
+        if ($(`.forNameSearch_${i}`).text().toUpperCase().includes(string.toUpperCase())) {
             $(`#card_${i}`).removeClass("invisible")
             $(`#card_${i}`).css("order",0)
         } else {
