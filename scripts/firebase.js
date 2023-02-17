@@ -520,10 +520,28 @@ export function updateUserData(type,name,password) {
             password : password
         });
     } else if (type == 'name') {
-        update(ref(db, `users/${localStorage.userId}`), {
-            displayName : name,
-            name : name.toUpperCase(),
-        });
+        const dbRef = ref(db, `users`);
+        onValue(dbRef, (snapshot) => {
+            let data = snapshot.val()
+            let duplicate = false
+            for (let k in data) {
+                let v = data[k]
+                if (v.name == name.toUpperCase()) {
+                    duplicate = true
+                }
+            }
+            if (!duplicate) {
+                update(ref(db, `users/${localStorage.userId}`), {
+                    displayName : name,
+                    name : name.toUpperCase(),
+                });
+            } else {
+                popup('Error','Name is taken!',true)
+            }
+        }, {
+            onlyOnce: true
+        })
+       
     } else {
         update(ref(db, `users/${localStorage.userId}`), {
             displayName : name,
