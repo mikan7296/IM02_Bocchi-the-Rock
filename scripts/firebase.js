@@ -2,6 +2,8 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getDatabase, ref, set, push, onValue, update, remove} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { popup } from './popup.js';
 import { updateTotalPrice } from './cart.js';
+
+//Firebase config file for accessing database
 const firebaseConfig = {
     apiKey: "AIzaSyDXbZe3Yr00ZOcOGZVTQ5x9UmMYcT-ht08",
     authDomain: "np-y1s2-ip.firebaseapp.com",
@@ -13,6 +15,7 @@ const firebaseConfig = {
   };
 const app = initializeApp(firebaseConfig);
 
+// Function to add product into the database with customizable information
 export function addProduct(name,price,brand,shape,thumbnail,material,finish,images=false,sketchfab=false) {
     const db = getDatabase()
     push(ref(db, `products/`), {
@@ -27,7 +30,7 @@ export function addProduct(name,price,brand,shape,thumbnail,material,finish,imag
         sketchfab : sketchfab,
       });
 }
-
+//Function to all the products and uses their values to create the item cards in products.html
 export function getProducts() {
     const dbRef = ref(getDatabase(), `products`);
     onValue(dbRef, (snapshot) => {
@@ -56,7 +59,7 @@ export function getProducts() {
         }
     })
 }
-
+//Function to load the individual product page using the product ID in the url
 export function loadProductPage(productId) {
     const dbRef = ref(getDatabase(), `products/${productId}`);
     onValue(dbRef, (snapshot) => {
@@ -64,6 +67,7 @@ export function loadProductPage(productId) {
         let images = data.images
         let sketchfab = data.sketchfab
         let container = $("#image-carousell")
+        //If the product has images
         if (images) {
             container.empty()
             for (let k in images) {
@@ -72,18 +76,20 @@ export function loadProductPage(productId) {
                 container.append(card)
             }
         }
+        //If the product has a 3D model
         if (sketchfab) {
             let card  = `
             <div class="sketchfab-embed-wrapper"> <iframe class="w-4/5 mx-auto h-[580px]" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="${sketchfab}"> </iframe> </div>`   
             container.append(card)
         }
+        //To initiate the slick sliders (https://kenwheeler.github.io/slick/)
         initiateSlick()
-        
+        //Assign values to placeholders
         $(".product-name").text(data.name)
         $(".product-material").text(data.material)
         $(".product-finish").text(data.finish)
         $(".product-price").text(`$${data.price}`)
-
+        //Assign functionality to 'add to cart' button
         $("#add-to-cart").click(function(){
             let cart = []
             if(localStorage.cart){
@@ -104,23 +110,26 @@ export function loadProductPage(productId) {
         $(".slick-dots > li > button").html("")
     }
 }
-
+//Function for checking whether username has been taken during sign up
 export function checkDuplicateUsernames(name,password) {
     const dbRef = ref(getDatabase(), 'users/');
     onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
         let duplicate = false
         let duplicateNames = []
+        //Add all the names to duplicateNames
         for (let k in data) {
             let v = data[k]
             duplicateNames.push(v.name)
         }
+        //Checks every name in duplicateNames, if it matches set duplicate to true
         for (let k in duplicateNames) {
             let v = duplicateNames[k]
             if (name.toUpperCase() == v) {
                 duplicate = true
             }
         }
+        //If duplicate is false(default), add the user data else show error message
         if (!duplicate) {
             addUserData(name,password)
         } else {
@@ -130,11 +139,12 @@ export function checkDuplicateUsernames(name,password) {
         }
     });
 }
-
+//Function for checking if user credentials is correct during login
 export function matchPassword(name,password) {
     const dbRef = ref(getDatabase(), 'users/');
     onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
+        //For every name check name and password, if both matches then run the login function and clear localStorage
         for (let userId in data) {
             let userData = data[userId]
             if ((userData.name == name.toUpperCase()) && (password == userData.password)) {
@@ -142,13 +152,14 @@ export function matchPassword(name,password) {
                 login(userId,userData)
             }
         }
+        //After 2 seconds if not redirected(by login function), show the error message
         setTimeout(function(){
             popup('Login Failed!','Incorrect Credentials')
         },2000)
     });
 }
 
-
+//Function for adding user data to the database(called when signing up)
 export function addUserData(name,password) {
     const db = getDatabase()
     let id = Date.now()
@@ -160,7 +171,7 @@ export function addUserData(name,password) {
       });
     login(id)
 }
-
+//Function for logging out, saves cart to database if any, also removes localStorage's userId and cart 
 export function logout() {
     const db = getDatabase()
     update(ref(db, `users/${localStorage.userId}`), {
@@ -169,9 +180,8 @@ export function logout() {
 
     localStorage.removeItem("userId")
     localStorage.removeItem("cart")
-    location.reload()
 }
-
+//Function for logging in, sets localStorage userId to the respective Id and if the user has a cart key in the database, set localStorage cart key as that too(for cart saving), then redirect to products.html
 export function login(id,data=false) {
     localStorage.setItem("userId",id)
     if (data) {
@@ -183,7 +193,7 @@ export function login(id,data=false) {
     }
     location.assign("./products.html")
 }
-
+//Function for assigning values to name, coins and userId
 function updateProfileStats() {
     if (localStorage.userId) {
         const dbRef = ref(getDatabase(), `users/${localStorage.userId}`);
@@ -192,11 +202,10 @@ function updateProfileStats() {
             $(".name-placeholder").text(data.displayName)
             $(".coin-placeholder").text(data.coins)
             $(".userid-placeholder").text(localStorage.userId)
-            $(".tier-placeholder").text()
         })
     }   
 }
-
+//For adding coins, transaction into purchase history, removing voucher(if selected) and removing the localStorage 
 export function userPayment(amount) {
     const db = getDatabase()
     push(ref(db, `users/${localStorage.userId}/purchasehistory`), {
@@ -207,7 +216,7 @@ export function userPayment(amount) {
     $("#payment-popup-lottie-done-message-coins").text(`${amount}`)
     localStorage.removeItem('cart')
 }
-
+//To add coins to current user
 function addCoins(amount) {
     const db = getDatabase()
     const dbRef = ref(db, `users/${localStorage.userId}/coins`);
@@ -220,15 +229,17 @@ function addCoins(amount) {
         onlyOnce: true
     })
 }
-
+//To get the purchase history of the current user
 export function getPurchaseHistory() {
     const dbRef = ref(getDatabase(), `users/${localStorage.userId}/purchasehistory`);
     onValue(dbRef, (snapshot) => {
         let data = snapshot.val()
         $("#purchases-container").empty()
+        //If purchase history is not empty
         if (data != null) {
             for (let k in data) {
                 let v = data[k]
+                //The purchase container
                 let card =`
                 <div id="container_${k}" class="bg-gray-200 rounded-md p-4 text-xl">
                     <div class="flex justify-between">
@@ -252,8 +263,9 @@ export function getPurchaseHistory() {
 
                     <div>
                 </div>`
+                //^^The items in the purchase container^^
                 $("#purchases-container").append(card)
-
+                //Get total coins earned for that purchase
                 for (let k2 in v) {
                     let v2 = JSON.parse(v[k2])
                     let totalCoins = 0
@@ -273,6 +285,7 @@ export function getPurchaseHistory() {
                 }
             }
         } else {
+            //Empty message for nothing purchased
             let card = `
             <div id="purchases-container-empty" class="text-xl grid gap-2 justify-center">
                 <div class="">
@@ -286,7 +299,7 @@ export function getPurchaseHistory() {
         }
     });
 }
-
+//For adding vouchers to the database(for users to buy)
 function addVoucher(discount,type,cost,limit=false) {
     const db = getDatabase()
     push(ref(db, `vouchers/`), {
@@ -296,7 +309,7 @@ function addVoucher(discount,type,cost,limit=false) {
         cost : cost
     })
 }
-
+//For adding vouchers to user's inventory
 function addUserVoucher(discount,type,cost,limit) {
     const db = getDatabase()
     push(ref(db, `users/${localStorage.userId}/vouchers`), {
@@ -306,24 +319,25 @@ function addUserVoucher(discount,type,cost,limit) {
         cost : cost
     })
 }
-
+//To get all of the user vouchers and 
 export function getUserVouchers(usage=false) {
     const dbRef = ref(getDatabase(), `users/${localStorage.userId}/vouchers`);
     onValue(dbRef, (snapshot) => {
         let data = snapshot.val()
+        //Show or hide the no vouchers message based on whether user has vouchers
         if (data != null) {
             $("#no-vouchers-message").hide()
         } else {
             $("#no-vouchers-message").show()
         }
         renderUserVouchers(data)
-
+        //If usage is true the vouchers will be able to be used(on checkout page)
         if (usage) {
             assignVoucherEvents(data)
         }
     })
 }
-
+//To draw all the user vouchers available based on data given
 function renderUserVouchers(data) {
     let container = $("#user-voucher-container")
     container.empty()
@@ -362,7 +376,7 @@ function renderUserVouchers(data) {
         }
     }
 }
-
+//To assign usage to vouchers(on checkout page)
 function assignVoucherEvents(data) {
     let voucherKeys = []
     for (let k in data) {
@@ -398,7 +412,7 @@ function assignVoucherEvents(data) {
         }
     }
 }
-
+//To delete user voucher after usage
 function removeVoucher(id) {
     const dbRef = ref(getDatabase(), `users/${localStorage.userId}/vouchers/${id}`);
     onValue(dbRef, (snapshot) => {
@@ -411,7 +425,7 @@ function removeVoucher(id) {
         onlyOnce: true
     })
 }
-
+//To get all of the vouchers available for redemption(idk why I made this a database entry)
 export function getVouchers() {
     const dbRef = ref(getDatabase(), `vouchers/`);
     onValue(dbRef, (snapshot) => {
@@ -424,7 +438,7 @@ export function getVouchers() {
 
     })
 }
-
+//To draw all the vouchers available based on data given
 function renderVouchers(data) {
     let container = $("#voucher-redeem-container")
     container.empty()
@@ -470,7 +484,7 @@ function renderVouchers(data) {
         }
     }
 }
-
+//To validate redemption of vouchers(eg not enough coins/the voucher id changes(which shouldn't happen without user interference))
 function validateVoucher(id) {
     const db = getDatabase()
     const dbRef = ref(db, `vouchers/${id}`);
@@ -497,7 +511,7 @@ function validateVoucher(id) {
         onlyOnce: true
     })
 }
-
+//To update user name/password based on userId
 export function updateUserData(type,name,password) {
     const db = getDatabase()
     if (type == 'pw') {
@@ -521,12 +535,14 @@ export function updateUserData(type,name,password) {
 }
 
 $(document).ready(function(){
+    //Assign logout event for all pages
     $(".logout-button").click(function(e){
         logout()
     })
     updateProfileStats()
 
-    
+    //To add products/vouchers to the database
+
     // $("span").click(function(){
     //     let name ='Epiphone Flying V Prophecy'
     //     let price = 899
