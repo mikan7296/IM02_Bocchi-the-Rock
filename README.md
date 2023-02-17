@@ -16,7 +16,7 @@ Account Configuration - Users can change their name and password
 
 Purchase History - Users can see their purchase history with the items purchased and coins earned
 
-Cart - The user can choose multiple products they want to buy and add to a cart instead of individually checking out.
+Cart - The user can choose multiple products they want to buy and add to a cart instead of individually checking out
 
 Cart saving - If the user is logged in, their cart saves when they log out and log back in
 
@@ -28,15 +28,15 @@ Filter - Users can filter products by brand, shape or both
 
 (Dynamic) Slides - Users are able to view multiple images for the products
 
-(Dynamic) 3D viewer - Users are able to view the product in 3D using sketchfab( if the product has one )
+(Dynamic) 3D viewer - Users are able to view the product in 3D using sketchfab (if the product has one)
 
 ## **Additional Features**
 
 Click the Bunny - Users can find and click on bunnies that randomly appears behind product cards to earn a few coins. The bunny disappears after awhile and will respawn after a random interval
 
-Clip Submission System - Users can submit music clips (mp3/mp4) of themselves playing music to let other users see on the community. Users can leave a like or comment on the clips.
+Clip Submission System - Users can submit music clips (mp3/mp4) of themselves playing music to let other users see on the community. Users can leave a like or comment on the clips
 
-Achievement system - Users can find and collect achievements on the website. The users can also get BTR coins by unlocking achievements.
+Achievement system - Users can find and collect achievements on the website. The users can also get BTR coins by unlocking achievements
 
 Adding Products - Users can add products with images and sketchfab links 
 
@@ -55,7 +55,7 @@ Checkout - User will have to fill in the required fields and put an email that c
 
 ## **Technology used**
 This project uses [JQuery](https://jquery.com/) to simplify DOM manipulation<br>
-This project uses [Tailwind CSS](https://tailwindcss.com/) to make my life easier in making the website [Documentation](https://tailwindcss.com/docs/installation<br> 
+This project uses [Tailwind CSS](https://tailwindcss.com/) to make my life easier in making the website<br> 
 This project uses [Slick Slider](https://kenwheeler.github.io/slick/) to make the image/3D viewer slides in the individual product pages<br>
 This project uses [Firebase](https://firebase.google.com/) as the database. [Documentation](https://firebase.google.com/docs/database/web/read-and-write)<br>
 
