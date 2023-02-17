@@ -4,31 +4,31 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Bocchi the Rock!</title>
+	<title>Boccher</title>
+	<!-- Jquery and tailwind links -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://cdn.tailwindcss.com"></script>
-
+	<!-- Abel font link -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
-
+	<!-- Scripts -->
 	<script src="../scripts/navbar.js"></script>
 	<script defer type="module" src="../scripts/popup.js"></script>
-    
     <script defer type="module" src="../scripts/firebase.js"></script>
 	<script defer type="module" src="../scripts/signup.js"></script>
-
 </head>
 
-<body class="h-screen bg-no-repeat bg-cover overflow-hidden bg-center bg-[url('../media/b.png')] font-[Abel]">                                                                                  
+<body class="h-screen bg-no-repeat bg-cover overflow-hidden bg-center bg-[url('../media/b.png')] font-[Abel]">      
+	<!-- Navigation Bar -->
 	<nav class="bg-black mx-auto py-3 w-full">
 		<div class="flex flex-wrap items-center justify-between ml-2 lg:ml-12 mr-4">
-
+			<!-- Logo -->
 			<a href="../index.html" class="flex items-center ml-1">
 				<img src="../media/logo-white.png" class="mr-5 w-[98px] h-[64px]">
 			</a>
-
 			<div class="hidden md:block">
+				<!-- Profile Dropdown Button -->
 				<div id="dropdownButton" class="cursor-pointer">
 					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -37,8 +37,9 @@
 						<path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
 					 </svg>
 				</div>
-
+				<!-- Profile Dropdown Menu -->
 				<div id="dropdownMenu" class="scale-0 z-10 absolute right-4 transition duration-75 origin-top-right">
+					<!-- Logged in container -->
 					<div class="logged-in hidden bg-white p-4">
 						<div class="flex gap-4 justify-between border-b-2 border-black">
 							<p class="name-placeholder text-2xl font-bold">Name Placeholder</p>
@@ -60,7 +61,7 @@
 							<li><a href="../index.html" class="logout-button">Logout</a></li>
 						</ul>
 					</div>
-
+					<!-- Logged out container -->
 					<div class="logged-out bg-white p-4">
 						<p class="text-2xl font-bold">You're not logged in!</p>
 						<div class="my-4 text-center">
@@ -69,15 +70,10 @@
 						<div class="">
 							<p>Not a member?<span class="text-blue-400 hover:text-blue-900 cursor-pointer"><a href="signup.html"> Sign up now!</a></span></p>
 						</div>
-
 					</div>
-
 				</div>
-
-				
-
 			</div>
-
+			<!-- Mobile hamburger button -->
 			<div id="mobile-hamburger-dropdown" class="block md:hidden">
 				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
 					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -86,19 +82,17 @@
 					<path d="M4 18l16 0"></path>
 				 </svg>
 			</div>
-
 		</div>
-
+		<!-- Mobile sidebar -->
 		<div id="sidebar" class="fixed h-full flex flex-col w-0 z-50 top-0 right-0 overflow-x-hidden transition-all duration-500 bg-[#292929] text-white text-center">
-
+			<!-- Close button -->
 			<div class="text-5xl font-semibold text-right mx-4">
 				<span id="sidebar-close-button">
 					&times;
 				</span>
 			</div>
-
 			<div class="grow text-2xl mx-6">
-
+				<!-- Logged in container for name and coins-->
 				<div class="logged-in hidden">
 					<div class="flex gap-4 justify-between border-b-4 border-white">
 						<p id="" class="name-placeholder text-4xl font-bold">Name Placeholder</p>
@@ -116,66 +110,59 @@
 						</div>
 					</div>
 				</div>
-
+				<!-- Navigation links -->
 				<div class="grid justify-start text-left pt-4 gap-3">
-					
 					<div><a href="products.html">Products</a></div>
 					<div><a href="checkout.html">Cart</a></div>
 					<div class="logged-in hidden"><a href="profile.html">Profile</a></div>
-					
+					<!-- Sign in/up button, shows when logged out-->
 					<div class="logged-out flex gap-2 text-base">
 						<div class="border-r-2 border-white pr-2"><a href="login.html">Sign In</a></div>
 						<div><a href="signup.html">Sign Up</a></div>
 					</div>
-
+					<!-- Log out button, shows when logged in-->
 					<div class="logged-in text-base hidden">
 						<div><a href="../index.html" class="logout-button">Logout</a></div>
 					</div>
-
-					
 				</div>
-				
 			</div>
-			
-		
 		</div>
-
 	</nav>
-
+	<!-- Main Content -->
 	<div class="flex items-center justify-center h-full text-2xl md:text-4xl px-2 backdrop-blur-md bg-black bg-opacity-10">
+		<!-- Login form -->
 		<form class="bg-white p-6 rounded-xl shadow-xl md:w-fit w-4/5">
+			<!-- Title -->
 			<h3 class="text-center pb-12 font-bold">Member Registration</h3>
+			<!-- Name container -->
 			<div id="name-input-container" class="mb-2">
 				<label class="block" for="name-input">Name: </label>
 				<input class="border border-gray-400 rounded-lg shadow-md w-full" id="name-input" type="text" name="Name" placeholder="" maxlength="10" required>
 				<p id="name-error" class="invisible pt-1 text-xs italic text-center text-red-700">Please do not leave spaces in your name</p>
 			</div>
-
+			<!-- Password container -->
 			<div id="pw-input-container" class="mb-2">
 				<label class="block" for="pw-input">Password: </label>
 				<input class="border border-gray-400 rounded-lg shadow-md w-full" id="pw-input" type="password" name="Password" required>
 				<p id="pw-error" class="invisible pt-1 text-xs italic text-center text-red-700">Please do not leave spaces in your password</p>
-					<div class="flex items justify-end relative pointer-events-none md:-top-[3.25rem] md:right-4 -top-12 right-2">
-						<svg id="eye1" xmlns="http://www.w3.org/2000/svg" class="pointer-events-auto hidden icon icon-tabler icon-tabler-eye-off" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-							<path d="M3 3l18 18"></path>
-							<path d="M10.584 10.587a2 2 0 0 0 2.828 2.83"></path>
-							<path d="M9.363 5.365a9.466 9.466 0 0 1 2.637 -.365c4 0 7.333 2.333 10 7c-.778 1.361 -1.612 2.524 -2.503 3.488m-2.14 1.861c-1.631 1.1 -3.415 1.651 -5.357 1.651c-4 0 -7.333 -2.333 -10 -7c1.369 -2.395 2.913 -4.175 4.632 -5.341"></path>
-						</svg>
-						<svg id="eye2" xmlns="http://www.w3.org/2000/svg" class="pointer-events-auto icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-							<path d="M12 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-							<path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"></path>
-						</svg>
-					</div>
-				
+				<div class="flex items justify-end relative pointer-events-none md:-top-[3.25rem] md:right-4 -top-12 right-2">
+					<svg id="eye1" xmlns="http://www.w3.org/2000/svg" class="pointer-events-auto hidden icon icon-tabler icon-tabler-eye-off" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+						<path d="M3 3l18 18"></path>
+						<path d="M10.584 10.587a2 2 0 0 0 2.828 2.83"></path>
+						<path d="M9.363 5.365a9.466 9.466 0 0 1 2.637 -.365c4 0 7.333 2.333 10 7c-.778 1.361 -1.612 2.524 -2.503 3.488m-2.14 1.861c-1.631 1.1 -3.415 1.651 -5.357 1.651c-4 0 -7.333 -2.333 -10 -7c1.369 -2.395 2.913 -4.175 4.632 -5.341"></path>
+					</svg>
+					<svg id="eye2" xmlns="http://www.w3.org/2000/svg" class="pointer-events-auto icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+						<path d="M12 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+						<path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"></path>
+					</svg>
+				</div>
 			</div>
-			
+			<!-- Submit button -->
 			<div class="text-center mt-8">
 				<input class="bg-orange-300 py-4 px-8 sm:px-14 rounded-full hover:bg-orange-600 transition-colors duration-75" id="submitbtn" type="submit" value="Create Account">
 			</div>
-			
 		</form>
 	</div>
-	
 </body>

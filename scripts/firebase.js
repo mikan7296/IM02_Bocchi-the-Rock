@@ -329,6 +329,7 @@ export function getUserVouchers(usage=false) {
             $("#no-vouchers-message").hide()
         } else {
             $("#no-vouchers-message").show()
+            $("#apply-vouchers").hide()
         }
         renderUserVouchers(data)
         //If usage is true the vouchers will be able to be used(on checkout page)

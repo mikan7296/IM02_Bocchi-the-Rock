@@ -4,22 +4,23 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Bocchi the Rock!</title>
+	<title>Boccher</title>
+	<!-- Jquery, tailwind slick carousel links -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<script src="https://cdn.tailwindcss.com"></script>
+	<!-- Abel font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
-	
+	<!-- Scripts -->
 	<script src="../scripts/navbar.js"></script>
 	<script defer type="module" src="../scripts/popup.js"></script>
-
     <script defer type="module" src="../scripts/firebase.js"></script>
     <script defer type="module" src="../scripts/page.js"></script>
     <script defer type="module" src="../scripts/cart.js"></script>
-
+	<!-- Slick carousel css -->
 	<style>
 		.slick-dots {
 			display: flex;
@@ -37,16 +38,18 @@
 	</style>
 </head>
 
-<body class="flex flex-col font-[Abel] bg-white select-none">         
+<body class="flex flex-col font-[Abel] bg-white select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style]:hidden [scrollbar-width:none]">         
+	<!-- Navigation Bar -->
 	<nav class="bg-black mx-auto py-3 w-full">
 		<div class="flex flex-wrap items-center justify-between ml-2 lg:ml-12 mr-4">
-
+			<!-- Logo -->
 			<a href="../index.html" class="flex items-center ml-1">
 				<img src="../media/logo-white.png" class="mr-5 w-[98px] h-[64px]">
 			</a>
 
 			<div class="hidden md:block">
 				<div class="flex gap-4">
+					<!-- Cart Dropdown Button -->
 					<div id="cartdropdownButton" class="cursor-pointer">
 						<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
 							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -56,8 +59,7 @@
 							<path d="M6 5l14 1l-1 7h-13"></path>
 						 </svg>
 					</div>
-	
-					
+					<!-- Profile Dropdown Button -->
 					<div id="dropdownButton" class="cursor-pointer">
 						<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
 							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -67,8 +69,9 @@
 						 </svg>
 					</div>
 				</div>
-				
+				<!-- Profile Dropdown Menu -->
 				<div id="dropdownMenu" class="scale-0 z-10 absolute right-4 transition duration-75 origin-top-right">
+					<!-- Logged in container -->
 					<div class="logged-in hidden bg-white p-4">
 						<div class="flex gap-4 justify-between border-b-2 border-black">
 							<p class="name-placeholder text-2xl font-bold">Name Placeholder</p>
@@ -90,7 +93,7 @@
 							<li><a href="../index.html" class="logout-button">Logout</a></li>
 						</ul>
 					</div>
-
+					<!-- Logged out container -->
 					<div class="logged-out bg-white p-4">
 						<p class="text-2xl font-bold">You're not logged in!</p>
 						<div class="my-4 text-center">
@@ -101,19 +104,18 @@
 						</div>
 					</div>
 				</div>
-
+				<!-- Cart dropdown menu -->
 				<div id="cartdropdownMenu" class="scale-0 z-10 absolute right-[calc(2rem+48px)] transition duration-75 origin-top-right bg-white p-2 w-64">
 					<div class="text-2xl mb-2 border-b-2 border-black">
 						<p>Your Cart</p>
 					</div>
-
+					<!-- Empty cart message -->
 					<div id="empty-cart" class="py-2">
 						<p>There is nothing in your cart!</p>
 					</div>
-					<div>
-						
-					</div>
+					<!-- Not empty cart message -->
 					<div id="not-empty-cart">
+						<!-- Cart container -->
 						<div id="cart-dropdown-container" class="grid grid-cols-1 text-lg overflow-y-scroll max-h-40 [&::-webkit-scrollbar]:hidden [-ms-overflow-style]:hidden [scrollbar-width:none]">
 						
 						</div>
@@ -122,15 +124,14 @@
 								<p class="text-xl col-span-4">Total:</p>
 								<p id="cart-total-price" class="text-lg col-span-2"></p>
 							</div>
-						<div class="text-center mt-2">
-							<a href="checkout.html" class="text-2xl px-8 py-0.5 rounded-full bg-yellow-200">Checkout</a>
-						</div>
-						
+							<div class="text-center mt-2">
+								<a href="checkout.html" class="text-2xl px-8 py-0.5 rounded-full bg-yellow-200">Checkout</a>
+							</div>
 						</div>
 					</div>
-					
 				</div>
 			</div>
+			<!-- Mobile hamburger button -->
 			<div id="mobile-hamburger-dropdown" class="block md:hidden">
 				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
 					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -139,19 +140,17 @@
 					<path d="M4 18l16 0"></path>
 				 </svg>
 			</div>
-
 		</div>
-
+		<!-- Mobile sidebar -->
 		<div id="sidebar" class="fixed h-full flex flex-col w-0 z-50 top-0 right-0 overflow-x-hidden transition-all duration-500 bg-[#292929] text-white text-center">
-
+			<!-- Close button -->
 			<div class="text-5xl font-semibold text-right mx-4">
 				<span id="sidebar-close-button">
 					&times;
 				</span>
 			</div>
-
 			<div class="grow text-2xl mx-6">
-
+				<!-- Logged in container for name and coins-->
 				<div class="logged-in hidden">
 					<div class="flex gap-4 justify-between border-b-4 border-white">
 						<p id="" class="name-placeholder text-4xl font-bold">Name Placeholder</p>
@@ -164,62 +163,53 @@
 								</defs>
 								<rect id="IP_coin-13-13" data-name="IP coin-13-13" width="44" height="39" fill="url(#pattern)"/>
 							  </svg>
-							  
 							<p class="coin-placeholder font-bold">0</p>
 						</div>
 					</div>
 				</div>
-
+				<!-- Navigation links -->
 				<div class="grid justify-start text-left pt-4 gap-3">
-					
 					<div><a href="products.html">Products</a></div>
 					<div><a href="checkout.html">Cart</a></div>
 					<div class="logged-in hidden"><a href="profile.html">Profile</a></div>
-					
+					<!-- Sign in/up button, shows when logged out-->
 					<div class="logged-out flex gap-2 text-base">
 						<div class="border-r-2 border-white pr-2"><a href="login.html">Sign In</a></div>
 						<div><a href="signup.html">Sign Up</a></div>
 					</div>
-
+					<!-- Log out button, shows when logged in-->
 					<div class="logged-in text-base hidden">
 						<div><a href="../index.html" class="logout-button">Logout</a></div>
 					</div>
-
-					
 				</div>
-				
 			</div>
-			
-		
 		</div>
-
 	</nav>
-
+	<!-- Main Content -->
     <section id="body" class="flex flex-col px-2">
+		<!-- Fake breadcrumbs for the looks -->
         <div id="fakebreadcrumbs" class="mt-4 grow-0 mx-auto container">
             <p>Products/<span class="product-name capitalize"></span></p>
         </div>
-
+		<!-- Main grid -->
 		<div id="product-section" class="lg:grid lg:h-full grid-rows-5 grid-cols-1 container mx-auto lg:grid-rows-1 lg:grid-cols-3">
+			<!-- Left side//image carousel -->
 			<div id="left-grid" class="lg:h-full w-full px-4 lg:px-12 lg:col-span-2 row-span-4">
 				<div class="font-bold text-xl pt-4">
 					<a href="products.html">&#8592; Back</a>
 				</div>
+				<!-- damn I mispelled carousel, image carousel -->
 				<div id="image-carousell" class="overflow-hidden h-[600px] pt-8">
 					<img src="../media/guitars/thumbnail.png" class="h-[600px] object-contain">
 					<img src="../media/guitars/thumbnail.png" class="h-[600px] object-contain">
 					<img src="../media/guitars/thumbnail.png" class="h-[600px] object-contain">
 					<img src="../media/guitars/thumbnail.png" class="h-[600px] object-contain">
 					<img src="../media/guitars/thumbnail.png" class="h-[600px] object-contain">
-					<!-- <div class="sketchfab-embed-wrapper"> <iframe class="w-4/5 mx-auto h-[600px]" title="LingJingXuan_3DF_ASG2" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/6277939ec397455ba811117793319032/embed?autospin=1&camera=0&ui_hint=0&ui_theme=dark"> </iframe> </div> -->
 				</div>
-			
 			</div>
-
+			<!-- Right side//Product information section -->
 			<div id="right-grid" class="lg:h-full w-full mt-8">
-
 				<p class="product-name text-3xl font-bold truncate capitalize">Gibson Les Paul Custom</p>
-
 				<div class="border-t-2 border-b-2 border-black capitalize">
 					<div class="mx-4 my-5 grid grid-cols-5 grid-rows-1 items-center">
 						<div class="col-span-2">
@@ -230,12 +220,9 @@
 							<p class="font-bold text-lg">Body Finish</p>
 							<p class="product-finish">?</p>
 						</div>
-						
 					</div>
-			
 				</div>
-					
-
+				<!-- Price/Add to cart section -->
 				<div class="mt-7 text-2xl">
 					<p class="product-price font-bold">$123.45</p>
 					<div class="flex justify-center mt-4">
@@ -252,18 +239,12 @@
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		</div>
-
-
+		<!-- Product description -->
 		<div id="product-description" class="mt-5 container mx-auto">
 			<p class="font-bold text-2xl">The <span class="product-name">guitarname</span> is a very good electric guitar</p>
 			<p class="leading-snug mt-2 text-lg">The <span class="product-name">guitarname</span> is a part of our list of guitars recommended for beginners, it features a lightweight <span class="product-material"></span> body with a <span class="product-finish"></span> finish. It is a record breaking guitar that was purchased over 30000 times in a month! Optional hardshell casing is available. </p>
-
-		
 		</div>
-
     </section>
-	
 </body>

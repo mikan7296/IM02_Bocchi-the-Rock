@@ -200,7 +200,7 @@ function assignInputEvent() {
         //If email length is not 0, check it
         if (email.val().length != 0) {
             //If includes @ + .com, remove red borders and error message
-            if (email.val().includes('@') && email.val().includes('.com')) {
+            if (email.val().includes('@') && email.val().toLowerCase().includes('.com')) {
                 $(email).removeClass('border-red-600').addClass('border-gray-600')
                 $("#email-checkout-error").addClass('hidden').removeClass('block')
             //If doesn't include @ + .com, show red borders and error message, also add to empty

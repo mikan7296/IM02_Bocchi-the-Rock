@@ -4,29 +4,30 @@
 <head>
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Bocchi the Rock!</title>
+	<title>Boccher</title>
+	<!-- Jquery and tailwind links -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://cdn.tailwindcss.com"></script>
-    
+    <!-- Abel font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
-
+	<!-- Scripts -->
 	<script src="./scripts/navbar.js"></script>
 	<script defer type="module" src="./scripts/popup.js"></script>
-
 	<script defer type="module" src="./scripts/firebase.js"></script>
 </head>
 
 <body class="h-screen flex flex-col font-[Abel] bg-black overflow-hidden">
+	<!-- Navigation Bar -->
     <nav class="bg-black mx-auto py-3 w-full">
 		<div class="flex flex-wrap items-center justify-between ml-2 lg:ml-12 mr-4">
-
+			<!-- Logo -->
 			<a href="#" class="flex items-center ml-1">
 				<img src="./media/logo-white.png" class="mr-5 w-[98px] h-[64px]">
 			</a>
-
 			<div class="hidden md:block">
+				<!-- Profile Dropdown Button -->
 				<div id="dropdownButton" class="cursor-pointer">
 					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -35,8 +36,9 @@
 						<path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
 					 </svg>
 				</div>
-
+				<!-- Profile Dropdown Menu -->
 				<div id="dropdownMenu" class="scale-0 z-10 absolute right-4 transition duration-75 origin-top-right">
+					<!-- Logged in container -->
 					<div class="logged-in hidden bg-white p-4">
 						<div class="flex gap-4 justify-between border-b-2 border-black">
 							<p class="name-placeholder text-2xl font-bold">Name Placeholder</p>
@@ -58,7 +60,7 @@
 							<li><a href="" class="logout-button">Logout</a></li>
 						</ul>
 					</div>
-
+					<!-- Logged out container -->
 					<div class="logged-out bg-white p-4">
 						<p class="text-2xl font-bold">You're not logged in!</p>
 						<div class="my-4 text-center">
@@ -67,15 +69,10 @@
 						<div class="">
 							<p>Not a member?<span class="text-blue-400 hover:text-blue-900 cursor-pointer"><a href="./pages/signup.html"> Sign up now!</a></span></p>
 						</div>
-
 					</div>
-
 				</div>
-
-				
-
 			</div>
-
+			<!-- Mobile hamburger button -->
 			<div id="mobile-hamburger-dropdown" class="block md:hidden">
 				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
 					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -84,19 +81,17 @@
 					<path d="M4 18l16 0"></path>
 				 </svg>
 			</div>
-
 		</div>
-
+		<!-- Mobile sidebar -->
 		<div id="sidebar" class="fixed h-full flex flex-col w-0 z-50 top-0 right-0 overflow-x-hidden transition-all duration-500 bg-[#292929] text-white text-center">
-
+			<!-- Close button -->
 			<div class="text-5xl font-semibold text-right mx-4">
 				<span id="sidebar-close-button">
 					&times;
 				</span>
 			</div>
-
 			<div class="grow text-2xl mx-6">
-
+				<!-- Logged in container for name and coins-->
 				<div class="logged-in hidden">
 					<div class="flex gap-4 justify-between border-b-4 border-white">
 						<p id="" class="name-placeholder text-4xl font-bold">Name Placeholder</p>
@@ -114,35 +109,27 @@
 						</div>
 					</div>
 				</div>
-
+				<!-- Navigation links -->
 				<div class="grid justify-start text-left pt-4 gap-3">
-					
 					<div><a href="./pages/products.html">Products</a></div>
 					<div><a href="./pages/checkout.html">Cart</a></div>
 					<div class="logged-in hidden"><a href="./pages/profile.html">Profile</a></div>
-					
+					<!-- Sign in/up button, shows when logged out-->
 					<div class="logged-out flex gap-2 text-base">
 						<div class="border-r-2 border-white pr-2"><a href="./pages/login.html">Sign In</a></div>
 						<div><a href="./pages/signup.html">Sign Up</a></div>
 					</div>
-
+					<!-- Log out button, shows when logged in-->
 					<div class="logged-in text-base hidden">
 						<div><a href="" class="logout-button">Logout</a></div>
-
 					</div>
-
-					
 				</div>
-				
 			</div>
-			
-		
 		</div>
-
 	</nav>
-
+	<!-- Main Content -->
     <div class="snap-mandatory snap-y scroll-smooth overflow-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style]:hidden [scrollbar-width:none]">
-
+		<!-- Card 1 -->
         <div class="h-[calc(100vh-88px)] snap-center bg-[url('./media/starrybg.png')] bg-no-repeat bg-cover bg-center">
             <div class="h-full w-full bg-gradient-to-b from-white/30 via-pink-400/30 to-black/80">
                 <div class="h-full w-full grid grid-cols-6 grid-rows-6">
@@ -167,7 +154,7 @@
                 </div>
             </div>
         </div>
-
+		<!-- Card 2 -->
         <div class="h-[calc(100vh-88px)] snap-center bg-[url('./media/sketchfablogo.png')] bg-no-repeat  bg-auto bg-center">
             <!-- <div class="h-full w-full bg-gradient-to-b from-black via-blue-400/40 to-black"> 
             </div> -->
@@ -181,7 +168,7 @@
             </div>
 
         </div>
-
+		<!-- Card 3 -->
         <div class="h-[calc(100vh-88px)] snap-center bg-[url('./media/glp.png')] bg-no-repeat bg-cover bg-center">
             <div class="w-full h-full bg-gradient-to-b from-black/40 via-white/20 to-black backdrop-blur-sm">
                 <div class="h-full w-full grid grid-cols-6 grid-rows-6">
@@ -192,7 +179,7 @@
                 </div>
             </div>
         </div>
-
+		<!-- Card 4 -->
 		<div class="h-[calc(100vh-88px)] snap-center bg-[url('./media/membershipcards.png')] bg-no-repeat bg-cover bg-center">
             <div class="h-full w-full bg-gradient-to-b from-white/30 to-black/80">
                 <div class="h-full w-full grid grid-cols-6 grid-rows-6">
@@ -205,7 +192,5 @@
                 </div>
             </div>
         </div>
-
     </div>
-   
 </body>
