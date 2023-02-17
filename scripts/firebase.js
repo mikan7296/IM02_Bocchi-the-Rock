@@ -95,7 +95,7 @@ export function loadProductPage(productId) {
             if(localStorage.cart){
                 cart = JSON.parse(localStorage.cart);
             }
-            cart.push({'itemId' : Date.now(), 'itemName' : data.name, 'itemPrice' : data.price});
+            cart.push({'itemId' : Date.now(), 'itemName' : data.name, 'itemPrice' : data.price, 'itemThumbnail' : data.images[0]});
             localStorage.setItem('cart', JSON.stringify(cart));
         });
     }) 
@@ -329,7 +329,7 @@ export function getUserVouchers(usage=false) {
             $("#no-vouchers-message").hide()
         } else {
             $("#no-vouchers-message").show()
-            $("#apply-vouchers").hide()
+            $("#apply-vouchers-container").hide()
         }
         renderUserVouchers(data)
         //If usage is true the vouchers will be able to be used(on checkout page)
