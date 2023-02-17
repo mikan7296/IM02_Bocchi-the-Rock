@@ -22,8 +22,9 @@ function assignRemoveButtons() {
             let itemId = cart[k].itemId
             let itemName = cart[k].itemName
             let itemPrice = cart[k].itemPrice
+            let itemThumbnail = cart[k].itemThumbnail
             if (itemId != id) {
-                returnCart.push({'itemId' : itemId, 'itemName' : itemName, 'itemPrice' : itemPrice})
+                returnCart.push({'itemId' : itemId, 'itemName' : itemName, 'itemPrice' : itemPrice, 'itemThumbnail' : itemThumbnail})
             }
         }
         //Remove the entire cart, replace with returnCart which will include all items except the one replaced
