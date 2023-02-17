@@ -95,7 +95,7 @@ export function loadProductPage(productId) {
             if(localStorage.cart){
                 cart = JSON.parse(localStorage.cart);
             }
-            cart.push({'itemId' : Date.now(), 'itemName' : data.name, 'itemPrice' : data.price, 'itemThumbnail' : data.images[0]});
+            cart.push({'itemId' : Date.now(), 'itemName' : data.name, 'itemPrice' : data.price, 'itemThumbnail' : data.images});
             localStorage.setItem('cart', JSON.stringify(cart));
         });
     }) 

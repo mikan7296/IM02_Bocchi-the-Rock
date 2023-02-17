@@ -50,7 +50,7 @@ function renderCartSummary(emptyContainer = true) {
             let card = `
             <div id="card_${v.itemId}" class="flex py-5 max-h-20 pr-2">
                 <div class="basis-1/5">
-                    <img src="${v.itemThumbnail}" class="h-12 w-12">
+                    <img src="${v.itemThumbnail[0]}" class="h-12 w-12">
                 </div>
                 <div class="basis-3/5 text-base truncate">
                     <p>${v.itemName}</p>
